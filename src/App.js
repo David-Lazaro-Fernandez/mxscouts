@@ -1,5 +1,14 @@
 import { useState, useRef } from "react";
-import { Grid, Container, Slide, Modal } from "@mui/material";
+import {
+  Grid,
+  Container,
+  Slide,
+  Modal,
+  Box,
+  AppBar,
+  Tabs,
+  Tab,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -224,13 +233,97 @@ function App() {
 
         <Grid container spacing={3}>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Castores.png"
-              name="Colonia de Castores"
-              borders="986400"
-              background="C0A062"
-              fontColor="FAFAFA"
-            />
+            <a onClick={handleOpen}>
+              <ScoutCard
+                image="/img/Castores.png"
+                name="Colonia de Castores"
+                borders="986400"
+                background="C0A062"
+                fontColor="FAFAFA"
+              />
+              <Modal open={open} onClose={handleClose}>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    border: "2px solid #ffffff",
+                    width: "500px",
+                    height: "500px",
+                    backgroundColor: "#FFFFFF",
+                    boxShadow: 24,
+                  }}
+                >
+                  <Grid container spacing={0}>
+                    <Grid
+                      item
+                      xl={12}
+                      lg={12}
+                      md={12}
+                      sm={12}
+                      xs={12}
+                      style={{ backgroundColor: "#2E2270" }}
+                    >
+                      <h2
+                        style={{
+                          textAlign: "center",
+                          color: "white",
+                          backgroundColor: "#2E2270",
+                        }}
+                      >
+                        Colonia de Castores
+                      </h2>
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={0}>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                      <AppBar position="static" color="default">
+                        <Tabs sx={{backgroundColor:'#CAC6E8'}}centered>
+                          <Tab sx={{
+                            fontFamily: "Roboto",
+                            fontWeight: "500",
+                            color: "#504979",
+                          }} value="1" label="PINCIPIOS" />
+                          <Tab sx={{
+                            fontFamily: "Roboto",
+                            fontWeight: "500",
+                            color: "#504979",
+                          }} value="2" label="¿QUIENES SOMOS?" />
+                          <Tab sx={{
+                            fontFamily: "Roboto",
+                            fontWeight: "500",
+                            color: "#504979",
+                          }} value="3" label="PROGRESIÓN" />
+                        </Tabs>
+                      </AppBar>
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={0}>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                      <span><img src="/img/ley.png" width="40px" style={{marginRight:'25px'}}/></span><h3 style={{fontWeight:'600', color:'#2E2270'}}> Ley y normas </h3>
+                    </Grid>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                      <p style={{color:'#2E2270'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </Grid>
+
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                      <span><img src="/img/ley.png" width="40px" style={{marginRight:'25px'}}/></span><h3 style={{fontWeight:'600', color:'#2E2270'}}> Ley y normas </h3>
+                    </Grid>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                      <p style={{color:'#2E2270'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </Grid>
+
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                      <span><img src="/img/ley.png" width="40px" style={{marginRight:'25px'}}/></span><h3 style={{fontWeight:'600', color:'#2E2270'}}> Ley y normas </h3>
+                    </Grid>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                      <p style={{color:'#2E2270'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Modal>
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
             <ScoutCard
