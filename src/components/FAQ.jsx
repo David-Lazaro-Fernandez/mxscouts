@@ -6,7 +6,7 @@ const FAQ = (props) => {
     const classes = useStyles();
     const {image, icon, question, answer} = props;
     return( 
-        <div style={{backgroundColor:'#ffffff',}}>
+        <div style={{backgroundColor:'#ffffff', height:'100%',}}>
             <Grid 
             container 
             spacing={0}
@@ -33,6 +33,15 @@ const FAQ = (props) => {
                                 backgroundColor: '#E7E4FA',
                           }
                    }}/>
+
+                   <Grid 
+                   container
+                   spacing={0}
+                   direction="row"
+                   alignItems="center"
+                   jistifyContent="center">
+
+                   </Grid>
                    <Grid 
                     container
                     spacing={0}

@@ -17,6 +17,8 @@ import CoolButton from "./components/CoolButton";
 import CoolLink from "./components/CoolLink";
 import FAQ from "./components/FAQ";
 import Footer from "././components/Footer";
+import TabPanel from './components/TabPanel';
+
 import { TikTok } from "react-tiktok";
 
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
@@ -25,8 +27,23 @@ import FAQS from "./FAQS";
 
 function App() {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = () =>  {
+    setOpen(true);
+    console.log("abre",open);
+  }
+  const handleClose = () => {
+    setOpen(false);
+    console.log("cierra",open);
+  }
+
+  const [value, setValue] = useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    console.warn(value);
+  };
+  const handleChangeIndex = (event, newIndex) => {
+    setValue(newIndex);
+  }
 
   const [FAQCards, setFAQCards] = useState([
     FAQS.map((item) => (
@@ -241,7 +258,8 @@ function App() {
                 background="C0A062"
                 fontColor="FAFAFA"
               />
-              <Modal open={open} onClose={handleClose}>
+            </a>
+            <Modal open={open} onClose={handleClose} >
                 <Box
                   sx={{
                     position: "absolute",
@@ -253,6 +271,7 @@ function App() {
                     height: "500px",
                     backgroundColor: "#FFFFFF",
                     boxShadow: 24,
+                    overflow: "scroll",
                   }}
                 >
                   <Grid container spacing={0}>
@@ -279,7 +298,13 @@ function App() {
                   <Grid container spacing={0}>
                     <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                       <AppBar position="static" color="default">
-                        <Tabs sx={{backgroundColor:'#CAC6E8'}}centered>
+                        <Tabs sx={{backgroundColor:'#CAC6E8'}} 
+                          value={value}
+                          onChange={handleChange}
+                          indicatorColor="secondary"
+                          textColor="inherit"
+                          centered
+                        >
                           <Tab sx={{
                             fontFamily: "Roboto",
                             fontWeight: "500",
@@ -300,30 +325,11 @@ function App() {
                     </Grid>
                   </Grid>
                   <Grid container spacing={0}>
-                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                      <span><img src="/img/ley.png" width="40px" style={{marginRight:'25px'}}/></span><h3 style={{fontWeight:'600', color:'#2E2270'}}> Ley y normas </h3>
-                    </Grid>
-                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                      <p style={{color:'#2E2270'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </Grid>
-
-                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                      <span><img src="/img/ley.png" width="40px" style={{marginRight:'25px'}}/></span><h3 style={{fontWeight:'600', color:'#2E2270'}}> Ley y normas </h3>
-                    </Grid>
-                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                      <p style={{color:'#2E2270'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </Grid>
-
-                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                      <span><img src="/img/ley.png" width="40px" style={{marginRight:'25px'}}/></span><h3 style={{fontWeight:'600', color:'#2E2270'}}> Ley y normas </h3>
-                    </Grid>
-                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12} style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                      <p style={{color:'#2E2270'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </Grid>
+                     
+                      
                   </Grid>
                 </Box>
               </Modal>
-            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
             <ScoutCard
@@ -355,7 +361,7 @@ function App() {
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
             <ScoutCard
               image="/img/Manada de lobos.png"
-              name="Manada de Lobos"
+              name="Manada de Lobatos"
               borders="230E6F"
               background="FFF500"
               fontColor="230E6F"
