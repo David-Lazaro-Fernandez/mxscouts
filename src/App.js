@@ -17,7 +17,7 @@ import CoolButton from "./components/CoolButton";
 import CoolLink from "./components/CoolLink";
 import FAQ from "./components/FAQ";
 import Footer from "././components/Footer";
-import TabPanel from './components/TabPanel';
+import TabPanel from "./components/TabPanel";
 
 import { TikTok } from "react-tiktok";
 
@@ -27,14 +27,14 @@ import FAQS from "./FAQS";
 
 function App() {
   const [open, setOpen] = useState(false);
-  const handleOpen = () =>  {
+  const handleOpen = () => {
     setOpen(true);
-    console.log("abre",open);
-  }
+    console.log("abre", open);
+  };
   const handleClose = () => {
     setOpen(false);
-    console.log("cierra",open);
-  }
+    console.log("cierra", open);
+  };
 
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
@@ -43,7 +43,7 @@ function App() {
   };
   const handleChangeIndex = (event, newIndex) => {
     setValue(newIndex);
-  }
+  };
 
   const [FAQCards, setFAQCards] = useState([
     FAQS.map((item) => (
@@ -259,77 +259,88 @@ function App() {
                 fontColor="FAFAFA"
               />
             </a>
-            <Modal open={open} onClose={handleClose} >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "2px solid #ffffff",
-                    width: "500px",
-                    height: "500px",
-                    backgroundColor: "#FFFFFF",
-                    boxShadow: 24,
-                    overflow: "scroll",
-                  }}
-                >
-                  <Grid container spacing={0}>
-                    <Grid
-                      item
-                      xl={12}
-                      lg={12}
-                      md={12}
-                      sm={12}
-                      xs={12}
-                      style={{ backgroundColor: "#2E2270" }}
+            <Modal open={open} onClose={handleClose}>
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  border: "2px solid #ffffff",
+                  width: "500px",
+                  height: "500px",
+                  backgroundColor: "#FFFFFF",
+                  boxShadow: 24,
+                  overflow: "scroll",
+                }}
+              >
+                <Grid container spacing={0}>
+                  <Grid
+                    item
+                    xl={12}
+                    lg={12}
+                    md={12}
+                    sm={12}
+                    xs={12}
+                    style={{ backgroundColor: "#2E2270" }}
+                  >
+                    <h2
+                      style={{
+                        textAlign: "center",
+                        color: "white",
+                        backgroundColor: "#2E2270",
+                      }}
                     >
-                      <h2
-                        style={{
-                          textAlign: "center",
-                          color: "white",
-                          backgroundColor: "#2E2270",
-                        }}
+                      Colonia de Castores
+                    </h2>
+                  </Grid>
+                </Grid>
+                <Grid container spacing={0}>
+                  <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                    <AppBar position="static" color="default">
+                      <Tabs
+                        sx={{ backgroundColor: "#CAC6E8" }}
+                        value={value}
+                        onChange={handleChange}
+                        indicatorColor="secondary"
+                        textColor="inherit"
+                        centered
                       >
-                        Colonia de Castores
-                      </h2>
-                    </Grid>
-                  </Grid>
-                  <Grid container spacing={0}>
-                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                      <AppBar position="static" color="default">
-                        <Tabs sx={{backgroundColor:'#CAC6E8'}} 
-                          value={value}
-                          onChange={handleChange}
-                          indicatorColor="secondary"
-                          textColor="inherit"
-                          centered
-                        >
-                          <Tab sx={{
+                        <Tab
+                          sx={{
                             fontFamily: "Roboto",
                             fontWeight: "500",
                             color: "#504979",
-                          }} value="1" label="PINCIPIOS" />
-                          <Tab sx={{
+                          }}
+                          value="1"
+                          label="PINCIPIOS"
+                        />
+                        <Tab
+                          sx={{
                             fontFamily: "Roboto",
                             fontWeight: "500",
                             color: "#504979",
-                          }} value="2" label="¿QUIENES SOMOS?" />
-                          <Tab sx={{
+                          }}
+                          value="2"
+                          label="¿QUIENES SOMOS?"
+                        />
+                        <Tab
+                          sx={{
                             fontFamily: "Roboto",
                             fontWeight: "500",
                             color: "#504979",
-                          }} value="3" label="PROGRESIÓN" />
-                        </Tabs>
-                      </AppBar>
-                    </Grid>
+                          }}
+                          value="3"
+                          label="PROGRESIÓN"
+                        />
+                      </Tabs>
+                      <TabPanel value={value} index={1}></TabPanel>
+                    </AppBar>
                   </Grid>
-                  <Grid container spacing={0}>
-                     
-                      
-                  </Grid>
-                </Box>
-              </Modal>
+                </Grid>
+                <Grid container spacing={0}></Grid>
+              </Box>
+            </Modal>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
             <ScoutCard
@@ -432,7 +443,11 @@ function App() {
 
         <Grid container spacing={2} style={{ marginTop: "1px" }}>
           <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-            <a href="https://www.flickr.com/photos/agsmac/albums">
+            <a
+              href="https://www.flickr.com/photos/agsmac/albums"
+              target="_blank"
+              style={{ textDecoration: "none" }}
+            >
               <CoolLink
                 image="/img/libro.jpg"
                 text="El libro de oro"
@@ -460,90 +475,144 @@ function App() {
           <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
             <Grid container spacing={2}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/Irally.png"
-                  text="I rally Virtual"
-                  height="220"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=CMrfrvLoRTo&list=PLEreM0tzBgO3Mczliyu2qTCeGnc4xqPvB"
+                  target="_blank"
+                  style={{ textDecoration: "none  " }}
+                >
+                  <CoolLink
+                    image="/img/Irally.png"
+                    text="I rally Virtual"
+                    height="220"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "25px" }}>
               <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/concuscout.jpg"
-                  text="Concuscout"
-                  height="220"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=zoz-eqNDUZ0&list=PLEreM0tzBgO0-kE8AEoIV9SDoiwrjHPd3"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/concuscout.jpg"
+                    text="Concuscout"
+                    height="220"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
               <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/canciones.png"
-                  text="Canciones"
-                  height="220"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=qWcrUrZR8rM"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/canciones.png"
+                    text="Canciones"
+                    height="220"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
           </Grid>
           <Grid item xl={3} lg={3} md={12} sm={12} xs={12}>
-            <CoolLink
-              image="/img/caminatas.jpg"
-              text="Caminatas"
-              height="485"
-              transparency="0.5"
-            />
+            <a
+              href="https://www.youtube.com/watch?v=kKNeanu-8OY&t=2s"
+              target="_blank"
+              style={{ textDecoration: "none" }}
+            >
+              <CoolLink
+                image="/img/caminatas.jpg"
+                text="Caminatas"
+                height="485"
+                transparency="0.5"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={12} sm={12} xs={12}>
             <Grid container spacing={2}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/Aguilas.jpg"
-                  text="Aguílas"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=zf_IR47BUPI"
+                  target="_blank"
+                  style={{ textDecoration: "none", objectPosition:'top' }}
+                >
+                  <CoolLink
+                    image="/img/aguila.webp"
+                    text="Aguílas"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "10px" }}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/ardillas.webp"
-                  text="Ardillas"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=Ue52-JyFOAs"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/ardillas.webp"
+                    text="Ardillas"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "10px" }}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/apus.webp.jpg"
-                  text="Apus"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=XQZ2pjhWXxs"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/apus.jpg"
+                    text="Apus"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "10px" }}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/andromeda.jpg"
-                  text="Andromeda"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=rwfbnLcvlxY"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/andromeda.jpg"
+                    text="Andromeda"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "10px" }}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/acuario.jpg"
-                  text="Acuario"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=zf_IR47BUPI"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/acuario.jpg"
+                    text="Acuario"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
           </Grid>
@@ -603,7 +672,13 @@ function App() {
                 color: "#2E2270",
               }}
             >
-              <h1>#AGSMAC</h1>
+              <a
+                href="https://www.tiktok.com/tag/scouts?referer_url=http%3A%2F%2Flocalhost%3A3000%2F&referer_video_id=7030548949027048709&refer=embed"
+                style={{ textDecoration: "none" }}
+                target="_blank"
+              >
+                <h1>#Scouts</h1>
+              </a>
             </div>
           </Grid>
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
@@ -614,7 +689,13 @@ function App() {
                 color: "#2E2270",
               }}
             >
-              <h1>#ScoutsMéxico</h1>
+              <a
+                href="https://www.tiktok.com/search?q=scoutsmexico&t=1642544998071"
+                style={{ textDecoration: "none" }}
+                target="_blank"
+              >
+                <h1>#ScoutsMéxico</h1>
+              </a>
             </div>
           </Grid>
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
@@ -625,7 +706,13 @@ function App() {
                 color: "#2E2270",
               }}
             >
-              <h1>#ScoutMe</h1>
+              <a
+                href="https://www.tiktok.com/tag/campamento?referer_url=http%3A%2F%2Flocalhost%3A3000%2F&referer_video_id=6912173152307121413&refer=embed"
+                style={{ textDecoration: "none" }}
+                target="_blank"
+              >
+                <h1>#ScoutMe</h1>
+              </a>
             </div>
           </Grid>
         </Grid>
@@ -647,15 +734,18 @@ function App() {
             xs={2}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <img
-              src="/img/fb.png"
-              alt="logo"
-              style={{
-                width: "50px",
-                filter:
-                  "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
-              }}
-            />
+            <a href="https://www.facebook.com/ags.scouts/" target="_blank">
+              <img
+                src="/img/fb.png"
+                alt="logo"
+                style={{
+                  width: "50px",
+                  filter:
+                    "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
+                }}
+                href="https://www.facebook.com/ags.scouts/"
+              />
+            </a>
           </Grid>
           <Grid
             item
@@ -685,15 +775,20 @@ function App() {
             xs={2}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <img
-              src="/img/youtube.png"
-              alt="logo"
-              style={{
-                width: "50px",
-                filter:
-                  "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
-              }}
-            />
+            <a
+              href="https://www.youtube.com/channel/UCyalbBV3m4uWD9SxwSPUbEw"
+              target="_blank"
+            >
+              <img
+                src="/img/youtube.png"
+                alt="logo"
+                style={{
+                  width: "50px",
+                  filter:
+                    "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
+                }}
+              />
+            </a>
           </Grid>
         </Grid>
         <Grid
