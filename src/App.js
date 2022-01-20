@@ -21,11 +21,13 @@ import TabPanel from "./components/TabPanel";
 
 import { TikTok } from "react-tiktok";
 
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, MarkerWithLabel } from "@react-google-maps/api";
 import credentials from "./credentials";
 import FAQS from "./FAQS";
+import gruposScout from "./gruposScout";
 
 function App() {
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -62,8 +64,22 @@ function App() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const containerRef = useRef(null);
-
+  
   //Map Customization
+  const [windowOpen, setWindowOpen] = useState(false);
+  const [locations, setLocations] = useState([
+    gruposScout.map(item => (
+      <Marker 
+        position={item.position}
+        icon={item.escudo}
+        onClick={ () =>{
+           setWindowOpen(true); 
+        }}
+      />
+    )) 
+  ])
+  
+  
   const [mapZoom, setMapZoom] = useState(8);
   const [coordinates, setCoordinates] = useState({
     lat: 20.036159135066864,
@@ -468,7 +484,10 @@ function App() {
             mapContainerStyle={containerStyle}
             center={coordinates}
             zoom={mapZoom}
-          ></GoogleMap>
+          >
+            {locations}
+                
+          </GoogleMap>
         </Grid>
 
         <Grid container spacing={2} style={{ marginTop: "25px" }}>
@@ -896,6 +915,9 @@ function App() {
       <Footer />
     </div>
   );
+
+  
 }
+
 
 export default App;
