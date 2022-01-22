@@ -7,7 +7,7 @@ const CoolButton = (props) => {
     return(
         <div>
             <button 
-                className={type == 'primary' ? classes.primary : classes.secondary} 
+                className={type === 'primary' ? classes.primary : classes.secondary} 
                 style={{ width: `${width}px`, height: `${height}px`}}
             >
                 {text}

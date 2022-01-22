@@ -38,6 +38,7 @@ const Principios = (props) => {
                 src="/img/ley.png"
                 width="50"
                 style={{ marginRight: "30px" }}
+                alt="Martillo del juicio"
               />
             </span>
             <h4 style={{ color: "#2E2270" }}> Ley y Normas</h4>
@@ -81,6 +82,7 @@ const Principios = (props) => {
                 src="/img/oración.png"
                 width="50"
                 style={{ marginRight: "30px" }}
+                alt="Manos orando"
               />
             </span>
             <h4 style={{ color: "#2E2270" }}> Oración</h4>
@@ -121,6 +123,7 @@ const Principios = (props) => {
                 src="/img/promesa.png"
                 width="50"
                 style={{ marginRight: "30px" }}
+                alt="Mano sujetando un libro"
               />
             </span>
             <h4 style={{ color: "#2E2270" }}> Promesa</h4>

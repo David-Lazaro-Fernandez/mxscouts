@@ -1,5 +1,4 @@
 import React from "react";
-import { useStyles } from "../styles/FAQStyle";
 import { Grid, Container } from "@mui/material";
 
 const Footer = () => {
@@ -172,6 +171,7 @@ const Footer = () => {
                       filter:
                         "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
                     }}
+                    alt="Telefono"
                   />
                 </span>
                 <a href="tel:+52-555-555-5555"> +52 555 555 5555</a>
@@ -188,6 +188,7 @@ const Footer = () => {
                       filter:
                         "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
                     }}
+                    alt="Correo"
                   />
                 </span>
                 <a href="mailto:agscm@gmail.org.mx"> agscm@gmail.org.mx</a>
@@ -210,15 +211,15 @@ const Footer = () => {
                 xs={2}
                 style={{ display: "flex", justifyContent: "flex-start" }}
               >
-                <a href="https://www.facebook.com/ags.scouts/" target="_blank">
+                <a href="https://www.facebook.com/ags.scouts/" target="_blank" rel="noreferrer">
                   <img
                     src="/img/fb.png"
-                    alt="logo"
                     style={{
                       width: "50px",
                       filter:
                         "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
                     }}
+                    alt="Logo de Facebook"
                   />
                 </a>
               </Grid>
@@ -233,7 +234,7 @@ const Footer = () => {
               >
                 <img
                   src="/img/tiktok.png"
-                  alt="logo"
+                  alt="logo de tiktok"
                   style={{
                     width: "50px",
                     filter:
@@ -250,11 +251,11 @@ const Footer = () => {
                 xs={2}
                 style={{ display: "flex", justifyContent: "flex-start" }}
               >
-                <a href="https://www.flickr.com/photos/agsmac/albums" target="_blank">
+                <a href="https://www.flickr.com/photos/agsmac/albums" target="_blank" rel="noreferrer" >
                     <img
                     src="/img/flickr.png"
-                    alt="logo"
                     style={{ width: "50px" }}
+                    alt="Logo de Flickr"
                     />
                 </a>
               </Grid>
@@ -273,8 +274,8 @@ const Footer = () => {
             >
               <img
                 src="/img/scout logo.png"
-                alt="logo"
                 style={{ width: "70px" }}
+                alt="Logo de los Scouts"
               />
             </Grid>
           </Grid>
