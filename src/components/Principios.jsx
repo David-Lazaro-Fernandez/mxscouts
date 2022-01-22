@@ -3,13 +3,12 @@ import { Grid, Container } from "@mui/material";
 
 const Principios = (props) => {
   const { tropasArray, numero } = props;
-  const tropa = tropasArray[numero];
+  const tropa = tropasArray[0];
   const ley = tropa[numero].ley;
   const normas = tropa[numero].normas;
   const oración = tropa[numero].oración;
   const promesa = tropa[numero].promesa;
 
-  console.log(tropa[numero]);
   return (
     <div>
       <Container fixed>

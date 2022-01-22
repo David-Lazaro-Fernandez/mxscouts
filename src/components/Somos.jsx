@@ -3,7 +3,7 @@ import { Grid, Container } from "@mui/material";
 
 const Somos = (props) => {
   const { tropasArray, numero } = props;
-  const tropa = tropasArray[numero];
+  const tropa = tropasArray[0];
   const icono = tropa[numero].icono;
   const somosTitulo = tropa[numero].somosTitulo;
   const somosArray = tropa[numero].somos;

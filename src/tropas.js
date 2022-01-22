@@ -141,7 +141,7 @@ export const tropas = [
     },
     {
         nombre:'Tropa Scout',
-        icono:'/img/Tropa scout.png',
+        icono:"/img/Tropa scout.png",
         promesa:'YO PROMETO POR MI HONOR , HACER CUANTO DE MI DEPENDA, PARA CUMPLIR MIS DEBERES, PARA CON DIOS Y LA PATRIA, AYUDAR AL PROJIMO EN TODA CIRCUNSTANCIA Y CUMPLIR FIELMENTE LA LEY SCOUT.',
         oración:'Señor, enseñame a ser generoso, a servirte como lo mereces, a dar sin medida a combatir sin temor a que me hieran a trabajar sin descanso y a no buscar recompensa más que el saber que hago tu santa voluntad. Así sea.',
         ley:'El scout cifra su honor en ser digno de confianza. El scout es leal con su patria, sus padres, jefes, y subordinados. El scout es útil y ayuda a los demás sin esperar recompensas. El scout es amigo de todos y hermano de todo scout sin distincion de raza, credo, nacionalidad o razón social. El scout es cortez y actua con nobleza. El scout ve en la naturaleza la obra de Dios, protege a los animales y las plantas. El scout obedece con responsabilidad y hace las cosas en orden y completas. El scout ríe y canta en sus dificultades. El scout es económico, trabajador y cuidadoso del bien ajeno. El scout es limpio, sano y puro de pensamiento palabras y acciones',

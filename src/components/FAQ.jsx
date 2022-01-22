@@ -48,7 +48,7 @@ const FAQ = (props) => {
             spacing={0}
             direction="row"
             alignItems="center"
-            jistifyContent="center"
+            justifyContent="center"
           ></Grid>
           <Grid
             container

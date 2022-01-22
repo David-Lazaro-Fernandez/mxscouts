@@ -17,40 +17,46 @@ import CoolButton from "./components/CoolButton";
 import CoolLink from "./components/CoolLink";
 import FAQ from "./components/FAQ";
 import Footer from "././components/Footer";
-import Principios from '././components/Principios';
-import Somos from '././components/Somos';
+import Principios from "././components/Principios";
+import Somos from "././components/Somos";
 
 import { TikTok } from "react-tiktok";
 
-import { GoogleMap, useLoadScript, Marker, MarkerWithLabel } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  MarkerWithLabel,
+} from "@react-google-maps/api";
 import credentials from "./credentials";
 import FAQS from "./FAQS";
 import gruposScout from "./gruposScout";
-import tropas from './tropas';
+import tropas from "./tropas";
 
 function App() {
-  
   const [numeroTropa, setNumeroTropa] = useState(0);
   const [tropasArray, setTropasArray] = useState([
-    tropas.map((item) => (
-      {
-        nombre: item.nombre,
-        icono: item.icono,
-        promesa: item.promesa,
-        oración: item.oración, 
-        ley: item.ley, 
-        normas:item.normas,
-        somosTitulo: item.somosTitulo, 
-        somos: item.somos,
-        adelantoProgresivo: item.adelantoProgresivo,
-        insigniaMaxima: item.insigniaMaxima,
-        rangos: item.rangos, 
-        especialidades: item.especialidades
-      }
-    ))  
+    tropas.map((item) => ({
+      nombre: item.nombre,
+      icono: item.icono,
+      promesa: item.promesa,
+      oración: item.oración,
+      ley: item.ley,
+      normas: item.normas,
+      somosTitulo: item.somosTitulo,
+      somos: item.somos,
+      adelantoProgresivo: item.adelantoProgresivo,
+      insigniaMaxima: item.insigniaMaxima,
+      rangos: item.rangos,
+      especialidades: item.especialidades,
+    })),
   ]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
+    if(value===undefined)
+    {
+      return;
+    }
     setOpen(true);
   };
   const handleClose = () => {
@@ -60,7 +66,6 @@ function App() {
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(newValue);
   };
 
   const handleChangeIndex = (event, newIndex) => {
@@ -80,27 +85,25 @@ function App() {
     )),
   ]);
 
-  
   //Media Query
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const containerRef = useRef(null);
-  
+
   //Map Customization
   const [windowOpen, setWindowOpen] = useState(false);
   const [locations, setLocations] = useState([
-    gruposScout.map(item => (
-      <Marker 
+    gruposScout.map((item) => (
+      <Marker
         position={item.position}
         icon={item.escudo}
-        onClick={ () =>{
-           setWindowOpen(true); 
+        onClick={() => {
+          setWindowOpen(true);
         }}
       />
-    )) 
-  ])
-  
-  
+    )),
+  ]);
+
   const [mapZoom, setMapZoom] = useState(8);
   const [coordinates, setCoordinates] = useState({
     lat: 20.036159135066864,
@@ -219,7 +222,6 @@ function App() {
               >
                 <Slide
                   direction="right"
-                  appear="true"
                   container={containerRef.current}
                   in={true}
                 >
@@ -258,7 +260,7 @@ function App() {
                   justifyContent: `${matches ? "flex-start" : "center"}`,
                 }}
               >
-                <CoolButton type="secondary" text="Conoce más" />
+                <a href="#links"><CoolButton type="secondary" text="Conoce más" /></a>
               </Grid>
             </Grid>
           </Grid>
@@ -287,10 +289,12 @@ function App() {
 
         <Grid container spacing={3}>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a onClick={() =>{
-              handleOpen()
-              setNumeroTropa(0)
-            }}>
+            <a
+              onClick={() => {
+                setNumeroTropa(0);
+                handleOpen();
+              }}
+            >
               <ScoutCard
                 image="/img/Castores.png"
                 name="Colonia de Castores"
@@ -299,153 +303,209 @@ function App() {
                 fontColor="FAFAFA"
               />
             </a>
-            <Modal open={open} onClose={handleClose}>
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  border: "2px solid #ffffff",
-                  width: `${matches ? "500px" : "360px"}`,
-                  height: "500px",
-                  backgroundColor: "#FFFFFF",
-                  boxShadow: 24,
-                  overflow: "scroll",
-                }}
-              >
-                <Grid container spacing={0}>
-                  <Grid
-                    item
-                    xl={12}
-                    lg={12}
-                    md={12}
-                    sm={12}
-                    xs={12}
-                    style={{ backgroundColor: "#2E2270" }}
-                  >
-                    <h2
-                      style={{
-                        textAlign: "center",
-                        color: "white",
-                        backgroundColor: "#2E2270",
-                      }}
-                    >
-                      Colonia de Castores
-                    </h2>
-                  </Grid>
-                </Grid>
-                <Grid container spacing={0}>
-                  <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                    <AppBar position="static" color="default">
-                      <Tabs
-                        sx={{ backgroundColor: "#CAC6E8" }}
-                        value={value}
-                        onChange={handleChange}
-                        indicatorColor="secondary"
-                        textColor="inherit"
-                        centered
-                      >
-                        <Tab
-                          sx={{
-                            fontFamily: "Roboto",
-                            fontWeight: "500",
-                            color: "#504979",
-                          }}
-                          label="PRINCIPIOS"
-                        />
-                        <Tab
-                          sx={{
-                            fontFamily: "Roboto",
-                            fontWeight: "500",
-                            color: "#504979",
-                          }}
-                          label="¿QUIENES SOMOS?"
-                        />
-                        <Tab
-                          sx={{
-                            fontFamily: "Roboto",
-                            fontWeight: "500",
-                            color: "#504979",
-                          }}
-                          label="PROGRESIÓN"
-                        />
-                      </Tabs>
-                    </AppBar>
-                    {value === 0 && <Principios tropasArray={tropasArray} numero={numeroTropa} />}
-                    {value === 1 && <Somos tropasArray={tropasArray} numero={numeroTropa}/>}
-                  </Grid>
-                </Grid>
-                <Grid container spacing={0}></Grid>
-              </Box>
-            </Modal>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Gacelas.png"
-              name="Manada de Gacelas"
-              borders="DA251D"
-              background="FFF500"
-              fontColor="DA251D"
-            />
+            <a
+              onClick={() => {
+                setNumeroTropa(1);
+                handleOpen();
+              }}
+            >
+              <ScoutCard
+                image="/img/Gacelas.png"
+                name="Manada de Gacelas"
+                borders="DA251D"
+                background="FFF500"
+                fontColor="DA251D"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Clan Percusores.png"
-              name="Clan de Percusoras"
-              borders="DA251D"
-              background="FAFAFA"
-              fontColor="DA251D"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(2);
+              }}
+            >
+              <ScoutCard
+                image="/img/Manada de lobos.png"
+                name="Manada de Lobatos"
+                borders="230E6F"
+                background="FFF500"
+                fontColor="230E6F"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Clan Robers.png"
-              name="Clan de Robers"
-              borders="DA251D"
-              background="FAFAFA"
-              fontColor="DA251D"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(3);
+              }}
+            >
+              <ScoutCard
+                image="/img/Tropa scout.png"
+                name="Tropa Scout"
+                borders="B9DC7D"
+                background="1F4C3E"
+                fontColor="B9DC7D"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Manada de lobos.png"
-              name="Manada de Lobatos"
-              borders="230E6F"
-              background="FFF500"
-              fontColor="230E6F"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(4);
+              }}
+            >
+              <ScoutCard
+                image="/img/Tropa mujeres.png"
+                name="Tropa De Muchachas"
+                borders="B9DC7D"
+                background="1F4C3E"
+                fontColor="B9DC7D"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Tropa scout.png"
-              name="Tropa Scout"
-              borders="B9DC7D"
-              background="1F4C3E"
-              fontColor="B9DC7D"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(5);
+              }}
+            >
+              <ScoutCard
+                image="/img/Clan Robers.png"
+                name="Clan de Robers"
+                borders="DA251D"
+                background="FAFAFA"
+                fontColor="DA251D"
+              />
+              
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Tropa mujeres.png"
-              name="Tropa De Muchachas"
-              borders="B9DC7D"
-              background="1F4C3E"
-              fontColor="B9DC7D"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(6);
+              }}
+            >
+              <ScoutCard
+                image="/img/Clan Percusores.png"
+                name="Clan de Percusoras"
+                borders="DA251D"
+                background="FAFAFA"
+                fontColor="DA251D"
+              />
+              
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Scouters.png"
-              name="Scouters y Dirigentes"
-              borders="FAFAFA"
-              background="000000"
-              fontColor="FAFAFA"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(7);
+              }}
+            >
+              <ScoutCard
+                image="/img/Scouters.png"
+                name="Scouters y Dirigentes"
+                borders="FAFAFA"
+                background="000000"
+                fontColor="FAFAFA"
+              />
+            </a>
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} style={{ marginTop: "10px" }}>
+        <Modal open={open} onClose={handleClose}>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              border: "2px solid #ffffff",
+              width: `${matches ? "500px" : "360px"}`,
+              height: "500px",
+              backgroundColor: "#FFFFFF",
+              boxShadow: 24,
+              overflow: "scroll",
+            }}
+          >
+            <Grid container spacing={0}>
+              <Grid
+                item
+                xl={12}
+                lg={12}
+                md={12}
+                sm={12}
+                xs={12}
+                style={{ backgroundColor: "#2E2270" }}
+              >
+                <h2
+                  style={{
+                    textAlign: "center",
+                    color: "white",
+                    backgroundColor: "#2E2270",
+                  }}
+                >
+                  {tropasArray[0][numeroTropa].nombre}
+                </h2>
+              </Grid>
+            </Grid>
+            <Grid container spacing={0}>
+              <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                <AppBar position="static" color="default">
+                  <Tabs
+                    sx={{ backgroundColor: "#CAC6E8" }}
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="secondary"
+                    textColor="inherit"
+                    centered
+                  >
+                    <Tab
+                      sx={{
+                        fontFamily: "Roboto",
+                        fontWeight: "500",
+                        color: "#504979",
+                      }}
+                      label="PRINCIPIOS"
+                    />
+                    <Tab
+                      sx={{
+                        fontFamily: "Roboto",
+                        fontWeight: "500",
+                        color: "#504979",
+                      }}
+                      label="¿QUIENES SOMOS?"
+                    />
+                    <Tab
+                      sx={{
+                        fontFamily: "Roboto",
+                        fontWeight: "500",
+                        color: "#504979",
+                      }}
+                      label="PROGRESIÓN"
+                    />
+                  </Tabs>
+                </AppBar>
+                {value === 0 && (
+                  <Principios tropasArray={tropasArray} numero={numeroTropa} />
+                )}
+                {value === 1 && (
+                  <Somos tropasArray={tropasArray} numero={numeroTropa} />
+                )}
+              </Grid>
+            </Grid>
+            <Grid container spacing={0}></Grid>
+          </Box>
+        </Modal>
+
+        <Grid container spacing={2} style={{ marginTop: "10px" }} id="links">
           <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
             <CoolLink
               image="/img/expediciones.jpg"
@@ -508,7 +568,6 @@ function App() {
             zoom={mapZoom}
           >
             {locations}
-                
           </GoogleMap>
         </Grid>
 
@@ -581,7 +640,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=zf_IR47BUPI"
                   target="_blank"
-                  style={{ textDecoration: "none", objectPosition:'top' }}
+                  style={{ textDecoration: "none", objectPosition: "top" }}
                 >
                   <CoolLink
                     image="/img/aguila.webp"
@@ -674,7 +733,7 @@ function App() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} style={{ marginTop: "25px" }}>
+        <Grid container spacing={2} style={{ marginTop: "25px" }} id='faq'>
           {FAQCards}
         </Grid>
 
@@ -937,9 +996,6 @@ function App() {
       <Footer />
     </div>
   );
-
-  
 }
-
 
 export default App;

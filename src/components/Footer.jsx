@@ -89,14 +89,14 @@ const Footer = () => {
                     textDecoration: "underline",
                   }}
                 >
-                  <li>¿Qué son los Scouts?</li>
-                  <li>¿Cómo puedo convertirme en uno?</li>
-                  <li>¿Qué es una tropa?</li>
-                  <li>¿Cómo puedo unirme a una tropa?</li>
-                  <li>¿Ser un Scout cuesta dinero?</li>
-                  <li>¿Qué implica ser un Scout?</li>
-                  <li>¿Cada cuanto hacen actividades?</li>
-                  <li>¿Cómo puedo apoyar a los Scouts?</li>
+                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Qué son los Scouts?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Cómo puedo convertirme en uno?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Qué es una tropa?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Cómo puedo unirme a una tropa?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Ser un Scout cuesta dinero?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Qué implica ser un Scout?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Cada cuanto hacen actividades?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Cómo puedo apoyar a los Scouts?</li></a>
                 </ul>
               </Grid>
             </Grid>
