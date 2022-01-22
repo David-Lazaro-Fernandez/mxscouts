@@ -17,7 +17,8 @@ import CoolButton from "./components/CoolButton";
 import CoolLink from "./components/CoolLink";
 import FAQ from "./components/FAQ";
 import Footer from "././components/Footer";
-import TabPanel from "./components/TabPanel";
+import Principios from '././components/Principios';
+import Somos from '././components/Somos';
 
 import { TikTok } from "react-tiktok";
 
@@ -25,24 +26,43 @@ import { GoogleMap, useLoadScript, Marker, MarkerWithLabel } from "@react-google
 import credentials from "./credentials";
 import FAQS from "./FAQS";
 import gruposScout from "./gruposScout";
+import tropas from './tropas';
 
 function App() {
-
+  
+  const [numeroTropa, setNumeroTropa] = useState(0);
+  const [tropasArray, setTropasArray] = useState([
+    tropas.map((item) => (
+      {
+        nombre: item.nombre,
+        icono: item.icono,
+        promesa: item.promesa,
+        oración: item.oración, 
+        ley: item.ley, 
+        normas:item.normas,
+        somosTitulo: item.somosTitulo, 
+        somos: item.somos,
+        adelantoProgresivo: item.adelantoProgresivo,
+        insigniaMaxima: item.insigniaMaxima,
+        rangos: item.rangos, 
+        especialidades: item.especialidades
+      }
+    ))  
+  ]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
-    console.log("abre", open);
   };
   const handleClose = () => {
     setOpen(false);
-    console.log("cierra", open);
   };
 
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.warn(value);
+    console.log(newValue);
   };
+
   const handleChangeIndex = (event, newIndex) => {
     setValue(newIndex);
   };
@@ -60,6 +80,7 @@ function App() {
     )),
   ]);
 
+  
   //Media Query
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
@@ -266,7 +287,10 @@ function App() {
 
         <Grid container spacing={3}>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a onClick={handleOpen}>
+            <a onClick={() =>{
+              handleOpen()
+              setNumeroTropa(0)
+            }}>
               <ScoutCard
                 image="/img/Castores.png"
                 name="Colonia de Castores"
@@ -283,7 +307,7 @@ function App() {
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                   border: "2px solid #ffffff",
-                  width: "500px",
+                  width: `${matches ? "500px" : "360px"}`,
                   height: "500px",
                   backgroundColor: "#FFFFFF",
                   boxShadow: 24,
@@ -328,8 +352,7 @@ function App() {
                             fontWeight: "500",
                             color: "#504979",
                           }}
-                          value="1"
-                          label="PINCIPIOS"
+                          label="PRINCIPIOS"
                         />
                         <Tab
                           sx={{
@@ -337,7 +360,6 @@ function App() {
                             fontWeight: "500",
                             color: "#504979",
                           }}
-                          value="2"
                           label="¿QUIENES SOMOS?"
                         />
                         <Tab
@@ -346,12 +368,12 @@ function App() {
                             fontWeight: "500",
                             color: "#504979",
                           }}
-                          value="3"
                           label="PROGRESIÓN"
                         />
                       </Tabs>
-                      <TabPanel value={value} index={1}></TabPanel>
                     </AppBar>
+                    {value === 0 && <Principios tropasArray={tropasArray} numero={numeroTropa} />}
+                    {value === 1 && <Somos tropasArray={tropasArray} numero={numeroTropa}/>}
                   </Grid>
                 </Grid>
                 <Grid container spacing={0}></Grid>
