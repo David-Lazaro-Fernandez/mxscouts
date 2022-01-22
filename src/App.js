@@ -26,7 +26,6 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
-  MarkerWithLabel,
 } from "@react-google-maps/api";
 import credentials from "./credentials";
 import FAQS from "./FAQS";
@@ -53,8 +52,7 @@ function App() {
   ]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
-    if(value===undefined)
-    {
+    if (value === undefined) {
       return;
     }
     setOpen(true);
@@ -76,6 +74,7 @@ function App() {
     FAQS.map((item) => (
       <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
         <FAQ
+          key={item.id}
           image={item.image}
           icon={item.icon}
           question={item.question}
@@ -95,6 +94,7 @@ function App() {
   const [locations, setLocations] = useState([
     gruposScout.map((item) => (
       <Marker
+        key={item.id}
         position={item.position}
         icon={item.escudo}
         onClick={() => {
@@ -260,7 +260,9 @@ function App() {
                   justifyContent: `${matches ? "flex-start" : "center"}`,
                 }}
               >
-                <a href="#links"><CoolButton type="secondary" text="Conoce más" /></a>
+                <a href="#links">
+                  <CoolButton type="secondary" text="Conoce más" />
+                </a>
               </Grid>
             </Grid>
           </Grid>
@@ -382,7 +384,6 @@ function App() {
                 background="FAFAFA"
                 fontColor="DA251D"
               />
-              
             </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
@@ -399,7 +400,6 @@ function App() {
                 background="FAFAFA"
                 fontColor="DA251D"
               />
-              
             </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
@@ -474,6 +474,7 @@ function App() {
                         color: "#504979",
                       }}
                       label="PRINCIPIOS"
+                      key="1"
                     />
                     <Tab
                       sx={{
@@ -482,6 +483,7 @@ function App() {
                         color: "#504979",
                       }}
                       label="¿QUIENES SOMOS?"
+                      key="2"
                     />
                     <Tab
                       sx={{
@@ -490,6 +492,7 @@ function App() {
                         color: "#504979",
                       }}
                       label="PROGRESIÓN"
+                      key="3"
                     />
                   </Tabs>
                 </AppBar>
@@ -733,7 +736,7 @@ function App() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} style={{ marginTop: "25px" }} id='faq'>
+        <Grid container spacing={2} style={{ marginTop: "25px" }} id="faq">
           {FAQCards}
         </Grid>
 

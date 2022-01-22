@@ -9,8 +9,10 @@ const Somos = (props) => {
   const somosArray = tropa[numero].somos;
   const parrafos = somosArray[0];
   const parrafos2 = [];
+  let i = 0;
   for (const par in parrafos) {
-    parrafos2.push(<p style={{color:'#2E2270'}}>{parrafos[par]}</p>);
+    parrafos2.push(<p key={i} style={{color:'#2E2270'}}>{parrafos[par]}</p>);
+    i++;
   }
 
   return (

@@ -89,14 +89,14 @@ const Footer = () => {
                     textDecoration: "underline",
                   }}
                 >
-                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Qué son los Scouts?</li></a>
-                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Cómo puedo convertirme en uno?</li></a>
-                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Qué es una tropa?</li></a>
-                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Cómo puedo unirme a una tropa?</li></a>
-                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Ser un Scout cuesta dinero?</li></a>
-                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Qué implica ser un Scout?</li></a>
-                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Cada cuanto hacen actividades?</li></a>
-                  <a href="#faq" style={{color:'#2E2270'}}><li>¿Cómo puedo apoyar a los Scouts?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li key="1">¿Qué son los Scouts?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li key="2">¿Cómo puedo convertirme en uno?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li key="3">¿Qué es una tropa?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li key="4">¿Cómo puedo unirme a una tropa?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li key="5">¿Ser un Scout cuesta dinero?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li key="6">¿Qué implica ser un Scout?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li key="7">¿Cada cuanto hacen actividades?</li></a>
+                  <a href="#faq" style={{color:'#2E2270'}}><li key="8">¿Cómo puedo apoyar a los Scouts?</li></a>
                 </ul>
               </Grid>
             </Grid>
@@ -136,11 +136,11 @@ const Footer = () => {
                     lineHeight: "33px",
                   }}
                 >
-                  <li>Mi perfil de scout</li>
-                  <li>Mis insignias</li>
-                  <li>Conviertete en un Scout </li>
-                  <li>Encuentra tu tropa</li>
-                  <li>El libro de oro</li>
+                  <li key="1">Mi perfil de scout</li>
+                  <li key="2">Mis insignias</li>
+                  <li key="3">Conviertete en un Scout </li>
+                  <li key="4">Encuentra tu tropa</li>
+                  <li key="5">El libro de oro</li>
                 </ul>
               </Grid>
             </Grid>
