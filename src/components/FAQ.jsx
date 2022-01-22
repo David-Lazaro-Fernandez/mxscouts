@@ -1,5 +1,4 @@
 import React from "react";
-import { useStyles } from "../styles/FAQStyle";
 import Grid from "@mui/material/Grid";
 
 const FAQ = (props) => {
