@@ -1,21 +1,18 @@
 import React from 'react';
-import CardHeader from '@mui/material/CardHeader'
-import Avatar from '@mui/material/Avatar'
-import IconButton from '@mui/material/IconButton'
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 const ScoutCard = (props) => {
-    const {image, name, borders, background, fontColor} = props;
+    const {image, name,  background, fontColor} = props;
     return (
         <div>
             <Card
             style={{
                 backgroundColor: `#${background}`,
-                border:`2px solid #${borders}`,
                 color: `#${fontColor}`,
                 boxShadow: '0px 13px 10px rgba(0, 0, 0, 0.1)',
                 borderRadius: '10px',
                 height: '150px',
+                
             }}>
                 <Grid 
                 container 
@@ -33,7 +30,9 @@ const ScoutCard = (props) => {
                             display:'block',
                             marginLeft: 'auto',
                             marginRight:'auto',
-                        }}/>
+                        }}
+                        alt="Logo de la tropa"
+                        />
                     </Grid>    
                     <Grid item xs={5} sm={5}>
                         <h3

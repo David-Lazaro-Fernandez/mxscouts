@@ -1,9 +1,7 @@
 import React from "react";
-import { useStyles } from "../styles/FAQStyle";
 import Grid from "@mui/material/Grid";
 
 const FAQ = (props) => {
-  const classes = useStyles();
   const { image, icon, question, answer } = props;
   return (
     <div style={{ backgroundColor: "#ffffff", height: "100%" }}>
@@ -17,7 +15,7 @@ const FAQ = (props) => {
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <img
             src={image}
-            alt="image"
+            alt="Imagen de la pregunta"
             style={{
               width: "100%",
               height: "225px",

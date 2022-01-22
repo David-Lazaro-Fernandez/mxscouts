@@ -273,6 +273,7 @@ function App() {
                 width: "100%",
                 objectFit: "none",
               }}
+              alt="Grupo de Scouts sentados, posando para la foto"
             />
           </Grid>
         </Grid>
@@ -291,132 +292,180 @@ function App() {
 
         <Grid container spacing={3}>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a
+            <button
               onClick={() => {
                 setNumeroTropa(0);
                 handleOpen();
+              }}
+              style={{
+                width: "100%",
+                backgroundColor:'#C0A062',
+                border:'2px solid #986400',
+                borderRadius:'10px',
+                color:'#FAFAFA',
               }}
             >
               <ScoutCard
                 image="/img/Castores.png"
                 name="Colonia de Castores"
-                borders="986400"
                 background="C0A062"
                 fontColor="FAFAFA"
               />
-            </a>
+            </button>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a
+            <button
               onClick={() => {
                 setNumeroTropa(1);
                 handleOpen();
+              }}
+              style={{
+                width: "100%",
+                backgroundColor:'#FFF500',
+                border:'2px solid #DA251D',
+                borderRadius:'10px',
+                color:'#DA251D',
               }}
             >
               <ScoutCard
                 image="/img/Gacelas.png"
                 name="Manada de Gacelas"
-                borders="DA251D"
                 background="FFF500"
                 fontColor="DA251D"
               />
-            </a>
+            </button>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a
+            <button
               onClick={() => {
                 handleOpen();
                 setNumeroTropa(2);
+              }}
+              style={{
+                width: "100%",
+                backgroundColor:'#FFF500',
+                border:'2px solid #230E6F',
+                borderRadius:'10px',
+                color:'#230E6F',
               }}
             >
               <ScoutCard
                 image="/img/Manada de lobos.png"
                 name="Manada de Lobatos"
-                borders="230E6F"
                 background="FFF500"
                 fontColor="230E6F"
               />
-            </a>
+            </button>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a
+            <button
               onClick={() => {
                 handleOpen();
                 setNumeroTropa(3);
+              }}
+              style={{
+                width: "100%",
+                backgroundColor:'#1F4C3E',
+                border:'2px solid #B9DC7D',
+                borderRadius:'10px',
+                color:'#B9DC7D',
               }}
             >
               <ScoutCard
                 image="/img/Tropa scout.png"
                 name="Tropa Scout"
-                borders="B9DC7D"
                 background="1F4C3E"
                 fontColor="B9DC7D"
               />
-            </a>
+            </button>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a
+            <button
               onClick={() => {
                 handleOpen();
                 setNumeroTropa(4);
+              }}
+              style={{
+                width: "100%",
+                backgroundColor:'#1F4C3E',
+                border:'2px solid #B9DC7D',
+                borderRadius:'10px',
+                color:'#B9DC7D',
               }}
             >
               <ScoutCard
                 image="/img/Tropa mujeres.png"
                 name="Tropa De Muchachas"
-                borders="B9DC7D"
                 background="1F4C3E"
                 fontColor="B9DC7D"
               />
-            </a>
+            </button>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a
+            <button
               onClick={() => {
                 handleOpen();
                 setNumeroTropa(5);
+              }}
+              style={{
+                width: "100%",
+                backgroundColor:'#FFFFFF',
+                border:'2px solid #DA251D',
+                borderRadius:'10px',
+                color:'#DA251D',
               }}
             >
               <ScoutCard
                 image="/img/Clan Robers.png"
                 name="Clan de Robers"
-                borders="DA251D"
-                background="FAFAFA"
+                background="FFFFFF"
                 fontColor="DA251D"
               />
-            </a>
+            </button>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a
+            <button
               onClick={() => {
                 handleOpen();
                 setNumeroTropa(6);
+              }}
+              style={{
+                width: "100%",
+                backgroundColor:'#FFFFFF',
+                border:'2px solid #DA251D',
+                borderRadius:'10px',
+                color:'#DA251D',
               }}
             >
               <ScoutCard
                 image="/img/Clan Percusores.png"
                 name="Clan de Percusoras"
-                borders="DA251D"
-                background="FAFAFA"
+                background="FFFFFF"
                 fontColor="DA251D"
               />
-            </a>
+            </button>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a
+            <button
               onClick={() => {
                 handleOpen();
                 setNumeroTropa(7);
+              }}
+              style={{
+                width: "100%",
+                backgroundColor:'#000000',
+                border:'2px solid #FAFAFA',
+                borderRadius:'10px',
+                color:'#FAFAFA',
               }}
             >
               <ScoutCard
                 image="/img/Scouters.png"
                 name="Scouters y Dirigentes"
-                borders="FAFAFA"
                 background="000000"
                 fontColor="FAFAFA"
               />
-            </a>
+            </button>
           </Grid>
         </Grid>
 
@@ -547,6 +596,7 @@ function App() {
             <a
               href="https://www.flickr.com/photos/agsmac/albums"
               target="_blank"
+              rel="noreferrer"
               style={{ textDecoration: "none" }}
             >
               <CoolLink
@@ -581,6 +631,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=CMrfrvLoRTo&list=PLEreM0tzBgO3Mczliyu2qTCeGnc4xqPvB"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ textDecoration: "none  " }}
                 >
                   <CoolLink
@@ -597,6 +648,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=zoz-eqNDUZ0&list=PLEreM0tzBgO0-kE8AEoIV9SDoiwrjHPd3"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
@@ -611,6 +663,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=qWcrUrZR8rM"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
@@ -627,6 +680,7 @@ function App() {
             <a
               href="https://www.youtube.com/watch?v=kKNeanu-8OY&t=2s"
               target="_blank"
+              rel="noreferrer"
               style={{ textDecoration: "none" }}
             >
               <CoolLink
@@ -643,6 +697,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=zf_IR47BUPI"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ textDecoration: "none", objectPosition: "top" }}
                 >
                   <CoolLink
@@ -659,6 +714,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=Ue52-JyFOAs"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
@@ -675,6 +731,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=XQZ2pjhWXxs"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
@@ -691,6 +748,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=rwfbnLcvlxY"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
@@ -707,6 +765,7 @@ function App() {
                 <a
                   href="https://www.youtube.com/watch?v=zf_IR47BUPI"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
@@ -779,6 +838,7 @@ function App() {
                 href="https://www.tiktok.com/tag/scouts?referer_url=http%3A%2F%2Flocalhost%3A3000%2F&referer_video_id=7030548949027048709&refer=embed"
                 style={{ textDecoration: "none" }}
                 target="_blank"
+                rel="noreferrer"
               >
                 <h1>#Scouts</h1>
               </a>
@@ -796,6 +856,7 @@ function App() {
                 href="https://www.tiktok.com/search?q=scoutsmexico&t=1642544998071"
                 style={{ textDecoration: "none" }}
                 target="_blank"
+                rel="noreferrer"
               >
                 <h1>#ScoutsMéxico</h1>
               </a>
@@ -813,6 +874,7 @@ function App() {
                 href="https://www.tiktok.com/tag/campamento?referer_url=http%3A%2F%2Flocalhost%3A3000%2F&referer_video_id=6912173152307121413&refer=embed"
                 style={{ textDecoration: "none" }}
                 target="_blank"
+                rel="noreferrer"
               >
                 <h1>#ScoutMe</h1>
               </a>
@@ -837,7 +899,7 @@ function App() {
             xs={2}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <a href="https://www.facebook.com/ags.scouts/" target="_blank">
+            <a href="https://www.facebook.com/ags.scouts/" target="_blank" rel="noreferrer">
               <img
                 src="/img/fb.png"
                 alt="logo"
@@ -881,6 +943,7 @@ function App() {
             <a
               href="https://www.youtube.com/channel/UCyalbBV3m4uWD9SxwSPUbEw"
               target="_blank"
+              rel="noreferrer"
             >
               <img
                 src="/img/youtube.png"

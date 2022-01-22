@@ -26,7 +26,7 @@ const Somos = (props) => {
           justifyContent="center"
         >
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <img src={icono} />
+            <img src={icono} alt="Logo de la tropa"/>
           </Grid>
           <Grid
             item
