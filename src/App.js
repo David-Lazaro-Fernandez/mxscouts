@@ -17,38 +17,64 @@ import CoolButton from "./components/CoolButton";
 import CoolLink from "./components/CoolLink";
 import FAQ from "./components/FAQ";
 import Footer from "././components/Footer";
-import TabPanel from './components/TabPanel';
+import Principios from "././components/Principios";
+import Somos from "././components/Somos";
 
 import { TikTok } from "react-tiktok";
 
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+} from "@react-google-maps/api";
 import credentials from "./credentials";
 import FAQS from "./FAQS";
+import gruposScout from "./gruposScout";
+import tropas from "./tropas";
 
 function App() {
+  const [numeroTropa, setNumeroTropa] = useState(0);
+  const [tropasArray, setTropasArray] = useState([
+    tropas.map((item) => ({
+      nombre: item.nombre,
+      icono: item.icono,
+      promesa: item.promesa,
+      oración: item.oración,
+      ley: item.ley,
+      normas: item.normas,
+      somosTitulo: item.somosTitulo,
+      somos: item.somos,
+      adelantoProgresivo: item.adelantoProgresivo,
+      insigniaMaxima: item.insigniaMaxima,
+      rangos: item.rangos,
+      especialidades: item.especialidades,
+    })),
+  ]);
   const [open, setOpen] = useState(false);
-  const handleOpen = () =>  {
+  const handleOpen = () => {
+    if (value === undefined) {
+      return;
+    }
     setOpen(true);
-    console.log("abre",open);
-  }
+  };
   const handleClose = () => {
     setOpen(false);
-    console.log("cierra",open);
-  }
+  };
 
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.warn(value);
   };
+
   const handleChangeIndex = (event, newIndex) => {
     setValue(newIndex);
-  }
+  };
 
   const [FAQCards, setFAQCards] = useState([
     FAQS.map((item) => (
       <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
         <FAQ
+          key={item.id}
           image={item.image}
           icon={item.icon}
           question={item.question}
@@ -64,6 +90,20 @@ function App() {
   const containerRef = useRef(null);
 
   //Map Customization
+  const [windowOpen, setWindowOpen] = useState(false);
+  const [locations, setLocations] = useState([
+    gruposScout.map((item) => (
+      <Marker
+        key={item.id}
+        position={item.position}
+        icon={item.escudo}
+        onClick={() => {
+          setWindowOpen(true);
+        }}
+      />
+    )),
+  ]);
+
   const [mapZoom, setMapZoom] = useState(8);
   const [coordinates, setCoordinates] = useState({
     lat: 20.036159135066864,
@@ -182,7 +222,6 @@ function App() {
               >
                 <Slide
                   direction="right"
-                  appear="true"
                   container={containerRef.current}
                   in={true}
                 >
@@ -221,7 +260,9 @@ function App() {
                   justifyContent: `${matches ? "flex-start" : "center"}`,
                 }}
               >
-                <CoolButton type="secondary" text="Conoce más" />
+                <a href="#links">
+                  <CoolButton type="secondary" text="Conoce más" />
+                </a>
               </Grid>
             </Grid>
           </Grid>
@@ -250,7 +291,12 @@ function App() {
 
         <Grid container spacing={3}>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <a onClick={handleOpen}>
+            <a
+              onClick={() => {
+                setNumeroTropa(0);
+                handleOpen();
+              }}
+            >
               <ScoutCard
                 image="/img/Castores.png"
                 name="Colonia de Castores"
@@ -259,144 +305,210 @@ function App() {
                 fontColor="FAFAFA"
               />
             </a>
-            <Modal open={open} onClose={handleClose} >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    border: "2px solid #ffffff",
-                    width: "500px",
-                    height: "500px",
-                    backgroundColor: "#FFFFFF",
-                    boxShadow: 24,
-                    overflow: "scroll",
-                  }}
-                >
-                  <Grid container spacing={0}>
-                    <Grid
-                      item
-                      xl={12}
-                      lg={12}
-                      md={12}
-                      sm={12}
-                      xs={12}
-                      style={{ backgroundColor: "#2E2270" }}
-                    >
-                      <h2
-                        style={{
-                          textAlign: "center",
-                          color: "white",
-                          backgroundColor: "#2E2270",
-                        }}
-                      >
-                        Colonia de Castores
-                      </h2>
-                    </Grid>
-                  </Grid>
-                  <Grid container spacing={0}>
-                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                      <AppBar position="static" color="default">
-                        <Tabs sx={{backgroundColor:'#CAC6E8'}} 
-                          value={value}
-                          onChange={handleChange}
-                          indicatorColor="secondary"
-                          textColor="inherit"
-                          centered
-                        >
-                          <Tab sx={{
-                            fontFamily: "Roboto",
-                            fontWeight: "500",
-                            color: "#504979",
-                          }} value="1" label="PINCIPIOS" />
-                          <Tab sx={{
-                            fontFamily: "Roboto",
-                            fontWeight: "500",
-                            color: "#504979",
-                          }} value="2" label="¿QUIENES SOMOS?" />
-                          <Tab sx={{
-                            fontFamily: "Roboto",
-                            fontWeight: "500",
-                            color: "#504979",
-                          }} value="3" label="PROGRESIÓN" />
-                        </Tabs>
-                      </AppBar>
-                    </Grid>
-                  </Grid>
-                  <Grid container spacing={0}>
-                     
-                      
-                  </Grid>
-                </Box>
-              </Modal>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Gacelas.png"
-              name="Manada de Gacelas"
-              borders="DA251D"
-              background="FFF500"
-              fontColor="DA251D"
-            />
+            <a
+              onClick={() => {
+                setNumeroTropa(1);
+                handleOpen();
+              }}
+            >
+              <ScoutCard
+                image="/img/Gacelas.png"
+                name="Manada de Gacelas"
+                borders="DA251D"
+                background="FFF500"
+                fontColor="DA251D"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Clan Percusores.png"
-              name="Clan de Percusoras"
-              borders="DA251D"
-              background="FAFAFA"
-              fontColor="DA251D"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(2);
+              }}
+            >
+              <ScoutCard
+                image="/img/Manada de lobos.png"
+                name="Manada de Lobatos"
+                borders="230E6F"
+                background="FFF500"
+                fontColor="230E6F"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Clan Robers.png"
-              name="Clan de Robers"
-              borders="DA251D"
-              background="FAFAFA"
-              fontColor="DA251D"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(3);
+              }}
+            >
+              <ScoutCard
+                image="/img/Tropa scout.png"
+                name="Tropa Scout"
+                borders="B9DC7D"
+                background="1F4C3E"
+                fontColor="B9DC7D"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Manada de lobos.png"
-              name="Manada de Lobatos"
-              borders="230E6F"
-              background="FFF500"
-              fontColor="230E6F"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(4);
+              }}
+            >
+              <ScoutCard
+                image="/img/Tropa mujeres.png"
+                name="Tropa De Muchachas"
+                borders="B9DC7D"
+                background="1F4C3E"
+                fontColor="B9DC7D"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Tropa scout.png"
-              name="Tropa Scout"
-              borders="B9DC7D"
-              background="1F4C3E"
-              fontColor="B9DC7D"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(5);
+              }}
+            >
+              <ScoutCard
+                image="/img/Clan Robers.png"
+                name="Clan de Robers"
+                borders="DA251D"
+                background="FAFAFA"
+                fontColor="DA251D"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Tropa mujeres.png"
-              name="Tropa De Muchachas"
-              borders="B9DC7D"
-              background="1F4C3E"
-              fontColor="B9DC7D"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(6);
+              }}
+            >
+              <ScoutCard
+                image="/img/Clan Percusores.png"
+                name="Clan de Percusoras"
+                borders="DA251D"
+                background="FAFAFA"
+                fontColor="DA251D"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
-            <ScoutCard
-              image="/img/Scouters.png"
-              name="Scouters y Dirigentes"
-              borders="FAFAFA"
-              background="000000"
-              fontColor="FAFAFA"
-            />
+            <a
+              onClick={() => {
+                handleOpen();
+                setNumeroTropa(7);
+              }}
+            >
+              <ScoutCard
+                image="/img/Scouters.png"
+                name="Scouters y Dirigentes"
+                borders="FAFAFA"
+                background="000000"
+                fontColor="FAFAFA"
+              />
+            </a>
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} style={{ marginTop: "10px" }}>
+        <Modal open={open} onClose={handleClose}>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              border: "2px solid #ffffff",
+              width: `${matches ? "500px" : "360px"}`,
+              height: "500px",
+              backgroundColor: "#FFFFFF",
+              boxShadow: 24,
+              overflow: "scroll",
+            }}
+          >
+            <Grid container spacing={0}>
+              <Grid
+                item
+                xl={12}
+                lg={12}
+                md={12}
+                sm={12}
+                xs={12}
+                style={{ backgroundColor: "#2E2270" }}
+              >
+                <h2
+                  style={{
+                    textAlign: "center",
+                    color: "white",
+                    backgroundColor: "#2E2270",
+                  }}
+                >
+                  {tropasArray[0][numeroTropa].nombre}
+                </h2>
+              </Grid>
+            </Grid>
+            <Grid container spacing={0}>
+              <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                <AppBar position="static" color="default">
+                  <Tabs
+                    sx={{ backgroundColor: "#CAC6E8" }}
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="secondary"
+                    textColor="inherit"
+                    centered
+                  >
+                    <Tab
+                      sx={{
+                        fontFamily: "Roboto",
+                        fontWeight: "500",
+                        color: "#504979",
+                      }}
+                      label="PRINCIPIOS"
+                      key="1"
+                    />
+                    <Tab
+                      sx={{
+                        fontFamily: "Roboto",
+                        fontWeight: "500",
+                        color: "#504979",
+                      }}
+                      label="¿QUIENES SOMOS?"
+                      key="2"
+                    />
+                    <Tab
+                      sx={{
+                        fontFamily: "Roboto",
+                        fontWeight: "500",
+                        color: "#504979",
+                      }}
+                      label="PROGRESIÓN"
+                      key="3"
+                    />
+                  </Tabs>
+                </AppBar>
+                {value === 0 && (
+                  <Principios tropasArray={tropasArray} numero={numeroTropa} />
+                )}
+                {value === 1 && (
+                  <Somos tropasArray={tropasArray} numero={numeroTropa} />
+                )}
+              </Grid>
+            </Grid>
+            <Grid container spacing={0}></Grid>
+          </Box>
+        </Modal>
+
+        <Grid container spacing={2} style={{ marginTop: "10px" }} id="links">
           <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
             <CoolLink
               image="/img/expediciones.jpg"
@@ -432,7 +544,11 @@ function App() {
 
         <Grid container spacing={2} style={{ marginTop: "1px" }}>
           <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-            <a href="https://www.flickr.com/photos/agsmac/albums">
+            <a
+              href="https://www.flickr.com/photos/agsmac/albums"
+              target="_blank"
+              style={{ textDecoration: "none" }}
+            >
               <CoolLink
                 image="/img/libro.jpg"
                 text="El libro de oro"
@@ -453,97 +569,153 @@ function App() {
             mapContainerStyle={containerStyle}
             center={coordinates}
             zoom={mapZoom}
-          ></GoogleMap>
+          >
+            {locations}
+          </GoogleMap>
         </Grid>
 
         <Grid container spacing={2} style={{ marginTop: "25px" }}>
           <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
             <Grid container spacing={2}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/Irally.png"
-                  text="I rally Virtual"
-                  height="220"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=CMrfrvLoRTo&list=PLEreM0tzBgO3Mczliyu2qTCeGnc4xqPvB"
+                  target="_blank"
+                  style={{ textDecoration: "none  " }}
+                >
+                  <CoolLink
+                    image="/img/Irally.png"
+                    text="I rally Virtual"
+                    height="220"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "25px" }}>
               <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/concuscout.jpg"
-                  text="Concuscout"
-                  height="220"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=zoz-eqNDUZ0&list=PLEreM0tzBgO0-kE8AEoIV9SDoiwrjHPd3"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/concuscout.jpg"
+                    text="Concuscout"
+                    height="220"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
               <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/canciones.png"
-                  text="Canciones"
-                  height="220"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=qWcrUrZR8rM"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/canciones.png"
+                    text="Canciones"
+                    height="220"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
           </Grid>
           <Grid item xl={3} lg={3} md={12} sm={12} xs={12}>
-            <CoolLink
-              image="/img/caminatas.jpg"
-              text="Caminatas"
-              height="485"
-              transparency="0.5"
-            />
+            <a
+              href="https://www.youtube.com/watch?v=kKNeanu-8OY&t=2s"
+              target="_blank"
+              style={{ textDecoration: "none" }}
+            >
+              <CoolLink
+                image="/img/caminatas.jpg"
+                text="Caminatas"
+                height="485"
+                transparency="0.5"
+              />
+            </a>
           </Grid>
           <Grid item xl={3} lg={3} md={12} sm={12} xs={12}>
             <Grid container spacing={2}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/Aguilas.jpg"
-                  text="Aguílas"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=zf_IR47BUPI"
+                  target="_blank"
+                  style={{ textDecoration: "none", objectPosition: "top" }}
+                >
+                  <CoolLink
+                    image="/img/aguila.webp"
+                    text="Aguílas"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "10px" }}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/ardillas.webp"
-                  text="Ardillas"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=Ue52-JyFOAs"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/ardillas.webp"
+                    text="Ardillas"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "10px" }}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/apus.webp.jpg"
-                  text="Apus"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=XQZ2pjhWXxs"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/apus.jpg"
+                    text="Apus"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "10px" }}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/andromeda.jpg"
-                  text="Andromeda"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=rwfbnLcvlxY"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/andromeda.jpg"
+                    text="Andromeda"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: "10px" }}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                <CoolLink
-                  image="/img/acuario.jpg"
-                  text="Acuario"
-                  height="75"
-                  transparency="0.5"
-                />
+                <a
+                  href="https://www.youtube.com/watch?v=zf_IR47BUPI"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <CoolLink
+                    image="/img/acuario.jpg"
+                    text="Acuario"
+                    height="75"
+                    transparency="0.5"
+                  />
+                </a>
               </Grid>
             </Grid>
           </Grid>
@@ -564,7 +736,7 @@ function App() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} style={{ marginTop: "25px" }}>
+        <Grid container spacing={2} style={{ marginTop: "25px" }} id="faq">
           {FAQCards}
         </Grid>
 
@@ -603,7 +775,13 @@ function App() {
                 color: "#2E2270",
               }}
             >
-              <h1>#AGSMAC</h1>
+              <a
+                href="https://www.tiktok.com/tag/scouts?referer_url=http%3A%2F%2Flocalhost%3A3000%2F&referer_video_id=7030548949027048709&refer=embed"
+                style={{ textDecoration: "none" }}
+                target="_blank"
+              >
+                <h1>#Scouts</h1>
+              </a>
             </div>
           </Grid>
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
@@ -614,7 +792,13 @@ function App() {
                 color: "#2E2270",
               }}
             >
-              <h1>#ScoutsMéxico</h1>
+              <a
+                href="https://www.tiktok.com/search?q=scoutsmexico&t=1642544998071"
+                style={{ textDecoration: "none" }}
+                target="_blank"
+              >
+                <h1>#ScoutsMéxico</h1>
+              </a>
             </div>
           </Grid>
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
@@ -625,7 +809,13 @@ function App() {
                 color: "#2E2270",
               }}
             >
-              <h1>#ScoutMe</h1>
+              <a
+                href="https://www.tiktok.com/tag/campamento?referer_url=http%3A%2F%2Flocalhost%3A3000%2F&referer_video_id=6912173152307121413&refer=embed"
+                style={{ textDecoration: "none" }}
+                target="_blank"
+              >
+                <h1>#ScoutMe</h1>
+              </a>
             </div>
           </Grid>
         </Grid>
@@ -647,15 +837,18 @@ function App() {
             xs={2}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <img
-              src="/img/fb.png"
-              alt="logo"
-              style={{
-                width: "50px",
-                filter:
-                  "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
-              }}
-            />
+            <a href="https://www.facebook.com/ags.scouts/" target="_blank">
+              <img
+                src="/img/fb.png"
+                alt="logo"
+                style={{
+                  width: "50px",
+                  filter:
+                    "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
+                }}
+                href="https://www.facebook.com/ags.scouts/"
+              />
+            </a>
           </Grid>
           <Grid
             item
@@ -685,15 +878,20 @@ function App() {
             xs={2}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <img
-              src="/img/youtube.png"
-              alt="logo"
-              style={{
-                width: "50px",
-                filter:
-                  "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
-              }}
-            />
+            <a
+              href="https://www.youtube.com/channel/UCyalbBV3m4uWD9SxwSPUbEw"
+              target="_blank"
+            >
+              <img
+                src="/img/youtube.png"
+                alt="logo"
+                style={{
+                  width: "50px",
+                  filter:
+                    "invert(17%) sepia(21%) saturate(4315%) hue-rotate(228deg) brightness(92%) contrast(105%)",
+                }}
+              />
+            </a>
           </Grid>
         </Grid>
         <Grid
