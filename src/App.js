@@ -12,7 +12,11 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
+import PhoneIcon from '@mui/icons-material/Phone';
 import MenuIcon from '@mui/icons-material/Menu';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import DirectionsIcon from '@mui/icons-material/Directions';
 
 import ScoutCard from "./components/ScoutCard";
 import CoolButton from "./components/CoolButton";
@@ -127,10 +131,6 @@ function App() {
 
   return (
    <div style={{ backgroundColor: "#F7F7F7" }}>
-     <button onClick={() => {
-       setActiveMarker(1);
-      console.log(activeMarker)
-      }}>Test</button>
       <Container maxWidth="lg" style={{ marginTop: "40px" }}>
         <Grid 
         container 
@@ -363,7 +363,7 @@ function App() {
             <button
               onClick={() => {
                 handleOpen();
-                setNumeroTropa(3);
+                setNumeroTropa(4);
               }}
               style={{
                 width: "100%",
@@ -385,7 +385,7 @@ function App() {
             <button
               onClick={() => {
                 handleOpen();
-                setNumeroTropa(4);
+                setNumeroTropa(3);
               }}
               style={{
                 width: "100%",
@@ -407,7 +407,7 @@ function App() {
             <button
               onClick={() => {
                 handleOpen();
-                setNumeroTropa(5);
+                setNumeroTropa(6);
               }}
               style={{
                 width: "100%",
@@ -429,7 +429,7 @@ function App() {
             <button
               onClick={() => {
                 handleOpen();
-                setNumeroTropa(6);
+                setNumeroTropa(5);
               }}
               style={{
                 width: "100%",
@@ -655,7 +655,9 @@ function App() {
                   <InfoWindow onCloseClick={() => setActiveMarker(null)}>
                     <div>
                       <h2>{nombre}</h2>
-                      <p>{horarios}</p>
+                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><AccessTimeFilledIcon sx={{color:'#2e2270', marginRight:'10px'}}/> {horarios}</p>
+                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><PhoneIcon sx={{color:'#2e2270', marginRight:'10px'}}/> +529554587789</p>
+                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><DirectionsIcon sx={{color:'#2e2270', marginRight:'10px'}}/> Av. Sabinas 223. Col. Robles CP. 85938</p>
                     </div>
                   </InfoWindow>
                 ) : null}
