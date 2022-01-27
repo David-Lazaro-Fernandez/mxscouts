@@ -15,6 +15,7 @@ const Somos = (props) => {
     i++;
   }
 
+
   return (
     <div>
       <Container fixed>
