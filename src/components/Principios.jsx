@@ -8,6 +8,22 @@ const Principios = (props) => {
   const normas = tropa[numero].normas;
   const oración = tropa[numero].oración;
   const promesa = tropa[numero].promesa;
+  const arrayNormas = [];
+  const arrayLeyes = [];
+  const arrayPromesa = [];
+  let i = 0;
+  for(const prom in promesa){
+    arrayPromesa.push(<p key={i} style={{color:'#2E2270', textAlign:'center',}}>{promesa[prom]}</p>)
+    i++;
+  }
+  for(const leyes in ley){
+    arrayLeyes.push(<p key={i} style={{color:'#2E2270', textAlign:'center',}}>{ley[leyes]}</p>)
+    i++;
+  }
+  for(const norma in normas){
+    arrayNormas.push(<p key={i} style={{color:'#2E2270', textAlign:'center',}}>{normas[norma]}</p>)
+    i++;
+  }
 
   return (
     <div>
@@ -52,15 +68,16 @@ const Principios = (props) => {
             xs={8}
             style={{
               display: "flex",
+              flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
             <p style={{ color: "#2E2270" }}>
-              {ley}
+              {arrayLeyes}
             </p>
             <p style={{  color: "#2E2270" }}>
-              {normas}
+              {arrayNormas}
             </p>
           </Grid>
 
@@ -143,7 +160,7 @@ const Principios = (props) => {
             }}
           >
             <p style={{ color: "#2E2270" }}>
-              {promesa}
+              {arrayPromesa}
             </p>
           </Grid>
         </Grid>
