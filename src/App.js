@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef,} from "react";
 import {
   Grid,
   Container,
@@ -24,13 +24,15 @@ import Somos from "././components/Somos";
 import Navbar from '././components/Navbar';
 import { TikTok } from "react-tiktok";
 
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import credentials from "./credentials";
 import FAQS from "./FAQS";
 import gruposScout from "./gruposScout";
 import tropas from "./tropas";
 
 function App() {
+  const [activeMarker, setActiveMarker] = useState(null);
+
   const [numeroTropa, setNumeroTropa] = useState(0);
   const [tropasArray, setTropasArray] = useState([
     tropas.map((item) => ({
@@ -88,19 +90,12 @@ function App() {
   const containerRef = useRef(null);
 
   //Map Customization
-  const [windowOpen, setWindowOpen] = useState(false);
-  const [locations, setLocations] = useState([
-    gruposScout.map((item) => (
-      <Marker
-        key={item.id}
-        position={item.position}
-        icon={item.escudo}
-        onClick={() => {
-          setWindowOpen(true);
-        }}
-      />
-    )),
-  ]);
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
 
   const [mapZoom, setMapZoom] = useState(8);
   const [coordinates, setCoordinates] = useState({
@@ -131,7 +126,11 @@ function App() {
   
 
   return (
-    <div style={{ backgroundColor: "#F7F7F7" }}>
+   <div style={{ backgroundColor: "#F7F7F7" }}>
+     <button onClick={() => {
+       setActiveMarker(1);
+      console.log(activeMarker)
+      }}>Test</button>
       <Container maxWidth="lg" style={{ marginTop: "40px" }}>
         <Grid 
         container 
@@ -643,8 +642,26 @@ function App() {
             mapContainerStyle={containerStyle}
             center={coordinates}
             zoom={mapZoom}
+            onClick={() => setActiveMarker(null)}
           >
-            {locations}
+            {gruposScout.map(({id, nombre, escudo, position,horarios}) => (
+              <Marker
+                key={id}
+                position={position}
+                onClick={() => handleActiveMarker(id)}
+                icon={escudo}
+              >
+                {activeMarker === id ? (
+                  <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                    <div>
+                      <h2>{nombre}</h2>
+                      <p>{horarios}</p>
+                    </div>
+                  </InfoWindow>
+                ) : null}
+
+              </Marker>
+            ))}
           </GoogleMap>
         </Grid>
 
