@@ -353,11 +353,11 @@ export const tropas = [
         adelantoProgresivo:'El clan de precursoras cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
         insigniaMaxima:'/img/Insignias/Clanes/Clan de Precursoras/BP Precursora.png',
         rangosIconos:{
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Proyectos.png',
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Ser.png',
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Encuentro.png',
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Especialidad.png',
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Tecnica.png',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Proyectos.bmp',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Ser.bmp',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Encuentro.bmp',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Especialidad.bmp',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Tecnica.bmp',
         },
         especialidadesIconos:{
             1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
@@ -416,11 +416,11 @@ export const tropas = [
         adelantoProgresivo:'El clan de rovers cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
         insigniaMaxima:'/img/Insignias/Clanes/Clan de Rovers/BPRover.png',
         rangosIconos:{
-            1: '/img/Insignias/Clanes/Clan de Rovers/Proyectos.png',
-            1: '/img/Insignias/Clanes/Clan de Rovers/Ser.png',
-            1: '/img/Insignias/Clanes/Clan de Rovers/Encuentro.png',
-            1: '/img/Insignias/Clanes/Clan de Rovers/Especialidad.png',
-            1: '/img/Insignias/Clanes/Clan de Rovers/Tecnica.png',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Proyectos.bmp',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Ser.bmp',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Encuentro.bmp',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Especialidad.bmp',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Tecnica.bmp',
         },
         especialidadesIconos:{
             1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
