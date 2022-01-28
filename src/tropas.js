@@ -21,14 +21,29 @@ export const tropas = [
             },
         ],
         adelantoProgresivo:'La colonia de castores cuenta con un adelanto progresivo, donde cada castor alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
-        insigniaMaxima:'Gran Castor Café',
-        rangos: [{
+        insigniaMaxima:'/img/Insignias/Colonia de Castores/Gran Castor Cafe.png',	
+        rangosIconos:{
+            1: '/img/Insignias/Colonia de Castores/amarilla.png',
+            2: '/img/Insignias/Colonia de Castores/verde.png',
+            3: '/img/Insignias/Colonia de Castores/azul.png',
+            4: '/img/Insignias/Colonia de Castores/rojo.png',
+            5: '/img/Insignias/Colonia de Castores/blanca.png',
+        },
+        rangos: {
             1: 'Castor Ansioso',
             2: 'Castor Aprendiz',
             3: 'Castor Activo',
             4: 'Castor Trabajador',
             5: 'Castor Amigo',
-        }],
+        },
+        especialidadesIconos:{
+            1: '/img/Insignias/Colonia de Castores/Deportes.png',
+            2: '/img/Insignias/Colonia de Castores/Ecologia.png',
+            3: '/img/Insignias/Colonia de Castores/Expresion y comunicacion.png',
+            4: '/img/Insignias/Colonia de Castores/Humanidades.png',
+            5: '/img/Insignias/Colonia de Castores/Seguridad y Rescate.png',
+            6: '/img/Insignias/Colonia de Castores/Tecnologia y ciencia.png',
+        },
         especialidades: [{
             1: 'Deportes',
             2: 'Ecología',
@@ -70,21 +85,37 @@ export const tropas = [
             },
         ],
         adelantoProgresivo:'La colonia de castores cuenta con un adelanto progresivo, donde cada castor alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
-        insigniaMaxima:'Arcoiris',
-        rangos: [{
+        insigniaMaxima:'/img/Insignias/Manadas/Manada de Gacelas/Arcoiris.png',
+        rangosIconos:{
+            1: '/img/Insignias/Manadas/Manada de Gacelas/Piel Cafe.png',
+            2: '/img/Insignias/Manadas/Manada de Gacelas/Bosque.png',
+            3: '/img/Insignias/Manadas/Manada de Gacelas/Pradera.png',
+            4: '/img/Insignias/Manadas/Manada de Gacelas/Piel Roja.png',
+            
+        },
+        especialidadesIconos:{
+            1: '/img/Insignias/Manadas/Deportes.png',
+            2: '/img/Insignias/Manadas/Ecologia.png',
+            3: '/img/Insignias/Manadas/Expresion y Comunicacion.png',
+            4: '/img/Insignias/Manadas/Humanidades.png',
+            5: '/img/Insignias/Manadas/Seguridad y Rescate.png',
+            6: '/img/Insignias/Manadas/Tecnologia y Ciencia.png',
+            
+        },
+        rangos: {
             1: 'Piel',
             2: 'Bosque',
             3: 'Pradera',
             4: 'Recorrido',
-        }],
-        especialidades: [{
+        },
+        especialidades: {
             1: 'Deportes',
             2: 'Ecología',
             3: 'Expresión y Comunicación',
             4: 'Humanidades',
             5: 'Seguridad y Rescate',
             6: 'Ciencia y Tecnología',
-        }],
+        },
     },
     {
         nombre:'Manada de Lobatos',
@@ -118,22 +149,38 @@ export const tropas = [
             },
         ],
         adelantoProgresivo:'La manada de lobatos cuenta con un adelanto progresivo, donde cada lobato alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
-        insigniaMaxima:'Lobo Rampante',
-        rangos: [{
+        insigniaMaxima:'/img/Insignias/Manadas/Manada de lobatos/Lobo Rampante.png',
+        rangosIconos:{
+            1: '/img/Insignias/Manadas/Manada de lobatos/Piel Gris.png',
+            2: '/img/Insignias/Manadas/Manada de lobatos/Seeonee.png',
+            3: '/img/Insignias/Manadas/Manada de lobatos/Khanhiwara.png',
+            4: '/img/Insignias/Manadas/Manada de lobatos/Lobo Rastreador.png',
+            5: '/img/Insignias/Manadas/Manada de lobatos/Lobo Cazador.png',
+        },
+        especialidadesIconos:{
+            1: '/img/Insignias/Manadas/Deportes.png',
+            2: '/img/Insignias/Manadas/Ecologia.png',
+            3: '/img/Insignias/Manadas/Expresion y Comunicacion.png',
+            4: '/img/Insignias/Manadas/Humanidades.png',
+            5: '/img/Insignias/Manadas/Seguridad y Rescate.png',
+            6: '/img/Insignias/Manadas/Tecnologia y Ciencia.png',
+            
+        },
+        rangos: {
             1: 'Piel',
             2: 'Seeonee',
             3: 'Khanhiwara',
             4: 'Lobo Rastreador',
             5: 'Lobo Cazador',
-        }],
-        especialidades: [{
+        },
+        especialidades: {
             1: 'Deportes',
             2: 'Ecología',
             3: 'Expresión y Comunicación',
             4: 'Humanidades',
             5: 'Seguridad y Rescate',
             6: 'Ciencia y Tecnología',
-        }],
+        },
     },
     {
         nombre:'Tropa de Muchachas',
@@ -170,15 +217,31 @@ export const tropas = [
             },
         ],
         adelantoProgresivo:'La tropa de muchachas cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima',
-        insigniaMaxima:'Ave Phoenix',
-        rangos: [{
+        insigniaMaxima:'/img/Insignias/Tropas/Tropa de Muchachas Scout/AveFenix.png',
+        rangosIconos:{
+            1: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Exploradora.png',
+            2: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Pionera.png',
+            3: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Dubhe.png',
+            4: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Merak.png',
+            5: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Sirius.png',
+            6: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Polaris.png',
+        },
+        especialidadesIconos:{
+            1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
+            2: '/img/Insignias/Tropas/Especialidades/Ecología.png',
+            3: '/img/Insignias/Tropas/Especialidades/Expresion y Comunicacion.png',
+            4: '/img/Insignias/Tropas/Especialidades/Humanidades.png',
+            5: '/img/Insignias/Tropas/Especialidades/Seguridad y Rescate.png',
+            6: '/img/Insignias/Tropas/Especialidades/Ciencia y Tecnologia.png',
+        },
+        rangos: {
             1: 'Exploradora',
             2: 'Pionera',
             3: 'Dubhe',
             4: 'Merak',
             5: 'Sirius',
             6: 'Polaris',
-        }],
+        },
         especialidades: [{
             1: 'Deportes',
             2: 'Ecología',
@@ -221,26 +284,42 @@ export const tropas = [
             5:'Las reuniones son cada sabado. Y estas van desde actividades en el local hasta excursiones y campamentos.',
         },],
         adelantoProgresivo:'La tropa scout cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima',
-        insigniaMaxima:'Caballero Scout Aguila',
-        rangos: [{
+        insigniaMaxima:'/img/Insignias/Tropas/Tropa Scout/Caballero Scout Aguila.png',
+        rangosIconos:{
+            1: '/img/Insignias/Tropas/Tropa Scout/Explorador.png',
+            2: '/img/Insignias/Tropas/Tropa Scout/Pionero.png',
+            3: '/img/Insignias/Tropas/Tropa Scout/Aztlan.png',
+            4: '/img/Insignias/Tropas/Tropa Scout/Kontiki.png',
+            5: '/img/Insignias/Tropas/Tropa Scout/Everest.png',
+            6: '/img/Insignias/Tropas/Tropa Scout/Apolo.png',
+        },
+        especialidadesIconos:{
+            1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
+            2: '/img/Insignias/Tropas/Especialidades/Ecología.png',
+            3: '/img/Insignias/Tropas/Especialidades/Expresion y Comunicacion.png',
+            4: '/img/Insignias/Tropas/Especialidades/Humanidades.png',
+            5: '/img/Insignias/Tropas/Especialidades/Seguridad y Rescate.png',
+            6: '/img/Insignias/Tropas/Especialidades/Ciencia y Tecnologia.png',
+        },
+        rangos: {
             1: 'Explorador',
             2: 'Pionero',
             3: 'Aztlan',
             4: 'Kon-tiki',
             5: 'Everest',
             6: 'Apolo',
-        }],
-        especialidades: [{
+        },
+        especialidades: {
             1: 'Deportes',
             2: 'Ecología',
             3: 'Expresión y Comunicación',
             4: 'Humanidades',
             5: 'Seguridad y Rescate',
             6: 'Ciencia y Tecnología',
-        }],
+        },
     },
     {
-        nombre:'Tropa Precursoras',
+        nombre:'Clan de Precursoras',
         icono:'/img/Clan Percusores.png',
         promesa: {
             1:'YO PROMETO POR MI HONOR,',
@@ -272,19 +351,34 @@ export const tropas = [
             5:'Las reuniones son cada sabado. Y estas van desde actividades en el local hasta excursiones y campamentos.',
         },],
         adelantoProgresivo:'El clan de precursoras cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
-        insigniaMaxima:'B.P',
-        rangos: [{
+        insigniaMaxima:'/img/Insignias/Clanes/Clan de Precursoras/BP Precursora.png',
+        rangosIconos:{
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Proyectos.png',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Ser.png',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Encuentro.png',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Especialidad.png',
+            1: '/img/Insignias/Clanes/Clan de Precursoras/Tecnica.png',
+        },
+        especialidadesIconos:{
+            1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
+            2: '/img/Insignias/Tropas/Especialidades/Ecología.png',
+            3: '/img/Insignias/Tropas/Especialidades/Expresion y Comunicacion.png',
+            4: '/img/Insignias/Tropas/Especialidades/Humanidades.png',
+            5: '/img/Insignias/Tropas/Especialidades/Seguridad y Rescate.png',
+            6: '/img/Insignias/Tropas/Especialidades/Ciencia y Tecnologia.png',
+        },
+        rangos: {
             1: 'Saeta',
             2: 'Ser',
             3: 'Encuentro',
             4: 'Especialidad',
             5: 'Precursora',
-        }],
-        especialidades: [{
+        },
+        especialidades:{
             1: 'Tecnica',
             2: 'Expediciones',
             3: 'Proyectos',
-        }],
+        },
     },
     {
         nombre:'Clan de Rovers',
@@ -320,19 +414,34 @@ export const tropas = [
 
         },],
         adelantoProgresivo:'El clan de rovers cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
-        insigniaMaxima:'B.P',
-        rangos: [{
+        insigniaMaxima:'/img/Insignias/Clanes/Clan de Rovers/BPRover.png',
+        rangosIconos:{
+            1: '/img/Insignias/Clanes/Clan de Rovers/Proyectos.png',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Ser.png',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Encuentro.png',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Especialidad.png',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Tecnica.png',
+        },
+        especialidadesIconos:{
+            1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
+            2: '/img/Insignias/Tropas/Especialidades/Ecología.png',
+            3: '/img/Insignias/Tropas/Especialidades/Expresion y Comunicacion.png',
+            4: '/img/Insignias/Tropas/Especialidades/Humanidades.png',
+            5: '/img/Insignias/Tropas/Especialidades/Seguridad y Rescate.png',
+            6: '/img/Insignias/Tropas/Especialidades/Ciencia y Tecnologia.png',
+        },
+        rangos: {
             1: 'Escudero',
             2: 'Ser',
             3: 'Encuentro',
             4: 'Especialidad',
             5: 'Chatarrera Rover',
-        }],
-        especialidades: [{
+        },
+        especialidades: {
             1: 'Tecnica',
             2: 'Expediciones',
             3: 'Proyectos',
-        }],
+        },
     },
     {
         nombre:'Scouters y Dirigentes',
@@ -365,20 +474,35 @@ export const tropas = [
             3:'Los grupos Scout de mayor éxito, son aquellos en los que existe un fuerte apoyo de los adultos. Los Scoutters y los dirigentes son voluntarios entusiastas y dedicados. Hombres y mujeres de todas las clases sociales que comparten un amor por la aventura y el deseo de enriquecer la vida de los jovenes.',
             4:'Hay muchas maneras de colaborar, desde ser un buen difusor y promotor del escultismo, ser padre de familia que apoya el movimiento, prestar sus servicios para las labores administrativas de los grupos o bien enrolarse como scoutter y prepararse para estar al frente de los muchachos.',
         },],
-        adelantoProgresivo:'Los scoutters y dirigentes provienen de todos lados, desde los padres de los scouts, scouts de infancia, o personas sin experiencia en los scouts! Pero muy motivados en capacitarse para brindarse a los demás. <br/> Coadyuvar en la formación del carater de los muchachos, inculcandoles el cumplimiento de sus deberes religiosos, patrioticos y civicos; así como los principios de disciplina, lealtad y ayuda al projimo, capacitarlos para bastarse a si mismos, ayudandolos a desarrollarse física, mental y espiritualmente; todo eso conforme a los lineamientos que señaló el fundador del movimiento scout Sir Robert Stephenson Lord Baden-Powell of Gilwell. <br/> El sistema de formación para adultos esta especialmente diseñado para que los adultos interesados puedan llevar a cabo sus funciones como scouts y cumplan con el objetivo de la asociación. <br/> El sistema consta de cursos de Inducción, formación básica, conocimientos especifico Los cursos de Inducción estan abiertos a padres de familia y simpatizantes que quieran ingresar al movimiento o simplemente de deseen conocer del escultismo.<br/> La formación básica esta dirigida a aquil adulto que se encunetra interesado y es aspirante a un cargo: Este curso normalmente se acompleta en meses y consta de seciones de salon, 1 excursión y 2 campamento. <br/> La formación continua en reuniones mensuales donde los adultos que tengan el mismo cargo o función compartan ideas, resuelvan dudas y trabajen las herramientas o los procesos inherentes al cargo. <br/> Los talleres son cursos con temáticas especificas (Primeros auxilios, juegos y canciones, etc). que segun las necesidades se programen.',
-        insigniaMaxima:'B.P',
-        rangos: [{
+        adelantoProgresivo:'Los scoutters y dirigentes provienen de todos lados, desde los padres de los scouts, scouts de infancia, o personas sin experiencia en los scouts! Pero muy motivados en capacitarse para brindarse a los demás.',
+        insigniaMaxima:'/img/Insignias/Scouters/Cargo Dirigentes.png',
+        rangosIconos:{
+            1: '/img/Insignias/Scouters/Cargo Castores.png',
+            1: '/img/Insignias/Scouters/Cargo Manadas.png',
+            1: '/img/Insignias/Scouters/Cargo Tropas.png',
+            1: '/img/Insignias/Scouters/Cargo Clanes.png',
+            
+        },
+        especialidadesIconos:{
+            1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
+            2: '/img/Insignias/Tropas/Especialidades/Ecología.png',
+            3: '/img/Insignias/Tropas/Especialidades/Expresion y Comunicacion.png',
+            4: '/img/Insignias/Tropas/Especialidades/Humanidades.png',
+            5: '/img/Insignias/Tropas/Especialidades/Seguridad y Rescate.png',
+            6: '/img/Insignias/Tropas/Especialidades/Ciencia y Tecnologia.png',
+        },
+        rangos: {
             1: 'Escudero',
             2: 'Ser',
             3: 'Encuentro',
             4: 'Especialidad',
             5: 'Chatarrera Rover',
-        }],
-        especialidades: [{
+        },
+        especialidades: {
             1: 'Tecnica',
             2: 'Expediciones',
             3: 'Proyectos',
-        }],
+        },
     },
 
 ];
