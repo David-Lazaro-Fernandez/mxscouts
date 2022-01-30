@@ -22,6 +22,7 @@ export const tropas = [
         ],
         adelantoProgresivo:'La colonia de castores cuenta con un adelanto progresivo, donde cada castor alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
         insigniaMaxima:'/img/Insignias/Colonia de Castores/Gran Castor Cafe.png',	
+        nombreInsigniaMaxima:'Gran Castor Cafe',
         rangosIconos:{
             1: '/img/Insignias/Colonia de Castores/amarilla.png',
             2: '/img/Insignias/Colonia de Castores/verde.png',
@@ -86,6 +87,7 @@ export const tropas = [
         ],
         adelantoProgresivo:'La colonia de castores cuenta con un adelanto progresivo, donde cada castor alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
         insigniaMaxima:'/img/Insignias/Manadas/Manada de Gacelas/Arcoiris.png',
+        nombreInsigniaMaxima:'Arcoiris',
         rangosIconos:{
             1: '/img/Insignias/Manadas/Manada de Gacelas/Piel Cafe.png',
             2: '/img/Insignias/Manadas/Manada de Gacelas/Bosque.png',
@@ -150,6 +152,7 @@ export const tropas = [
         ],
         adelantoProgresivo:'La manada de lobatos cuenta con un adelanto progresivo, donde cada lobato alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
         insigniaMaxima:'/img/Insignias/Manadas/Manada de lobatos/Lobo Rampante.png',
+        nombreInsigniaMaxima:'Lobo Rampante',
         rangosIconos:{
             1: '/img/Insignias/Manadas/Manada de lobatos/Piel Gris.png',
             2: '/img/Insignias/Manadas/Manada de lobatos/Seeonee.png',
@@ -218,6 +221,7 @@ export const tropas = [
         ],
         adelantoProgresivo:'La tropa de muchachas cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima',
         insigniaMaxima:'/img/Insignias/Tropas/Tropa de Muchachas Scout/AveFenix.png',
+        nombreInsigniaMaxima:'Ave Fenix',
         rangosIconos:{
             1: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Exploradora.png',
             2: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Pionera.png',
@@ -285,6 +289,7 @@ export const tropas = [
         },],
         adelantoProgresivo:'La tropa scout cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima',
         insigniaMaxima:'/img/Insignias/Tropas/Tropa Scout/Caballero Scout Aguila.png',
+        nombreInsigniaMaxima:'Caballero Scout Aguila',
         rangosIconos:{
             1: '/img/Insignias/Tropas/Tropa Scout/Explorador.png',
             2: '/img/Insignias/Tropas/Tropa Scout/Pionero.png',
@@ -352,6 +357,7 @@ export const tropas = [
         },],
         adelantoProgresivo:'El clan de precursoras cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
         insigniaMaxima:'/img/Insignias/Clanes/Clan de Precursoras/BP Precursora.png',
+        nombreInsigniaMaxima:'BP Precursora',
         rangosIconos:{
             1: '/img/Insignias/Clanes/Clan de Precursoras/Proyectos.bmp',
             1: '/img/Insignias/Clanes/Clan de Precursoras/Ser.bmp',
@@ -415,6 +421,7 @@ export const tropas = [
         },],
         adelantoProgresivo:'El clan de rovers cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
         insigniaMaxima:'/img/Insignias/Clanes/Clan de Rovers/BPRover.png',
+        nombreInsigniaMaxima:'BP Rover',
         rangosIconos:{
             1: '/img/Insignias/Clanes/Clan de Rovers/Proyectos.bmp',
             1: '/img/Insignias/Clanes/Clan de Rovers/Ser.bmp',
@@ -476,6 +483,7 @@ export const tropas = [
         },],
         adelantoProgresivo:'Los scoutters y dirigentes provienen de todos lados, desde los padres de los scouts, scouts de infancia, o personas sin experiencia en los scouts! Pero muy motivados en capacitarse para brindarse a los demás.',
         insigniaMaxima:'/img/Insignias/Scouters/Cargo Dirigentes.png',
+        nombreInsigniaMaxima:'Cargo Dirigentes',
         rangosIconos:{
             1: '/img/Insignias/Scouters/Cargo Castores.png',
             1: '/img/Insignias/Scouters/Cargo Manadas.png',

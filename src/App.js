@@ -26,6 +26,8 @@ import Footer from "././components/Footer";
 import Principios from "././components/Principios";
 import Somos from "././components/Somos";
 import Navbar from '././components/Navbar';
+import Progresion from '././components/Progresion';
+
 import { TikTok } from "react-tiktok";
 
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
@@ -50,8 +52,11 @@ function App() {
       somos: item.somos,
       adelantoProgresivo: item.adelantoProgresivo,
       insigniaMaxima: item.insigniaMaxima,
+      nombreInsigniaMaxima: item.nombreInsigniaMaxima,
       rangos: item.rangos,
+      rangosIconos: item.rangosIconos,
       especialidades: item.especialidades,
+      especialidadesIconos:item.especialidadesIconos
     })),
   ]);
   const [open, setOpen] = useState(false);
@@ -552,6 +557,9 @@ function App() {
                 )}
                 {value === 1 && (
                   <Somos tropasArray={tropasArray} numero={numeroTropa} />
+                )}
+                {value === 2 && (
+                  <Progresion tropasArray={tropasArray} numero={numeroTropa} />
                 )}
               </Grid>
             </Grid>
