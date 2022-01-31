@@ -10,7 +10,7 @@ const Progresion = (props) => {
     const nombreInsigniaMaxima = tropa[numero].nombreInsigniaMaxima;
     const rangosIconos = tropa[numero].rangosIconos;
     const rangos = tropa[numero].rangos;
-    const especialidades = tropa[numero].especialidades;
+    const especialidades = tropa[numero].especialidades[0];
     const especialidadesIconos = tropa[numero].especialidadesIconos;
 
     const arrayRangosIconos = [];
@@ -26,15 +26,15 @@ const Progresion = (props) => {
         i++;
     }
     for(const icono in especialidadesIconos){
-        arrayEspecialidadesIconos.push(<img src={especialidadesIconos[icono]} />);
+        arrayEspecialidadesIconos.push(<img src={especialidadesIconos[icono]} style={{width:'60px'}}/>);
     }
     for(const especialidad in especialidades){
-        arrayEspecialidades.push(<p key={i} style={{color:'#2E2270', textAlign:'center',}}>{especialidades[especialidad]}</p>)
+        arrayEspecialidades.push(<p style={{color:'#2E2270', textAlign:'center',}}>{especialidades[especialidad]}</p>)
         i++;
     }
 
     console.log(rangosIconos)
-
+    console.log(especialidades)
     return(
         <div>
             <Container fixed>
@@ -59,6 +59,9 @@ const Progresion = (props) => {
                         )})}
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                        <h2 style={{textAlign: 'center', color:'#2E2270'}}>Especialidades</h2>  
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                             {arrayEspecialidades.map((element,index) => {
                                 return(
                                     <div key={index} style={{display:'flex', justifyContent: 'center', alignItems: 'center', marginBottom:'20px', marginTop:'20px'}}>
@@ -67,9 +70,7 @@ const Progresion = (props) => {
                                     </div>   
                                 )})}
                     </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                     
-                    </Grid>
                 </Grid>
             </Container>
         </div>
