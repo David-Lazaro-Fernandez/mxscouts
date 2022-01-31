@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef,} from "react";
 import {
   Grid,
   Container,
@@ -12,7 +12,11 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
+import PhoneIcon from '@mui/icons-material/Phone';
 import MenuIcon from '@mui/icons-material/Menu';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import DirectionsIcon from '@mui/icons-material/Directions';
 
 import ScoutCard from "./components/ScoutCard";
 import CoolButton from "./components/CoolButton";
@@ -22,15 +26,19 @@ import Footer from "././components/Footer";
 import Principios from "././components/Principios";
 import Somos from "././components/Somos";
 import Navbar from '././components/Navbar';
+import Progresion from '././components/Progresion';
+
 import { TikTok } from "react-tiktok";
 
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import credentials from "./credentials";
 import FAQS from "./FAQS";
 import gruposScout from "./gruposScout";
 import tropas from "./tropas";
 
 function App() {
+  const [activeMarker, setActiveMarker] = useState(null);
+
   const [numeroTropa, setNumeroTropa] = useState(0);
   const [tropasArray, setTropasArray] = useState([
     tropas.map((item) => ({
@@ -44,8 +52,11 @@ function App() {
       somos: item.somos,
       adelantoProgresivo: item.adelantoProgresivo,
       insigniaMaxima: item.insigniaMaxima,
+      nombreInsigniaMaxima: item.nombreInsigniaMaxima,
       rangos: item.rangos,
+      rangosIconos: item.rangosIconos,
       especialidades: item.especialidades,
+      especialidadesIconos:item.especialidadesIconos
     })),
   ]);
   const [open, setOpen] = useState(false);
@@ -88,19 +99,12 @@ function App() {
   const containerRef = useRef(null);
 
   //Map Customization
-  const [windowOpen, setWindowOpen] = useState(false);
-  const [locations, setLocations] = useState([
-    gruposScout.map((item) => (
-      <Marker
-        key={item.id}
-        position={item.position}
-        icon={item.escudo}
-        onClick={() => {
-          setWindowOpen(true);
-        }}
-      />
-    )),
-  ]);
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
 
   const [mapZoom, setMapZoom] = useState(8);
   const [coordinates, setCoordinates] = useState({
@@ -131,7 +135,7 @@ function App() {
   
 
   return (
-    <div style={{ backgroundColor: "#F7F7F7" }}>
+   <div style={{ backgroundColor: "#F7F7F7" }}>
       <Container maxWidth="lg" style={{ marginTop: "40px" }}>
         <Grid 
         container 
@@ -364,7 +368,7 @@ function App() {
             <button
               onClick={() => {
                 handleOpen();
-                setNumeroTropa(3);
+                setNumeroTropa(4);
               }}
               style={{
                 width: "100%",
@@ -386,7 +390,7 @@ function App() {
             <button
               onClick={() => {
                 handleOpen();
-                setNumeroTropa(4);
+                setNumeroTropa(3);
               }}
               style={{
                 width: "100%",
@@ -408,7 +412,7 @@ function App() {
             <button
               onClick={() => {
                 handleOpen();
-                setNumeroTropa(5);
+                setNumeroTropa(6);
               }}
               style={{
                 width: "100%",
@@ -430,7 +434,7 @@ function App() {
             <button
               onClick={() => {
                 handleOpen();
-                setNumeroTropa(6);
+                setNumeroTropa(5);
               }}
               style={{
                 width: "100%",
@@ -554,6 +558,9 @@ function App() {
                 {value === 1 && (
                   <Somos tropasArray={tropasArray} numero={numeroTropa} />
                 )}
+                {value === 2 && (
+                  <Progresion tropasArray={tropasArray} numero={numeroTropa} />
+                )}
               </Grid>
             </Grid>
             <Grid container spacing={0}></Grid>
@@ -643,8 +650,28 @@ function App() {
             mapContainerStyle={containerStyle}
             center={coordinates}
             zoom={mapZoom}
+            onClick={() => setActiveMarker(null)}
           >
-            {locations}
+            {gruposScout.map(({id, nombre, escudo, position,horarios}) => (
+              <Marker
+                key={id}
+                position={position}
+                onClick={() => handleActiveMarker(id)}
+                icon={escudo}
+              >
+                {activeMarker === id ? (
+                  <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                    <div>
+                      <h2>{nombre}</h2>
+                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><AccessTimeFilledIcon sx={{color:'#2e2270', marginRight:'10px'}}/> {horarios}</p>
+                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><PhoneIcon sx={{color:'#2e2270', marginRight:'10px'}}/> +529554587789</p>
+                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><DirectionsIcon sx={{color:'#2e2270', marginRight:'10px'}}/> Av. Sabinas 223. Col. Robles CP. 85938</p>
+                    </div>
+                  </InfoWindow>
+                ) : null}
+
+              </Marker>
+            ))}
           </GoogleMap>
         </Grid>
 
