@@ -10,7 +10,7 @@ const Progresion = (props) => {
     const nombreInsigniaMaxima = tropa[numero].nombreInsigniaMaxima;
     const rangosIconos = tropa[numero].rangosIconos;
     const rangos = tropa[numero].rangos;
-    const especialidades = tropa[numero].especialidades[0];
+    const especialidades = tropa[numero].especialidades;
     const especialidadesIconos = tropa[numero].especialidadesIconos;
 
     const arrayRangosIconos = [];
@@ -33,8 +33,8 @@ const Progresion = (props) => {
         i++;
     }
 
-    console.log(rangosIconos)
-    console.log(especialidades)
+    console.log(tropa)
+ 
     return(
         <div>
             <Container fixed>
