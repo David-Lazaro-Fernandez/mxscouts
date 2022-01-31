@@ -45,14 +45,14 @@ export const tropas = [
             5: '/img/Insignias/Colonia de Castores/Seguridad y Rescate.png',
             6: '/img/Insignias/Colonia de Castores/Tecnologia y ciencia.png',
         },
-        especialidades: [{
+        especialidades: {
             1: 'Deportes',
             2: 'Ecología',
             3: 'Expresión y Comunicación',
             4: 'Humanidades',
             5: 'Seguridad y Rescate',
             6: 'Ciencia y Tecnología',
-        }],
+        },
     },
     {
         nombre:'Manada de Gacelas',
@@ -102,7 +102,6 @@ export const tropas = [
             4: '/img/Insignias/Manadas/Humanidades.png',
             5: '/img/Insignias/Manadas/Seguridad y Rescate.png',
             6: '/img/Insignias/Manadas/Tecnologia y Ciencia.png',
-            
         },
         rangos: {
             1: 'Piel',
@@ -220,23 +219,23 @@ export const tropas = [
             },
         ],
         adelantoProgresivo:'La tropa de muchachas cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima',
-        insigniaMaxima:'/img/Insignias/Tropas/Tropa de Muchachas Scout/AveFenix.png',
+        insigniaMaxima:'/img/Insignias/Tropas/Muchachas/AveFenix.png',
         nombreInsigniaMaxima:'Ave Fenix',
         rangosIconos:{
-            1: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Exploradora.png',
-            2: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Pionera.png',
-            3: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Dubhe.png',
-            4: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Merak.png',
-            5: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Sirius.png',
-            6: '/img/Insignias/Tropas/Tropa de Muchachas Scout/Polaris.png',
+            1: '/img/Insignias/Tropas/Muchachas/Exploradora.png',
+            2: '/img/Insignias/Tropas/Muchachas/Pionera.png',
+            3: '/img/Insignias/Tropas/Muchachas/Dubhe.png',
+            4: '/img/Insignias/Tropas/Muchachas/Merak.png',
+            5: '/img/Insignias/Tropas/Muchachas/Sirius.png',
+            6: '/img/Insignias/Tropas/Muchachas/Polaris.png',
         },
         especialidadesIconos:{
             1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
-            2: '/img/Insignias/Tropas/Especialidades/Ecología.png',
+            2: '/img/Insignias/Tropas/Especialidades/Ecologia.png',
             3: '/img/Insignias/Tropas/Especialidades/Expresion y Comunicacion.png',
             4: '/img/Insignias/Tropas/Especialidades/Humanidades.png',
             5: '/img/Insignias/Tropas/Especialidades/Seguridad y Rescate.png',
-            6: '/img/Insignias/Tropas/Especialidades/Ciencia y Tecnologia.png',
+            6: '/img/Insignias/Tropas/Especialidades/Tecnologia y Ciencia.png',
         },
         rangos: {
             1: 'Exploradora',
@@ -246,14 +245,14 @@ export const tropas = [
             5: 'Sirius',
             6: 'Polaris',
         },
-        especialidades: [{
+        especialidades: {
             1: 'Deportes',
             2: 'Ecología',
             3: 'Expresión y Comunicación',
             4: 'Humanidades',
             5: 'Seguridad y Rescate',
             6: 'Ciencia y Tecnología',
-        }],
+        },
     },
     {
         nombre:'Tropa Scout',
@@ -300,11 +299,11 @@ export const tropas = [
         },
         especialidadesIconos:{
             1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
-            2: '/img/Insignias/Tropas/Especialidades/Ecología.png',
+            2: '/img/Insignias/Tropas/Especialidades/Ecologia.png',
             3: '/img/Insignias/Tropas/Especialidades/Expresion y Comunicacion.png',
             4: '/img/Insignias/Tropas/Especialidades/Humanidades.png',
             5: '/img/Insignias/Tropas/Especialidades/Seguridad y Rescate.png',
-            6: '/img/Insignias/Tropas/Especialidades/Ciencia y Tecnologia.png',
+            6: '/img/Insignias/Tropas/Especialidades/Tecnologia y Ciencia.png',
         },
         rangos: {
             1: 'Explorador',
@@ -356,14 +355,14 @@ export const tropas = [
             5:'Las reuniones son cada sabado. Y estas van desde actividades en el local hasta excursiones y campamentos.',
         },],
         adelantoProgresivo:'El clan de precursoras cuenta con un adelanto progresivo, donde cada gacela alcanza metas especificas y obtendran conforme va avanzando las siguientes insignias para concluir su etapa con la insignia maxima:',
-        insigniaMaxima:'/img/Insignias/Clanes/Clan de Precursoras/BP Precursora.png',
+        insigniaMaxima:'/img/Insignias/Clanes/Precursoras/BP Precursora.png',
         nombreInsigniaMaxima:'BP Precursora',
         rangosIconos:{
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Proyectos.bmp',
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Ser.bmp',
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Encuentro.bmp',
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Especialidad.bmp',
-            1: '/img/Insignias/Clanes/Clan de Precursoras/Tecnica.bmp',
+            1: '/img/Insignias/Clanes/Precursoras/Proyectos.png',
+            2: '/img/Insignias/Clanes/Precursoras/Ser.png',
+            3: '/img/Insignias/Clanes/Precursoras/Encuentro.png',
+            4: '/img/Insignias/Clanes/Precursoras/Especialidad.png',
+            5: '/img/Insignias/Clanes/Precursoras/Tecnica.png',
         },
         especialidadesIconos:{
             1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
@@ -423,11 +422,11 @@ export const tropas = [
         insigniaMaxima:'/img/Insignias/Clanes/Clan de Rovers/BPRover.png',
         nombreInsigniaMaxima:'BP Rover',
         rangosIconos:{
-            1: '/img/Insignias/Clanes/Clan de Rovers/Proyectos.bmp',
-            1: '/img/Insignias/Clanes/Clan de Rovers/Ser.bmp',
-            1: '/img/Insignias/Clanes/Clan de Rovers/Encuentro.bmp',
-            1: '/img/Insignias/Clanes/Clan de Rovers/Especialidad.bmp',
-            1: '/img/Insignias/Clanes/Clan de Rovers/Tecnica.bmp',
+            1: '/img/Insignias/Clanes/Clan de Rovers/Proyectos.png',
+            2: '/img/Insignias/Clanes/Clan de Rovers/Ser.png',
+            3: '/img/Insignias/Clanes/Clan de Rovers/Encuentro.png',
+            4: '/img/Insignias/Clanes/Clan de Rovers/Especialidad.png',
+            5: '/img/Insignias/Clanes/Clan de Rovers/Tecnica.png',
         },
         especialidadesIconos:{
             1: '/img/Insignias/Tropas/Especialidades/Deportes.png',
@@ -486,9 +485,10 @@ export const tropas = [
         nombreInsigniaMaxima:'Cargo Dirigentes',
         rangosIconos:{
             1: '/img/Insignias/Scouters/Cargo Castores.png',
-            1: '/img/Insignias/Scouters/Cargo Manadas.png',
-            1: '/img/Insignias/Scouters/Cargo Tropas.png',
-            1: '/img/Insignias/Scouters/Cargo Clanes.png',
+            2: '/img/Insignias/Scouters/Cargo Manadas.png',
+            3: '/img/Insignias/Scouters/Cargo Tropas.png',
+            4: '/img/Insignias/Scouters/Cargo Clanes.png',
+            5: '/img/Insignias/Scouters/Cargo Clanes.png',
             
         },
         especialidadesIconos:{
