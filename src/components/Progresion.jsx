@@ -19,7 +19,8 @@ const Progresion = (props) => {
     const arrayEspecialidades = [];
     let i = 0;  
     for(const icono in rangosIconos){
-        arrayRangosIconos.push(<img src={rangosIconos[icono]} style={{width:'60px'}} />);
+        arrayRangosIconos.push(<img src={rangosIconos[icono]} style={{width:'60px'}} alt="Imagen de rango" alt={`Imagen de rango ${i}`}/>);
+        i++;
     }
     for(const rango in rangos){
         arrayRangos.push(<p key={i} style={{color:'#2E2270', textAlign:'center',}}>{rangos[rango]}</p>)
@@ -34,7 +35,7 @@ const Progresion = (props) => {
     }
 
     console.log(tropa)
- 
+    
     return(
         <div>
             <Container fixed>
@@ -45,7 +46,7 @@ const Progresion = (props) => {
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom:'0px'}}>
                         <h3 style={{textAlign: 'center', color:'#2E2270', fontSize:'28px'}}>Insignia Máxima</h3>
                         <h2 style={{textAlign: 'center', color:'#2E2270'}}>{nombreInsigniaMaxima}</h2>
-                        <img src={insigniaMaxima} style={{width:'150px'}}/>
+                        <img src={insigniaMaxima} style={{width:'150px'}} alt="Imagen de la insignia máxima"/>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                         <h2 style={{textAlign: 'center', color:'#2E2270'}}>Rangos</h2>

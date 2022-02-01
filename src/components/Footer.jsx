@@ -164,7 +164,7 @@ const Footer = () => {
               <Grid item style={{ display: "flex", justifyContent: "center" }}>
                 <span>
                   <img
-                    src="/img/phone.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/phone.png?alt=media&token=f9ad2474-c172-4bdf-b100-c4a8b479b612"
                     style={{
                       width: "25px",
                       marginRight: "10px",
@@ -174,14 +174,16 @@ const Footer = () => {
                     alt="Telefono"
                   />
                 </span>
-                <a href="tel:+52-555-555-5555"> +52 555 555 5555</a>
+                <a 
+                href="tel:+52-555-555-5555"
+                style={{textDecoration:'underline', color:"#2E2270"}}> +52 555 555 5555</a>
               </Grid>
             </Grid>
             <Grid container spacing={2}>
               <Grid item style={{ display: "flex", justifyContent: "center" }}>
                 <span>
                   <img
-                    src="/img/mail.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/mail.png?alt=media&token=6750afb3-9f81-42d9-9a69-0539372e4842"
                     style={{
                       width: "25px",
                       marginRight: "10px",
@@ -191,7 +193,10 @@ const Footer = () => {
                     alt="Correo"
                   />
                 </span>
-                <a href="mailto:agscm@gmail.org.mx"> agscm@gmail.org.mx</a>
+                <a
+                style={{textDecoration:'underline', color:"#2E2270"}} 
+                href="mailto:agscm@gmail.org.mx"
+                > agscm@gmail.org.mx</a>
               </Grid>
             </Grid>
             <Grid container spacing={2}>
@@ -213,7 +218,7 @@ const Footer = () => {
               >
                 <a href="https://www.facebook.com/ags.scouts/" target="_blank" rel="noreferrer">
                   <img
-                    src="/img/fb.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/fb.png?alt=media&token=67763eac-1ce1-417a-8c2e-34beaa194f5f"
                     style={{
                       width: "50px",
                       filter:
@@ -233,7 +238,7 @@ const Footer = () => {
                 style={{ display: "flex", justifyContent: "flex-start" }}
               >
                 <img
-                  src="/img/tiktok.png"
+                  src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/tiktok.png?alt=media&token=f6013be2-8209-47ff-9509-dc98f0686a83"
                   alt="logo de tiktok"
                   style={{
                     width: "50px",
@@ -253,7 +258,7 @@ const Footer = () => {
               >
                 <a href="https://www.flickr.com/photos/agsmac/albums" target="_blank" rel="noreferrer" >
                     <img
-                    src="/img/flickr.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/flickr.png?alt=media&token=1f5899c6-5d16-4a44-be46-223ac249ee94"
                     style={{ width: "50px" }}
                     alt="Logo de Flickr"
                     />
@@ -273,7 +278,7 @@ const Footer = () => {
               style={{ display: "flex", justifyContent: "center" }}
             >
               <img
-                src="/img/scout logo.png"
+                src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/scout%20logo.png?alt=media&token=b1b6eb96-3b89-46a9-b193-564d81a91028"
                 style={{ width: "70px" }}
                 alt="Logo de los Scouts"
               />
