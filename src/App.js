@@ -142,7 +142,7 @@ function App() {
         spacing={0}
         >
           <Grid item xl={4} lg={4} md={4} sm={6} xs={6} style={{display:'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-            <img src="/img/Logo.png" alt="AGSMAC Logo" />
+            <img src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Logo.png?alt=media&token=71ae8e1c-6b35-4ed6-a817-1e0f958495a9" alt="AGSMAC Logo" />
           </Grid>
 
           <Grid item xl={4} lg={4} md={4} sm={6} xs={6} style={{display:`${matches ? 'none': 'flex'}`, justifyContent:'flex-end'}}>
@@ -313,7 +313,7 @@ function App() {
               }}
             >
               <ScoutCard
-                image="/img/Castores.png"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Castores.png?alt=media&token=fe5bd83f-e98f-4522-b621-9db819fa3fbb"
                 name="Colonia de Castores"
                 background="C0A062"
                 fontColor="FAFAFA"
@@ -335,7 +335,7 @@ function App() {
               }}
             >
               <ScoutCard
-                image="/img/Gacelas.png"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Gacelas.png?alt=media&token=e70e0e22-5254-4254-ad2d-cd3a93d7ebe7"
                 name="Manada de Gacelas"
                 background="FFF500"
                 fontColor="DA251D"
@@ -357,7 +357,7 @@ function App() {
               }}
             >
               <ScoutCard
-                image="/img/Manada de lobos.png"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Manada%20de%20lobos.png?alt=media&token=e654ee2a-1f31-4fc1-a92b-e1671eeaf33d"
                 name="Manada de Lobatos"
                 background="FFF500"
                 fontColor="230E6F"
@@ -379,7 +379,7 @@ function App() {
               }}
             >
               <ScoutCard
-                image="/img/Tropa scout.png"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Tropa%20Scout.png?alt=media&token=6aa26c73-570f-4973-8bbd-ba9d9c2c534f"
                 name="Tropa Scout"
                 background="1F4C3E"
                 fontColor="B9DC7D"
@@ -401,7 +401,7 @@ function App() {
               }}
             >
               <ScoutCard
-                image="/img/Tropa mujeres.png"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Tropa%20mujeres.png?alt=media&token=76893e7f-9775-424a-bb17-47e631fb4b9c"
                 name="Tropa De Muchachas"
                 background="1F4C3E"
                 fontColor="B9DC7D"
@@ -423,7 +423,7 @@ function App() {
               }}
             >
               <ScoutCard
-                image="/img/Clan Robers.png"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Clan%20Robers.png?alt=media&token=c5564d43-9191-4421-bef8-6cf809fbf0bf"
                 name="Clan de Robers"
                 background="FFFFFF"
                 fontColor="DA251D"
@@ -445,7 +445,7 @@ function App() {
               }}
             >
               <ScoutCard
-                image="/img/Clan Percusores.png"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Clan%20Percusores.png?alt=media&token=ebf1b6ac-1d50-46d0-bbbe-6a0d8cdc39b4"
                 name="Clan de Percusoras"
                 background="FFFFFF"
                 fontColor="DA251D"
@@ -467,7 +467,7 @@ function App() {
               }}
             >
               <ScoutCard
-                image="/img/Scouters.png"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Scouters.png?alt=media&token=3eb8a513-014b-4499-b4c1-6e4229625c50"
                 name="Scouters y Dirigentes"
                 background="000000"
                 fontColor="FAFAFA"
@@ -576,7 +576,7 @@ function App() {
               style={{ textDecoration: "none" }}
             >
               <CoolLink
-                image="/img/expediciones.jpg"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/expediciones.jpg?alt=media&token=83ba5e0d-9b0c-422a-bc06-85d6cf91aa40"
                 text="Expediciones"
                 height="460"
                 transparency="0.5"
@@ -594,7 +594,7 @@ function App() {
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
-                    image="/img/campamentos.jpg"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/campamentos.jpg?alt=media&token=f0484816-343f-4287-a745-16c0e5531e1a"
                     text="Campamentos"
                     height="220"
                     transparency="0.5"
@@ -611,7 +611,7 @@ function App() {
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
-                    image="/img/cursos.jpg"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/cursos.jpg?alt=media&token=fa9cf086-02f0-48b5-86e8-a350a0635594"
                     text="Cursos de inducción"
                     height="220"
                     transparency="0.5"
@@ -631,7 +631,7 @@ function App() {
               style={{ textDecoration: "none" }}
             >
               <CoolLink
-                image="/img/libro.jpg"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/libro.jpg?alt=media&token=f0612ab2-105a-4ff4-a307-30118867204a"
                 text="El libro de oro"
                 height="280"
                 transparency="0.75"
@@ -639,7 +639,7 @@ function App() {
                   backgroundSize: "contain !important",
                 }}
                 withIcon="True"
-                icon="/img/libroblanco.png"
+                icon="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/libroblanco.png?alt=media&token=1188bb56-aaa4-4939-8703-917e6f052b09"
               />
             </a>
           </Grid>
@@ -686,7 +686,7 @@ function App() {
                   style={{ textDecoration: "none  " }}
                 >
                   <CoolLink
-                    image="/img/Irally.png"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Irally.png?alt=media&token=f6d20e58-86e8-432b-9ea2-9e274340697d"
                     text="I rally Virtual"
                     height="220"
                     transparency="0.5"
@@ -703,7 +703,7 @@ function App() {
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
-                    image="/img/concuscout.jpg"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/concuscout.jpg?alt=media&token=d07a0a2f-11f1-40d5-979f-56c7c6724944"
                     text="Concuscout"
                     height="220"
                     transparency="0.5"
@@ -718,7 +718,7 @@ function App() {
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
-                    image="/img/canciones.png"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/canciones.png?alt=media&token=661efe20-44c2-4f05-a456-3503a5a9ae9e"
                     text="Canciones"
                     height="220"
                     transparency="0.5"
@@ -735,7 +735,7 @@ function App() {
               style={{ textDecoration: "none" }}
             >
               <CoolLink
-                image="/img/caminatas.jpg"
+                image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/caminatas.jpg?alt=media&token=89563e15-8c85-473e-a0d9-43dd63d021cb"
                 text="Caminatas"
                 height="485"
                 transparency="0.5"
@@ -752,7 +752,7 @@ function App() {
                   style={{ textDecoration: "none", objectPosition: "top" }}
                 >
                   <CoolLink
-                    image="/img/aguila.webp"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Aguila.jpg?alt=media&token=7dec5eb7-c5aa-4b91-8de5-20a70126f6b6"
                     text="Aguílas"
                     height="75"
                     transparency="0.5"
@@ -769,7 +769,7 @@ function App() {
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
-                    image="/img/ardillas.webp"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/ardillas.webp?alt=media&token=61364f58-5f63-4d35-8b3e-ce23b30c8855"
                     text="Ardillas"
                     height="75"
                     transparency="0.5"
@@ -786,7 +786,7 @@ function App() {
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
-                    image="/img/apus.jpg"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/apus.jpg?alt=media&token=69f45eeb-c7d8-43ff-a24b-269cf5f247ee"
                     text="Apus"
                     height="75"
                     transparency="0.5"
@@ -803,7 +803,7 @@ function App() {
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
-                    image="/img/andromeda.jpg"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/andromeda.jpg?alt=media&token=9b90a483-e2ac-4de8-be56-512d3fb907dd"
                     text="Andromeda"
                     height="75"
                     transparency="0.5"
@@ -820,7 +820,7 @@ function App() {
                   style={{ textDecoration: "none" }}
                 >
                   <CoolLink
-                    image="/img/acuario.jpg"
+                    image="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/acuario.jpg?alt=media&token=08203140-ad07-4df2-ad4c-2fd466b4c02a"
                     text="Acuario"
                     height="75"
                     transparency="0.5"
@@ -956,7 +956,7 @@ function App() {
               rel="noreferrer"
             >
               <img
-                src="/img/fb.png"
+                src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/fb.png?alt=media&token=67763eac-1ce1-417a-8c2e-34beaa194f5f"
                 alt="logo"
                 style={{
                   width: "50px",
@@ -977,7 +977,7 @@ function App() {
             style={{ display: "flex", justifyContent: "center" }}
           >
             <img
-              src="/img/tiktok.png"
+              src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/tiktok.png?alt=media&token=f6013be2-8209-47ff-9509-dc98f0686a83"
               alt="logo"
               style={{
                 width: "50px",
@@ -1001,7 +1001,7 @@ function App() {
               rel="noreferrer"
             >
               <img
-                src="/img/youtube.png"
+                src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/youtube.png?alt=media&token=177a091a-c3ee-4765-9ef6-695344b00220"
                 alt="logo"
                 style={{
                   width: "50px",
@@ -1030,7 +1030,7 @@ function App() {
             style={{ display: "flex", justifyContent: "center" }}
           >
             <img
-              src="/img/top flowers.png"
+              src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/top%20flowers.png?alt=media&token=085418a2-6c46-4a87-ac9a-b352a864a23d"
               alt="logo"
               style={{ width: "75%" }}
             />
@@ -1092,7 +1092,7 @@ function App() {
             </Grid>
           </Grid>
           <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-            <img src="/img/unete.png" alt="logo" style={{ width: "100%" }} />
+            <img src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/unete.png?alt=media&token=440bad97-cc16-449b-840c-68fb6da0ba22" alt="logo" style={{ width: "100%" }} />
           </Grid>
         </Grid>
 
@@ -1107,7 +1107,7 @@ function App() {
             style={{ display: "flex", justifyContent: "center" }}
           >
             <img
-              src="/img/bot flowers.png"
+              src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/bot%20flowers.png?alt=media&token=c9bd8f5f-5f0c-495f-bd96-4d70d09cd851"
               alt="logo"
               style={{ width: "75%" }}
             />
