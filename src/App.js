@@ -1,4 +1,5 @@
 import { useState, useRef,} from "react";
+//Material UI Components
 import {
   Grid,
   Container,
@@ -10,14 +11,15 @@ import {
   Tab,
   CircularProgress
 } from "@mui/material";
+//Material UI Hooks
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+//Material UI Icons
 import PhoneIcon from '@mui/icons-material/Phone';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import DirectionsIcon from '@mui/icons-material/Directions';
-
+//Custom Components
 import ScoutCard from "./components/ScoutCard";
 import CoolButton from "./components/CoolButton";
 import CoolLink from "./components/CoolLink";
@@ -25,21 +27,30 @@ import FAQ from "./components/FAQ";
 import Footer from "././components/Footer";
 import Principios from "././components/Principios";
 import Somos from "././components/Somos";
-import Navbar from '././components/Navbar';
 import Progresion from '././components/Progresion';
-
+//Tiktok fetch
 import { TikTok } from "react-tiktok";
-
+//Google Maps 
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import credentials from "./credentials";
+//Json's
 import FAQS from "./FAQS";
 import gruposScout from "./gruposScout";
 import tropas from "./tropas";
 
 function App() {
+  //State to handle the active marker on the map
   const [activeMarker, setActiveMarker] = useState(null);
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
 
+  //State to handle the selected Troop on the troops section
   const [numeroTropa, setNumeroTropa] = useState(0);
+  //State that stores the troops info
   const [tropasArray, setTropasArray] = useState([
     tropas.map((item) => ({
       nombre: item.nombre,
@@ -59,6 +70,7 @@ function App() {
       especialidadesIconos:item.especialidadesIconos
     })),
   ]);
+  //State to handle the infoWindow open and close
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     if (value === undefined) {
@@ -69,16 +81,15 @@ function App() {
   const handleClose = () => {
     setOpen(false);
   };
-
+  //State to handle the selected tab on the Modal section
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   const handleChangeIndex = (event, newIndex) => {
     setValue(newIndex);
   };
-
+  //State to store the FAQ's info
   const [FAQCards, setFAQCards] = useState([
     FAQS.map((item) => (
       <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
@@ -99,13 +110,6 @@ function App() {
   const containerRef = useRef(null);
 
   //Map Customization
-  const handleActiveMarker = (marker) => {
-    if (marker === activeMarker) {
-      return;
-    }
-    setActiveMarker(marker);
-  };
-
   const [mapZoom, setMapZoom] = useState(8);
   const [coordinates, setCoordinates] = useState({
     lat: 20.036159135066864,
@@ -114,14 +118,13 @@ function App() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: credentials.mapKey,
   });
-
   const containerStyle = {
     width: "100%",
     height: "500px",
     borderRadius: "0px",
     border: "0px",
   };
-
+  //Loading Map Handler
   if (loadError) return "Error loading maps";
   if (!isLoaded){
     return(
