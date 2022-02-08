@@ -1,4 +1,5 @@
-import { useState, useRef,} from "react";
+import { useState, useRef, useEffect } from "react";
+//Material UI Components
 import {
   Grid,
   Container,
@@ -8,16 +9,17 @@ import {
   AppBar,
   Tabs,
   Tab,
-  CircularProgress
+  CircularProgress,
 } from "@mui/material";
+//Material UI Hooks
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
-import PhoneIcon from '@mui/icons-material/Phone';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
-import DirectionsIcon from '@mui/icons-material/Directions';
-
+//Material UI Icons
+import PhoneIcon from "@mui/icons-material/Phone";
+import MenuIcon from "@mui/icons-material/Menu";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import DirectionsIcon from "@mui/icons-material/Directions";
+//Custom Components
 import ScoutCard from "./components/ScoutCard";
 import CoolButton from "./components/CoolButton";
 import CoolLink from "./components/CoolLink";
@@ -25,21 +27,65 @@ import FAQ from "./components/FAQ";
 import Footer from "././components/Footer";
 import Principios from "././components/Principios";
 import Somos from "././components/Somos";
+import Progresion from "././components/Progresion";
+import Cumpleaños from '././components/Cumpleaños';
 import Navbar from '././components/Navbar';
-import Progresion from '././components/Progresion';
-
+//Tiktok fetch
 import { TikTok } from "react-tiktok";
-
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+//Google Maps
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 import credentials from "./credentials";
+//Firebase
+import {collection, connectFirestoreEmulator, getDocs} from 'firebase/firestore'
+import database from './firebase.config'
+//Json's
 import FAQS from "./FAQS";
 import gruposScout from "./gruposScout";
 import tropas from "./tropas";
 
 function App() {
+  //Fetch Data from Firebase
+  const arr = []
+  const [firebaseData, setFirebaseData] = useState([])
+  useEffect(() => {
+    const fetchData = async() => {
+      const data = await getDocs(collection(database,'scouts'))
+      .then (e => {
+        e.docs.map(doc => {
+          arr.push(doc.data())
+        })
+        console.log('array',arr)
+      })
+      .then(() =>{
+        arr.map(e => {
+          setFirebaseData(firebaseData => [...firebaseData, e])
+        })
+        console.log('state', firebaseData)
+      } ) 
+      .catch(error => console.log(error))
+    }
+    fetchData()
+    
+  },[]);
+  const [nombres,setNombres] = useState([])
+  console.log(nombres)
+  //State to handle the active marker on the map
   const [activeMarker, setActiveMarker] = useState(null);
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
 
+  //State to handle the selected Troop on the troops section
   const [numeroTropa, setNumeroTropa] = useState(0);
+  //State that stores the troops info
   const [tropasArray, setTropasArray] = useState([
     tropas.map((item) => ({
       nombre: item.nombre,
@@ -56,9 +102,10 @@ function App() {
       rangos: item.rangos,
       rangosIconos: item.rangosIconos,
       especialidades: item.especialidades,
-      especialidadesIconos:item.especialidadesIconos
+      especialidadesIconos: item.especialidadesIconos,
     })),
   ]);
+  //State to handle the infoWindow open and close
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     if (value === undefined) {
@@ -69,16 +116,15 @@ function App() {
   const handleClose = () => {
     setOpen(false);
   };
-
+  //State to handle the selected tab on the Modal section
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   const handleChangeIndex = (event, newIndex) => {
     setValue(newIndex);
   };
-
+  //State to store the FAQ's info
   const [FAQCards, setFAQCards] = useState([
     FAQS.map((item) => (
       <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
@@ -99,13 +145,6 @@ function App() {
   const containerRef = useRef(null);
 
   //Map Customization
-  const handleActiveMarker = (marker) => {
-    if (marker === activeMarker) {
-      return;
-    }
-    setActiveMarker(marker);
-  };
-
   const [mapZoom, setMapZoom] = useState(8);
   const [coordinates, setCoordinates] = useState({
     lat: 20.036159135066864,
@@ -114,7 +153,6 @@ function App() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: credentials.mapKey,
   });
-
   const containerStyle = {
     width: "100%",
     height: "500px",
@@ -122,94 +160,24 @@ function App() {
     border: "0px",
   };
 
+  //Loading Map Handler
   if (loadError) return "Error loading maps";
-  if (!isLoaded){
-    return(
+  if (!isLoaded) {
+    return (
       <Grid container alignItems="center" direction="row" alignItems="center">
         <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-          <CircularProgress color="primary" size="600"/>
+          <CircularProgress color="primary" size="600" />
         </Grid>
       </Grid>
     );
-  };
-  
+  }
+
 
   return (
-   <div style={{ backgroundColor: "#F7F7F7" }}>
+    <div style={{ backgroundColor: "#F7F7F7" }}>
       <Container maxWidth="lg" style={{ marginTop: "40px" }}>
-        <Grid 
-        container 
-        spacing={0}
-        >
-          <Grid item xl={4} lg={4} md={4} sm={6} xs={6} style={{display:'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-            <img src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Logo.png?alt=media&token=71ae8e1c-6b35-4ed6-a817-1e0f958495a9" alt="AGSMAC Logo" />
-          </Grid>
-
-          <Grid item xl={4} lg={4} md={4} sm={6} xs={6} style={{display:`${matches ? 'none': 'flex'}`, justifyContent:'flex-end'}}>
-            <button style={{border:'0px', backgroundColor:'#e7e4fa', borderRadius:'10px', width:'100px'}}>
-              <MenuIcon sx={{color:'#2e2270'}} fontSize='large'/>
-            </button>
-          </Grid>
-
-          <Grid item xl={1} lg={1} md={1} sm={1} xs={1}></Grid>
-
-          <Grid
-            item
-            xl={7}
-            lg={7}
-            md={7}
-            sm={7}
-            xs={7}
-            style={{
-              display: `${matches ? "flex" : "none"}`,
-            }}
-          >
-            <Grid
-              container
-              spacing={2}
-              direction="row"
-              alignItems="center"
-              justify="flex-end"
-            >
-              <Grid
-                item
-                xl={6}
-                lg={6}
-                md={6}
-                sm={6}
-                xs={6}
-                style={{
-                  display: "flex",
-                  direction: "row",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <CoolButton type="secondary" text="Mapa" width="160" height="60" />
-              </Grid>
-              <Grid
-                item
-                xl={6}
-                lg={6}
-                md={6}
-                sm={6}
-                xs={6}
-                style={{
-                  display: "flex",
-                  direction: "row",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <CoolButton
-                  type="primary"
-                  text="Ingresar"
-                  width="160"
-                  height="60"
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3} style={{ marginTop: "25px" }}>
+        <Navbar />
+        <Grid container spacing={3} style={{ marginTop: "100px" }}>
           <Grid item xl={5} lg={5} md={5} sm={12}>
             <Grid
               container
@@ -652,7 +620,7 @@ function App() {
             zoom={mapZoom}
             onClick={() => setActiveMarker(null)}
           >
-            {gruposScout.map(({id, nombre, escudo, position,horarios}) => (
+            {gruposScout.map(({ id, nombre, escudo, position, horarios }) => (
               <Marker
                 key={id}
                 position={position}
@@ -663,17 +631,54 @@ function App() {
                   <InfoWindow onCloseClick={() => setActiveMarker(null)}>
                     <div>
                       <h2>{nombre}</h2>
-                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><AccessTimeFilledIcon sx={{color:'#2e2270', marginRight:'10px'}}/> {horarios}</p>
-                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><PhoneIcon sx={{color:'#2e2270', marginRight:'10px'}}/> +529554587789</p>
-                      <p style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'flex-start'}}><DirectionsIcon sx={{color:'#2e2270', marginRight:'10px'}}/> Av. Sabinas 223. Col. Robles CP. 85938</p>
+                      <p
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          justifyContent: "flex-start",
+                        }}
+                      >
+                        <AccessTimeFilledIcon
+                          sx={{ color: "#2e2270", marginRight: "10px" }}
+                        />{" "}
+                        {horarios}
+                      </p>
+                      <p
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          justifyContent: "flex-start",
+                        }}
+                      >
+                        <PhoneIcon
+                          sx={{ color: "#2e2270", marginRight: "10px" }}
+                        />{" "}
+                        +529554587789
+                      </p>
+                      <p
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          justifyContent: "flex-start",
+                        }}
+                      >
+                        <DirectionsIcon
+                          sx={{ color: "#2e2270", marginRight: "10px" }}
+                        />{" "}
+                        Av. Sabinas 223. Col. Robles CP. 85938
+                      </p>
                     </div>
                   </InfoWindow>
                 ) : null}
-
               </Marker>
             ))}
           </GoogleMap>
         </Grid>
+
+       <Cumpleaños firebaseData={firebaseData} />
 
         <Grid container spacing={2} style={{ marginTop: "25px" }}>
           <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
@@ -1092,7 +1097,11 @@ function App() {
             </Grid>
           </Grid>
           <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-            <img src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/unete.png?alt=media&token=440bad97-cc16-449b-840c-68fb6da0ba22" alt="logo" style={{ width: "100%" }} />
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/unete.png?alt=media&token=440bad97-cc16-449b-840c-68fb6da0ba22"
+              alt="logo"
+              style={{ width: "100%" }}
+            />
           </Grid>
         </Grid>
 
