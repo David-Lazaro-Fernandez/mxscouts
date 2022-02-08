@@ -40,12 +40,40 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import credentials from "./credentials";
+//Firebase
+import {collection, connectFirestoreEmulator, getDocs} from 'firebase/firestore'
+import database from './firebase.config'
 //Json's
 import FAQS from "./FAQS";
 import gruposScout from "./gruposScout";
 import tropas from "./tropas";
 
 function App() {
+  //Fetch Data from Firebase
+  const arr = []
+  const [firebaseData, setFirebaseData] = useState([])
+  useEffect(() => {
+    const fetchData = async() => {
+      const data = await getDocs(collection(database,'scouts'))
+      .then (e => {
+        e.docs.map(doc => {
+          arr.push(doc.data())
+        })
+        console.log('array',arr)
+      })
+      .then(() =>{
+        arr.map(e => {
+          setFirebaseData(firebaseData => [...firebaseData, e])
+        })
+        console.log('state', firebaseData)
+      } ) 
+      .catch(error => console.log(error))
+    }
+    fetchData()
+    
+  },[]);
+  const [nombres,setNombres] = useState([])
+  console.log(nombres)
   //State to handle the active marker on the map
   const [activeMarker, setActiveMarker] = useState(null);
   const handleActiveMarker = (marker) => {
@@ -143,6 +171,7 @@ function App() {
       </Grid>
     );
   }
+
 
   return (
     <div style={{ backgroundColor: "#F7F7F7" }}>
@@ -649,7 +678,7 @@ function App() {
           </GoogleMap>
         </Grid>
 
-       <Cumpleaños />
+       <Cumpleaños firebaseData={firebaseData} />
 
         <Grid container spacing={2} style={{ marginTop: "25px" }}>
           <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>

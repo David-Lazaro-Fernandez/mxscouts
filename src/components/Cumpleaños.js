@@ -1,34 +1,42 @@
 import react, { useState, useEffect } from "react";
-import { Grid } from "@mui/material";
+import { Grid,Paper,Button, useMediaQuery } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
+import Carousel from 'react-material-ui-carousel'
+
 //Lottie animation
 import birthDayAnimation from "./../bday.json";
 import Lottie from "lottie-react";
 
-const Cumpleaños = (props) => {
-  const [name, setName] = useState("");
-  const nombres = ["David", "Juan", "Juan Carlos", "Juan Ernesto", "Alejandro"];
-  const cambio = () => {
-    const random = Math.floor(Math.random() * nombres.length);
-    console.log(nombres[random]);
-    setName(nombres[random]);
-  }
+function Item(props)
+{
+  const {item, matches} = props;
+    return (
+        <Paper sx={{height:'200px', width:'100%', backgroundColor:'#2E2270', boxShadow:'none', display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center'}}>
+            <h1 style={{textAlign:'center', color:'#ffffff', fontSize:`${matches ? '32px':'20px'}`}}>Felicidades a los cumpleañeros del mes</h1>
+            <h2 style={{textAlign:'center', color:'#ffffff',fontSize:`${matches ? '26px':'16px'}`}}>{item}</h2>
+        </Paper>
+    )
+}
 
-  useEffect(() => {
-    setInterval(cambio, 4000);
-  },[])
+const Cumpleaños = (props) => {
+  const {firebaseData} = props;
+  const nombres = firebaseData.map((data) => data.nombre);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
   return (
     <div style={{ width: "100%", marginTop: "25px" }}>
+     
       <Grid container spacing={0} style={{ marginTop: "25px" }}>
-        <Grid item xl={4} lg={4} md={4} sm={4} xs={4}>
-          <Lottie animationData={birthDayAnimation} loop={true} width={150} />
+        <Grid item xl={4} lg={4} md={12} sm={12} xs={12} style={{display:'flex', justifyContent: 'center'}}>
+          <Lottie animationData={birthDayAnimation} loop={true} style={{width:'200px'}} />
         </Grid>
         <Grid
           item
           xl={8}
           lg={8}
-          md={8}
-          sm={8}
-          xs={8}
+          md={12}
+          sm={12}
+          xs={12}
           style={{
             display: "flex",
             justifyContent: "center",
@@ -74,25 +82,15 @@ const Cumpleaños = (props) => {
               backgroundColor: "#2E2270",
             }}
           >
-            <h1
-              style={{
-                color: "#ffffff",
-                textAlign: "center",
-                fontWeight: "500",
-              }}
-            >
-              ¡Felicidades a los cumpleañeros del mes!
-            </h1>
-            <h1
-              style={{
-                color: "#ffffff",
-                textAlign: "center",
-                fontWeight: "700",
-                fontSize: "75px",
-              }}
-            >
-              {name}
-            </h1>
+            <div style={{width:'100%'}}>
+              <Carousel 
+              indicators={false}
+              style={{width:'100%'}}
+              >
+                {nombres.map((element,index) => <Item item={element} matches={matches} key={index}/>)}
+              </Carousel>
+            </div>
+            
           </Grid>
           <Grid
             item
@@ -123,5 +121,6 @@ const Cumpleaños = (props) => {
     </div>
   );
 };
+
 
 export default Cumpleaños;
