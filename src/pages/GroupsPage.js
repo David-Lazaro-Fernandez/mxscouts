@@ -1,14 +1,26 @@
 import React, { useState } from "react";
+//Components
 import Navbar from "../components/Navbar";
 import CoolLink from "../components/CoolLink";
-import { Typography, Container, Grid } from "@mui/material";
-import infoGrupos from "../infoGrupos";
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
 import GroupInfo from "../components/GroupInfo";
+import InfoBar from "../components/InfoBar";
+import AccordionInfo from "../components/AccordionInfo";
+//Material UI components
+import { Typography, Container, Grid, Box } from "@mui/material";
+//Material UI Hooks
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+//JSON data
+import infoGrupos from "../infoGrupos";
+
 const GroupsPage = () => {
+  //Media Query
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "350px" }}>
         <Navbar />
         <Grid
           container
@@ -16,7 +28,13 @@ const GroupsPage = () => {
           style={{ marginTop: "150px", marginBottom: "50px" }}
         >
           <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-            <h1 style={{textAlign:'center', color:'#2E2270', fontSize:'48px'}}>
+            <h1
+              style={{
+                textAlign: "center",
+                color: "#2E2270",
+                fontSize: "48px",
+              }}
+            >
               Conoce a los grupos en México
             </h1>
           </Grid>
@@ -25,7 +43,7 @@ const GroupsPage = () => {
         {infoGrupos.map((grupo) => {
           return (
             <div>
-              <Grid container spacing={0} style={{marginTop:'50px'}}>
+              <Grid container spacing={0} style={{ marginTop: "50px" }}>
                 <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                   <CoolLink
                     image={grupo.imagenFondo}
@@ -42,17 +60,39 @@ const GroupsPage = () => {
                 escudo={grupo.escudo}
                 activo={grupo.activo}
                 imagenFondo2={grupo.imagenFondo2}
-                horario = {grupo.horario}
-                dias = {grupo.diasDeactividad}
-                ubicacion = {grupo.ubicación}
               />
-
+              <Grid container spacing={0} style={{ marginBottom: "100px" }}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                  xl={12}
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  {matches ? (
+                    <InfoBar
+                      horario={grupo.horario}
+                      dias={grupo.diasDeactividad}
+                      ubicación={grupo.ubicación}
+                      matches={matches}
+                    />
+                  ) : (
+                    <AccordionInfo />
+                  )}
+                </Grid>
+              </Grid>
             </div>
           );
         })}
-        
       </Container>
-      <Footer style={{marginTop:'350px'}}/>
+      <Footer />
     </div>
   );
 };
