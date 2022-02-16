@@ -1,6 +1,6 @@
 import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import {
-  Grid,
   Container,
   AppBar,
   Toolbar,
@@ -12,19 +12,22 @@ import {
   MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import CoolButton from "./CoolButton";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Navbar = (props) => {
+  const navigate = useNavigate();
   const [anchor, setAnchor] = useState(null);
   const handleClick = (event) => {
     setAnchor(event.currentTarget);
   }
-  const handleClose = () => {
+  const handleClose = (path) => {
+    
     setAnchor(null);
+    navigate(path);
   }
-  const pages = ["Grupos", "Mapa"];
+  const pages = ["Inicio","Grupos"];
+  const paths = ["/","/grupos"]
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const stick = window.pageYOffset;
@@ -88,20 +91,16 @@ const Navbar = (props) => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleClose}>
+                {pages.map((page,index) => {
+                  return(
+                  <MenuItem key={page} onClick={() => handleClose(paths[index])} >
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
-                ))}
+                )})
+                }
               </Menu>
             </Box>
-            {/* <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', color:'#2E2270' }}
-            >
-              LOGO
-            </Typography> */}
+          
             <Box
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center', }}
             >
@@ -112,9 +111,10 @@ const Navbar = (props) => {
               />
             </Box>
             <Box sx={{display: {xs:'none', md:'flex'}}}>
-            {pages.map((page) => (
+            {pages.map((page,index) => (
               <Button
                 key={page}
+                href={paths[index]}
                 sx={{
                   color: "#2e2270",
                   display: "block",
