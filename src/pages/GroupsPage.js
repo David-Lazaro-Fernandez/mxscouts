@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 //Components
 import Navbar from "../components/Navbar";
 import CoolLink from "../components/CoolLink";
@@ -7,7 +7,7 @@ import GroupInfo from "../components/GroupInfo";
 import InfoBar from "../components/InfoBar";
 import AccordionInfo from "../components/AccordionInfo";
 //Material UI components
-import { Typography, Container, Grid, Box } from "@mui/material";
+import { Container, Grid,} from "@mui/material";
 //Material UI Hooks
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -17,7 +17,7 @@ import infoGrupos from "../infoGrupos";
 const GroupsPage = () => {
   //Media Query
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <div>
       <Container style={{ marginBottom: "350px" }}>
@@ -60,6 +60,7 @@ const GroupsPage = () => {
                 escudo={grupo.escudo}
                 activo={grupo.activo}
                 imagenFondo2={grupo.imagenFondo2}
+                matches={matches}
               />
               <Grid container spacing={0} style={{ marginBottom: "100px" }}>
                 <Grid
@@ -84,7 +85,11 @@ const GroupsPage = () => {
                       matches={matches}
                     />
                   ) : (
-                    <AccordionInfo />
+                    <AccordionInfo 
+                      horarios = {grupo.horario}
+                      días = {grupo.diasDeactividad}
+                      ubicación = {grupo.ubicación}
+                    />
                   )}
                 </Grid>
               </Grid>

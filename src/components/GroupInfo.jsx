@@ -1,6 +1,5 @@
 import React from "react";
-import { Grid, Typography, Container, Box } from "@mui/material";
-import InfoBar from "./InfoBar";
+import { Grid, Typography, Container,} from "@mui/material";
 const GroupInfo = (props) => {
   const {
     titulo,
@@ -10,6 +9,7 @@ const GroupInfo = (props) => {
     imagenFondo2,
     matches
   } = props;
+  console.log(matches)
   return (
     <div style={{ height: "650px" }}>
       <Grid container spacing={0} style={{ height: "100%" }}>
@@ -103,7 +103,7 @@ const GroupInfo = (props) => {
                     alignItems: "center",
                   }}
                 >
-                  {activo == 1 ? (
+                  {activo === 1 ? (
                     <img
                       src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Grupos%2Fcheck.png?alt=media&token=2cefc4fd-eb0f-4138-baff-532fca3424da"
                       style={{
@@ -111,6 +111,7 @@ const GroupInfo = (props) => {
                         filter:
                           "invert(100%) sepia(100%) saturate(0%) hue-rotate(203deg) brightness(104%) contrast(104%)",
                       }}
+                      alt="Active icon"
                     />
                   ) : (
                     <img
@@ -120,6 +121,7 @@ const GroupInfo = (props) => {
                         filter:
                           "invert(100%) sepia(100%) saturate(0%) hue-rotate(203deg) brightness(104%) contrast(104%)",
                       }}
+                      alt="Unactive icon"
                     />
                   )}
                 </div>
@@ -140,7 +142,8 @@ const GroupInfo = (props) => {
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
           <img
             src={imagenFondo2}
-            style={{ width: "100%", height: `${matches ? '600px': '200px'}`, objectFit: "cover" }}
+            style={{ width: "100%", height: `${matches ? '600px': '300px'}`, objectFit: "cover" }}
+            alt="An image of the particular scout group"
           />
         </Grid>
       </Grid>
