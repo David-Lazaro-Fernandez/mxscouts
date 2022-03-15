@@ -1,6 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-
+import {
+  collection,
+  getFirestore,
+  getDocs,
+} from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBNSmt5Gsjzz5MzvU1_nBmviwcE3sahZoI",
@@ -14,6 +17,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = getFirestore(app);
+export const database = getFirestore(app);
+
+export const getBirthdayScouts = () => getDocs(collection(database, "scouts"))
+
+
 
 export default database;

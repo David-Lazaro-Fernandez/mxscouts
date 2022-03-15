@@ -42,12 +42,8 @@ import {
 } from "@react-google-maps/api";
 import credentials from "../credentials";
 //Firebase
-import {
-  collection,
-  connectFirestoreEmulator,
-  getDocs,
-} from "firebase/firestore";
-import database from "../firebase.config";
+
+import {getBirthdayScouts} from "../firebase.config";
 //Json's
 import FAQS from "../FAQS";
 import gruposScout from "../gruposScout";
@@ -55,27 +51,21 @@ import tropas from "../tropas";
 
 function HomePage() {
   //Fetch Data from Firebase
-  const arr = [];
-  const [firebaseData, setFirebaseData] = useState([]);
+  const [firebaseData, setFirebaseData] = useState([])
+  const [fetched, setFetched] = useState(false)
+
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getDocs(collection(database, "scouts"))
-        .then((e) => {
-          e.docs.map((doc) => {
-            arr.push(doc.data());
-          });
-          console.log("array", arr);
-        })
-        .then(() => {
-          arr.map((e) => {
-            setFirebaseData((firebaseData) => [...firebaseData, e]);
-          });
-          console.log("state", firebaseData);
-        })
-        .catch((error) => console.log(error));
+      const querySnapshot = await getBirthdayScouts()
+      querySnapshot.forEach(doc =>{
+        console.log(doc.data())
+        setFirebaseData((prevData) => [...prevData, doc.data()])
+      } )
+      setFetched(true)
     };
     fetchData();
-  }, []);
+  },[]);
+  
   const [nombres, setNombres] = useState([]);
   console.log(nombres);
   //State to handle the active marker on the map
@@ -168,7 +158,7 @@ function HomePage() {
   if (loadError) return "Error loading maps";
   if (!isLoaded) {
     return (
-      <Grid container alignItems="center" direction="row" alignItems="center">
+      <Grid container alignItems="center" direction="row">
         <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
           <CircularProgress color="primary" size="600" />
         </Grid>
@@ -695,8 +685,8 @@ function HomePage() {
               ))}
             </GoogleMap>
           </Grid>
-
-          <Cumpleaños firebaseData={firebaseData} />
+          
+          {fetched  ? <Cumpleaños firebaseData={firebaseData} /> : <CircularProgress color="inherit"/>}
 
           <Grid container spacing={2} style={{ marginTop: "25px" }}>
             <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
@@ -895,7 +885,7 @@ function HomePage() {
               <TikTok url="https://www.tiktok.com/@yiss_salazar/video/6903614915764931841?is_from_webapp=1&sender_device=pc&web_id6979447043030877701" />
             </Grid>
             <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
-              <TikTok url="https://www.tiktok.com/@_sabicarrillo_/video/6912173152307121413?is_from_webapp=1&sender_device=pc&web_id6979447043030877701" />
+              <TikTok url="https://www.tiktok.com/@cucharascout/video/7029375868732542213?is_from_webapp=1&sender_device=pc&web_id6979447043030877701" />
             </Grid>
           </Grid>
 
