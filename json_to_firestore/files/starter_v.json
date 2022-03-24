@@ -1,0 +1,128 @@
+[
+  {
+    "itemID": "ST_V_101",
+    "itemName": "Chilly",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 100,
+    "itemCategory": "starter_v",
+    "hasImage": false,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_102",
+    "itemName": "Crispy",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_103",
+    "itemName": "Lolypop",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 100,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_104",
+    "itemName": "65Chow",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_105",
+    "itemName": "Manchurian",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_106",
+    "itemName": "Peneer/Chicken Satte",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_107",
+    "itemName": "American Chopsey",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_108",
+    "itemName": "Schezwan Dry",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_109",
+    "itemName": "Hot Garlic",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_110",
+    "itemName": "Lemon Chicken",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_111",
+    "itemName": "Black Peper",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_112",
+    "itemName": "Red Peper",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_113",
+    "itemName": "Crunchy Chicken",
+    "itemPriceHalf": 90,
+    "itemPriceFull": 120,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "ST_V_114",
+    "itemName": "Steam Chilly",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "starter_v",
+    "itemType": "v"
+  }
+]

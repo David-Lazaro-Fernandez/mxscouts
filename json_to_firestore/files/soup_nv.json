@@ -1,0 +1,74 @@
+[
+  {
+    "itemID": "SOUP_NV_101",
+    "itemName": "Sweet Corn Soup",
+    "itemPriceHalf": 90,
+    "itemPriceFull": 120,
+    "hasImage": false,
+    "itemCategory": "soup_nv",
+    "itemType": "nv"
+  },
+  {
+    "itemID": "SOUP_NV_102",
+    "itemName": "Hot & Sour Soup",
+    "itemPriceHalf": 90,
+    "itemPriceFull": 120,
+    "hasImage": false,
+    "itemCategory": "soup_nv",
+    "itemType": "nv"
+  },
+  {
+    "itemID": "SOUP_NV_103",
+    "itemName": "Manchow Soup",
+    "itemPriceHalf": 90,
+    "itemPriceFull": 120,
+    "hasImage": false,
+    "itemCategory": "soup_nv",
+    "itemType": "nv"
+  },
+  {
+    "itemID": "SOUP_NV_104",
+    "itemName": "Mushroom Soup",
+    "itemPriceHalf": 90,
+    "itemPriceFull": 120,
+    "hasImage": false,
+    "itemCategory": "soup_nv",
+    "itemType": "nv"
+  },
+  {
+    "itemID": "SOUP_NV_105",
+    "itemName": "Clear Soup",
+    "itemPriceHalf": 70,
+    "itemPriceFull": 100,
+    "hasImage": false,
+    "itemCategory": "soup_nv",
+    "itemType": "nv"
+  },
+  {
+    "itemID": "SOUP_NV_106",
+    "itemName": "Noodles Soup",
+    "itemPriceHalf": 90,
+    "itemPriceFull": 120,
+    "hasImage": false,
+    "itemCategory": "soup_nv",
+    "itemType": "nv"
+  },
+  {
+    "itemID": "SOUP_NV_107",
+    "itemName": "Noodles Soup",
+    "itemPriceHalf": 100,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "soup_nv",
+    "itemType": "nv"
+  },
+  {
+    "itemID": "SOUP_NV_108",
+    "itemName": "Noodles Soup",
+    "itemPriceHalf": 90,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "soup_nv",
+    "itemType": "nv"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "itemID": "NOODLES_V_101",
+    "itemName": "Hakka Noodles",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "noodles_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "NOODLES_V_102",
+    "itemName": "Shezwan Noodles",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "noodles_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "NOODLES_V_103",
+    "itemName": "HONKONG Noodles",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "noodles_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "NOODLES_V_104",
+    "itemName": "Singapore Noodles",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "noodles_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "NOODLES_V_105",
+    "itemName": "Tripple Noodles",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "noodles_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "NOODLES_V_106",
+    "itemName": "Manchurian Noodles",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "noodles",
+    "itemType": "v"
+  }
+]

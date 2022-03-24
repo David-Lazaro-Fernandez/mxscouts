@@ -1,0 +1,92 @@
+[
+  {
+    "itemID": "ROLL_V_101",
+    "itemName": "Veg Manchurian Roll",
+    "itemPrice": 70,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_102",
+    "itemName": "Spring Roll",
+    "itemPrice": 90,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_103",
+    "itemName": "Dragon Roll",
+    "itemPrice": 90,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_104",
+    "itemName": "Paneer Roll",
+    "itemPrice": 90,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_105",
+    "itemName": "Wanten Roll",
+    "itemPrice": 80,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_106",
+    "itemName": "Wanten Paneer Roll",
+    "itemPrice": 100,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_107",
+    "itemName": "Wanten Manchurian Roll",
+    "itemPrice": 100,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_108",
+    "itemName": "Noodles Roll",
+    "itemPrice": 100,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_109",
+    "itemName": "Wanten Draigon Roll",
+    "itemPrice": 110,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  },
+  {
+    "itemID": "ROLL_V_110",
+    "itemName": "Noodles Manchurian Roll",
+    "itemPrice": 110,
+    "itemCategory": "rolls_v",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "v"
+  }
+]

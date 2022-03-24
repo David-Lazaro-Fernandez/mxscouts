@@ -1,0 +1,92 @@
+[
+  {
+    "itemID": "ROLL_NV_101",
+    "itemName": "Veg Manchurian Roll",
+    "itemPrice": 100,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_102",
+    "itemName": "Spring Roll",
+    "itemPrice": 120,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_103",
+    "itemName": "Dragon Roll",
+    "itemPrice": 120,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_104",
+    "itemName": "Paneer Roll",
+    "itemPrice": 120,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_105",
+    "itemName": "Wanten Roll",
+    "itemPrice": 110,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_106",
+    "itemName": "Wanten Paneer Roll",
+    "itemPrice": 130,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_107",
+    "itemName": "Wanten Manchurian Roll",
+    "itemPrice": 130,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_108",
+    "itemName": "Noodles Roll",
+    "itemPrice": 130,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_109",
+    "itemName": "Wanten Draigon Roll",
+    "itemPrice": 140,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  },
+  {
+    "itemID": "ROLL_NV_110",
+    "itemName": "Noodles Manchurian Roll",
+    "itemPrice": 140,
+    "itemCategory": "rolls_nv",
+    "hasImage": false,
+    "itemQuantity": 1,
+    "itemType": "nv"
+  }
+]

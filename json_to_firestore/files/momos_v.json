@@ -1,0 +1,56 @@
+[
+  {
+    "itemID": "MOMOS_V_101",
+    "itemName": "Sangai Momos",
+    "itemPriceHalf": 70,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "momos_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "MOMOS_V_102",
+    "itemName": "Kadi Veg Momos",
+    "itemPriceHalf": 60,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "momos_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "MOMOS_V_103",
+    "itemName": "Tividen Momos",
+    "itemPriceHalf": 70,
+    "itemPriceFull": 130,
+    "hasImage": false,
+    "itemCategory": "momos_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "MOMOS_V_104",
+    "itemName": "Cantinos Momos",
+    "itemPriceHalf": 80,
+    "itemPriceFull": 150,
+    "hasImage": false,
+    "itemCategory": "momos_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "MOMOS_V_105",
+    "itemName": "Darjlinlam Momos",
+    "itemPriceHalf": 70,
+    "itemPriceFull": 140,
+    "hasImage": false,
+    "itemCategory": "momos_v",
+    "itemType": "v"
+  },
+  {
+    "itemID": "MOMOS_V_106",
+    "itemName": "Harko Momos",
+    "itemPriceHalf": 60,
+    "itemPriceFull": 110,
+    "hasImage": false,
+    "itemCategory": "momos_v",
+    "itemType": "v"
+  }
+]
