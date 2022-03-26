@@ -20,8 +20,7 @@ function Item(props)
 
 const Cumpleaños = (props) => {
   const {firebaseData} = props;
-  console.log(firebaseData)
-  const nombres = firebaseData.map((data) => data.nombre);
+  const nombres = firebaseData.map((data) => data.nombre_completo);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('md'));
   return (

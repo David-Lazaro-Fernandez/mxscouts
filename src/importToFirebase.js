@@ -20,7 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
 export const storage = getStorage(app);
-export const getBirthdayScouts = () => getDocs(collection(database, "scouts"))
+export const getBirthdayScouts = () => getDocs(collection(database, "BD 22"))
 
 
 

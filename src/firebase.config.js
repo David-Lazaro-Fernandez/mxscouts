@@ -3,6 +3,8 @@ import {
   collection,
   getFirestore,
   getDocs,
+  query,
+  where
 } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,10 +18,16 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+const d = new Date();
+const actualMont = d.getMonth() + 1;
 const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
 
-export const getBirthdayScouts = () => getDocs(collection(database, "scouts"))
+export const getBirthdayScouts = () => getDocs(
+  query(
+    collection(database, "BD 22"), 
+    where("mes", "==", actualMont) )
+)
 
 
 

@@ -42,7 +42,6 @@ import {
 } from "@react-google-maps/api";
 import credentials from "../credentials";
 //Firebase
-
 import {getBirthdayScouts} from "../firebase.config";
 //Json's
 import FAQS from "../FAQS";
@@ -58,7 +57,6 @@ function HomePage() {
     const fetchData = async () => {
       const querySnapshot = await getBirthdayScouts()
       querySnapshot.forEach(doc =>{
-        console.log(doc.data())
         setFirebaseData((prevData) => [...prevData, doc.data()])
       } )
       setFetched(true)
@@ -67,7 +65,6 @@ function HomePage() {
   },[]);
   
   const [nombres, setNombres] = useState([]);
-  console.log(nombres);
   //State to handle the active marker on the map
   const [activeMarker, setActiveMarker] = useState(null);
   const handleActiveMarker = (marker) => {
