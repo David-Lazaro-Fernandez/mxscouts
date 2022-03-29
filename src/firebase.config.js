@@ -29,6 +29,7 @@ export const getBirthdayScouts = () => getDocs(
     where("mes", "==", actualMont) )
 )
 
+export const getActivities = () => getDocs(collection(database, "Actividades 22"))
 
 
 export default database;

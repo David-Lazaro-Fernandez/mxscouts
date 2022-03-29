@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   CssBaseline,
 } from "@mui/material";
 import LeftMenu from '../components/LeftMenu';
 import RightMenu from "../components/RightMenu";
+import MidDashboard from "../components/MidDashboard";
+import {getActivities} from '../firebase.config';
+
 
 const leftMenuItemList = [
   {
@@ -74,7 +77,20 @@ const rightMenuItemList = [
 const windowHeight = window.innerHeight
 console.log(windowHeight)
 const AdminPage = () => {
-  
+  const [activities, setActivities] = useState([])
+  const [fetched, setFetched] = useState(false)
+  useEffect(()=>{
+    const fetchData = async() =>{
+      const querySnapshot = await getActivities()
+      console.log(getActivities())
+      querySnapshot.forEach(doc =>{
+        console.log(doc.data)
+        setActivities((prevData) => [...prevData, doc.data()])
+      } )
+      setFetched(true);
+    }
+    fetchData();
+  },[]);
   return (
     <div
       style={{ backgroundColor: "#F2F7FA", height: `${window.innerHeight}px` }}
@@ -94,8 +110,17 @@ const AdminPage = () => {
           itemList = {leftMenuItemList}
           />
         </Grid>
-        <Grid item lg={9} sx={{ backgroundColor: "white",  textAlign:'center'}}>
-          Hola chula
+        <Grid item lg={9} sx={{ backgroundColor: "#F2F7FA",  textAlign:'center'}}>
+          {
+            fetched ? (
+            <MidDashboard
+              ActivitiesItems = {activities}
+            />    
+            ) : (
+              <div>Loading</div>
+            ) 
+          }
+          
         </Grid>
         <Grid item lg={1} sx={{ backgroundColor: "#F2F7FA", textAlign:'center', height:`${windowHeight}px`, display:'flex', borderLeft:'1px solid #E1E1E1'}}>
           <RightMenu itemList={rightMenuItemList}/>
