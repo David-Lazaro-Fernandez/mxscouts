@@ -5,8 +5,9 @@ import {
 } from "@mui/material";
 import LeftMenu from '../components/LeftMenu';
 import RightMenu from "../components/RightMenu";
-import MidDashboard from "../components/MidDashboard";
-import {getActivities} from '../firebase.config';
+import MidDashboard from "../components/MidDashBoard/MidDashboard";
+import LeftDrawer from '../components/LeftDrawer/LeftDrawer';
+import {getActivities, getScoutsWithoutCredentials, getScouts} from '../firebase.config';
 
 
 const leftMenuItemList = [
@@ -75,18 +76,33 @@ const rightMenuItemList = [
 ]
 
 const windowHeight = window.innerHeight
-console.log(windowHeight)
+
 const AdminPage = () => {
+
   const [activities, setActivities] = useState([])
+  const [scouts, setScouts] = useState([])
+  const [scoutsWithoutCredential, setScoutsWithoutCredentials] = useState([])
   const [fetched, setFetched] = useState(false)
+
   useEffect(()=>{
     const fetchData = async() =>{
+      //Fetch recent activities
       const querySnapshot = await getActivities()
-      console.log(getActivities())
       querySnapshot.forEach(doc =>{
-        console.log(doc.data)
         setActivities((prevData) => [...prevData, doc.data()])
       } )
+
+      //Fetch all scouts 
+      const scoutQuerySnapshot = await getScouts()
+      scoutQuerySnapshot.forEach(doc =>{
+        setScouts((prevData) => [...prevData, doc.data()])
+      })
+
+      //Fetch scouts without credentials
+      const noCredentialQuerySnapshot = await getScoutsWithoutCredentials()
+      noCredentialQuerySnapshot.forEach(doc =>{
+        setScoutsWithoutCredentials(prevData => [...prevData, doc.data()])
+      })
       setFetched(true);
     }
     fetchData();
@@ -106,15 +122,18 @@ const AdminPage = () => {
         
       >
         <Grid item lg={2} sx={{ backgroundColor: "white", textAlign:'center' }}>
-          <LeftMenu
+          <LeftDrawer/>
+          {/* <LeftMenu
           itemList = {leftMenuItemList}
-          />
+          /> */}
         </Grid>
         <Grid item lg={9} sx={{ backgroundColor: "#F2F7FA",  textAlign:'center'}}>
           {
             fetched ? (
             <MidDashboard
               ActivitiesItems = {activities}
+              ScoutsWithoutCredential={scoutsWithoutCredential}
+              Scouts = {scouts}
             />    
             ) : (
               <div>Loading</div>

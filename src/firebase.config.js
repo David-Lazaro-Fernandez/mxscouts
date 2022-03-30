@@ -31,5 +31,13 @@ export const getBirthdayScouts = () => getDocs(
 
 export const getActivities = () => getDocs(collection(database, "Actividades 22"))
 
+export const getScoutsWithoutCredentials = () => getDocs(
+  query(
+    collection(database, "BD 22"),
+    where("credencial", "==", "")
+  )
+)
+
+export const getScouts = () => getDocs(collection(database, "BD 22"))
 
 export default database;
