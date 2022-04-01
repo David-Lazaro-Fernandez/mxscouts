@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Grid,
+  Container,
   CssBaseline,
   CircularProgress,
 } from "@mui/material";
@@ -8,6 +9,7 @@ import {
 import RightMenu from "../../components/RightMenu";
 import MidDashboard from "../../components/MidDashBoard/MidDashboard";
 import LeftDrawer from '../../components/LeftDrawer/LeftDrawer';
+import RightDrawer from "../../components/RightDrawer/RightDrawer";
 import {getActivities, getScoutsWithoutCredentials, getScouts} from '../../firebase.config';
 
 
@@ -50,7 +52,7 @@ const AdminPage = () => {
 
   return (
     <div
-      style={{ backgroundColor: "#F2F7FA", height: `${window.innerHeight}px` }}
+      style={{ backgroundColor: "#F2F7FA", height: `${window.innerHeight}px`, marginTop:'25px' }}
     >
       <CssBaseline />
       <Grid
@@ -62,13 +64,14 @@ const AdminPage = () => {
         sx={{ heigth: "100%",  }}
         
       >
-        <Grid item lg={2} sx={{ backgroundColor: "white", textAlign:'center' }}>
+        <Grid item lg={2} md={2} sx={{ backgroundColor: "white", textAlign:'center' }}>
           <LeftDrawer/>
           {/* <LeftMenu
           itemList = {leftMenuItemList}
           /> */}
         </Grid>
-        <Grid item lg={9} sx={{ backgroundColor: "#F2F7FA",  textAlign:'center'}}>
+        <Grid item lg={9} md={8} sx={{ backgroundColor: "#F2F7FA",  textAlign:'center'}}>
+          <Container>
           {
             fetched ? (
             <MidDashboard
@@ -80,10 +83,13 @@ const AdminPage = () => {
               <CircularProgress sx={{color:'#2E2270'}} />
             ) 
           }
+          </Container>
+          
           
         </Grid>
-        <Grid item lg={1} sx={{ backgroundColor: "#F2F7FA", textAlign:'center', height:`${windowHeight}px`, display:'flex', borderLeft:'1px solid #E1E1E1'}}>
-          <RightMenu />
+        <Grid item lg={1} md ={2} sx={{ backgroundColor: "#F2F7FA", textAlign:'center', height:`${windowHeight}px`, display:'flex', borderLeft:'1px solid #E1E1E1'}}>
+          {/* <RightMenu /> */}
+          <RightDrawer/>
         </Grid>
       </Grid>
     </div>

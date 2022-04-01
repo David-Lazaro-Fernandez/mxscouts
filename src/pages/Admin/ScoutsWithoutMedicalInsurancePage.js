@@ -133,6 +133,7 @@ const ScoutsWithoutMedicalInsurancePage = () => {
           <Grid
             item
             lg={2}
+            md={2}
             sx={{ backgroundColor: "white", textAlign: "center" }}
           >
             <LeftDrawer />
@@ -140,6 +141,7 @@ const ScoutsWithoutMedicalInsurancePage = () => {
           <Grid
             item
             lg={9}
+            md={8}
             sx={{ backgroundColor: "#F2F7FA", textAlign: "center" }}
           >
             {fetched ? (
@@ -151,6 +153,7 @@ const ScoutsWithoutMedicalInsurancePage = () => {
           <Grid
             item
             lg={1}
+            md={2}
             sx={{
               backgroundColor: "#F2F7FA",
               textAlign: "center",
