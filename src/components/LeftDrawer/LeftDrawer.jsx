@@ -56,7 +56,7 @@ const LeftDrawer = () => {
       alt: "Health Insurance Icon",
       img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Black%20Health%20Insurance.png?alt=media&token=8eafa475-973b-4162-b75a-d28302fa023c",
       text: "Seguro de cobertura",
-      href:'#'
+      href:'/admin/no-insurance'
     },
   ];
   const rightMenuItemList = [

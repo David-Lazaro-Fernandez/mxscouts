@@ -7,6 +7,7 @@ import AdminPage from './pages/Admin/AdminPage';
 import ScoutTablePage from './pages/Admin/ScoutTablePage';
 import TablesPage from './pages/Admin/TablesPage'
 import ActivitiesTablePage from './pages/Admin/ActivitiesTablePage';
+import ScoutsWithoutMedicalInsurancePage from './pages/Admin/ScoutsWithoutMedicalInsurancePage';
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Admin/tables/scouts22" element={<ScoutTablePage/>}/>
         <Route path="/Admin/tables/activities22" element={<ActivitiesTablePage/>}/>
         <Route path="/Admin/tables" element={<TablesPage/>}/>
+        <Route path='/admin/no-insurance' element={<ScoutsWithoutMedicalInsurancePage/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   Grid,
   CssBaseline,
+  CircularProgress,
 } from "@mui/material";
 
 import RightMenu from "../../components/RightMenu";
@@ -76,7 +77,7 @@ const AdminPage = () => {
               Scouts = {scouts}
             />    
             ) : (
-              <div>Loading</div>
+              <CircularProgress sx={{color:'#2E2270'}} />
             ) 
           }
           

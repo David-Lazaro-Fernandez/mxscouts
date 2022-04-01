@@ -4,7 +4,7 @@ import {
   getFirestore,
   getDocs,
   query,
-  where
+  where,
 } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,7 +14,7 @@ const firebaseConfig = {
   projectId: "agsmac-6f212",
   storageBucket: "agsmac-6f212.appspot.com",
   messagingSenderId: "1095093239497",
-  appId: "1:1095093239497:web:4ae6b4bfc8755b90349718"
+  appId: "1:1095093239497:web:4ae6b4bfc8755b90349718",
 };
 
 // Initialize Firebase
@@ -23,21 +23,39 @@ const actualMont = d.getMonth() + 1;
 const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
 
-export const getBirthdayScouts = () => getDocs(
-  query(
-    collection(database, "BD 22"), 
-    where("mes", "==", actualMont) )
-)
+//Scouts
+export const getScouts = () => getDocs(collection(database, "BD 22"));
 
-export const getActivities = () => getDocs(collection(database, "Actividades 22"))
+export const getBirthdayScouts = () =>
+  getDocs(
+    query(collection(database, "BD 22"), 
+    where("mes", "==", actualMont))
+  );
 
-export const getScoutsWithoutCredentials = () => getDocs(
-  query(
-    collection(database, "BD 22"),
-    where("credencial", "==", "")
-  )
-)
+export const getScoutsWithoutCredentials = () =>
+  getDocs(
+    query(collection(database, "BD 22"), 
+    where("credencial", "==", ""))
+  );
 
-export const getScouts = () => getDocs(collection(database, "BD 22"))
+export const getScoutsWithoutMedicalInsuranceNA = () =>
+  getDocs(
+    query(collection(database, "BD 22"), 
+    where("seguro", "==", "#N/A"))
+  );
+
+export const getScoutsWithoutMedicalInsurance = () =>
+  getDocs(
+    query(collection(database, "BD 22"), 
+    where("seguro", "==", "Sin Cobertura"))
+  );
+
+export const getScoutsWithExpiredMedicalInsurance = () =>
+  getDocs(
+    query(collection(database, "BD 22"), 
+    where("seguro", "<", new Date()))
+  );
+//Activities
+export const getActivities = () =>  getDocs(collection(database, "Actividades 22"));
 
 export default database;
