@@ -42,8 +42,8 @@ const ActivitiesTable = (props) => {
           </TableHead>
           <TableBody>
             {ActivitiesItems.map((activity) => {
-              const start_hour = new Date(activity.start_hour.seconds * 1000).toLocaleTimeString('en-us')
-              const finish_hour = new Date(activity.finish_hour.seconds * 1000).toLocaleTimeString('en-us')
+              const start_hour = new Date(activity.start_hour.seconds * 1000).toLocaleTimeString()
+              const finish_hour = new Date(activity.finish_hour.seconds * 1000).toLocaleTimeString()
               return (
                 <TableRow>
                   <TableCell>{activity.id}</TableCell>

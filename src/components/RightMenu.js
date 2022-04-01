@@ -42,7 +42,7 @@ const RightMenu = () => {
         <Container>
           {rightMenuItemList.map((item) => {
             return (
-              <>
+              <div style={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                 <Button sx={{ backgroundColor: "white", color: "#2E2270" }}>
                   <div
                     style={{
@@ -67,8 +67,8 @@ const RightMenu = () => {
                     />
                   </div>
                 </Button>
-                <h5 style={{textAlign:'center',}}>{item.text}</h5>
-              </>
+                <h5 style={{textAlign:'center', color:'#2E2270'}}>{item.text}</h5>
+              </div>
             );
           })}
         </Container>

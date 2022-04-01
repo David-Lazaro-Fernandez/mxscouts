@@ -1,7 +1,8 @@
 import React from "react";
 import {Paper, Typography, Link} from "@mui/material";
 
-const NumberOfScouts = () => {
+const NumberOfScouts = (props) => {
+  const {Scouts} = props;
   return (
     <>
       <Paper
@@ -19,10 +20,10 @@ const NumberOfScouts = () => {
           color="#2E2270"
           sx={{ fontWeight: "500", fontSize: "18px" }}
         >
-          # Scouts Registrados
+          # Scouts Registrados 2022
         </Typography>
         <Typography variant="h4" sx={{ fontSize: "36px" }}>
-          3000
+          {Scouts.length}
         </Typography>
         <Typography variant="body" sx={{ fontSize: "12px" }} color="#959595">
           Ultimo registro: 12 de marzo del 2022 a las 10:00 PM
