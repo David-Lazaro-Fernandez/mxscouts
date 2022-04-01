@@ -53,7 +53,7 @@ const ScoutsTablePage = () => {
             cia: doc.data().cia,
             sexo: doc.data().sexo,
             remesa: doc.data().remesa,
-            credencial: doc.data().credencial === '' ? 'Sin Credencial' : doc.data().credencial,
+            credencial: doc.data().credencial === '' ? 'Sin Credencial' : doc.data,
             seguro:
               typeof doc.data().seguro === "object"
                 ? 
