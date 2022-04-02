@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Grid, CssBaseline, CircularProgress } from "@mui/material";
-import { getActivities } from "../../firebase.config";
-import Activities from "../../components/Tables/Activities";
-import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
-import RightMenu from "../../components/RightMenu";
+import React, {useState, useEffect} from "react";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
-const ActivitiesTablePage = () => {
+import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
+import Activities from "../../components/Tables/Activities";
+
+import {getActivities} from '../../firebase.config';
+
+const  ActivitiesTablePage = (props) => {
+  const {pageName} = props;
+  //LeftDrawer hooks
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
+  //Activities hooks
   const [activities, setActivities] = useState([]);
   const [fetched, setFetched] = useState(false);
-  const windowHeight = window.innerHeight;
+
   useEffect(() => {
     const fetchData = async () => {
       //Fetch all scouts
@@ -32,49 +40,19 @@ const ActivitiesTablePage = () => {
     fetchData();
   }, []);
 
-  return (
-    <div
-      style={{ backgroundColor: "#F2F7FA", height: `${window.innerHeight}px` }}
-    >
-      <CssBaseline />
-      <Grid
-        container
-        spacing={0}
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        sx={{ heigth: "100%" }}
-      >
-        <Grid
-          item
-          lg={2}
-          sx={{ backgroundColor: "white", textAlign: "center" }}
-        >
-          <LeftDrawer />
-        </Grid>
-        <Grid
-          item
-          lg={9}
-          sx={{ backgroundColor: "#F2F7FA", textAlign: "center" }}
-        >
-          {fetched ? <Activities ActivitiesList={activities} /> : <CircularProgress sx={{color:'#2E2270'}} />}
-        </Grid>
-        <Grid
-          item
-          lg={1}
-          sx={{
-            backgroundColor: "#F2F7FA",
-            textAlign: "center",
-            height: `${windowHeight}px`,
-            display: "flex",
-            borderLeft: "1px solid #E1E1E1",
-          }}
-        >
-          <RightMenu />
-        </Grid>
-      </Grid>
-    </div>
-  );
-};
 
+  return (
+    <Box sx={{ display: "flex" }}>
+      <LeftDrawer open={open} setOpen={setOpen} theme={theme} pageName={pageName} />
+      <Box component="main" sx={{width:'100%', p:3, marginTop:'60px', backgroundColor:'#F2F7FA'}}>
+        {fetched ? <Activities ActivitiesList={activities} /> : (
+          <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+            <CircularProgress sx={{color:'#2E2270', marginTop:'100px'}} />
+          </div>
+          
+        )}
+      </Box>
+    </Box>
+  );
+}
 export default ActivitiesTablePage;

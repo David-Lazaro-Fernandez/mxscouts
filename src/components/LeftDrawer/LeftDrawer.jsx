@@ -1,183 +1,214 @@
 import React from "react";
-import {
-  Grid,
-  Container,
-  Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Divider,
-  CssBaseline,
-  Toolbar,
-} from "@mui/material";
-import MailIcon from "@mui/icons-material/Mail";
-import InboxIcon from "@mui/icons-material/Inbox";
-const LeftDrawer = () => {
-  const leftMenuItemList = [
-    {
-      key: "1",
-      alt: "Home Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/home%20icon.png?alt=media&token=500ed7b9-beff-4d9b-b57b-90c7ab969b6c",
-      text: "Inicio",
-      href:"/admin",
+import {styled} from '@mui/material/styles';
+import MuiDrawer from '@mui/material/Drawer';
+import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+
+import {leftMenuItemList} from '../../LeftDrawerItems';
+
+const drawerWidth = 240;
+
+const openedMixin = (theme) => ({
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    overflowX: "hidden",
+  });
+
+  const closedMixin = (theme) => ({
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: "hidden",
+    width: `calc(${theme.spacing(7)} + 1px)`,
+    [theme.breakpoints.up("sm")]: {
+      width: `calc(${theme.spacing(8)} + 1px)`,
     },
-    {
-      key: "2",
-      alt: "Tables Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Black%20Tables%20Icon.png?alt=media&token=48affde3-0c79-49bd-bcac-605e098bfebb",
-      text: "Ver Tablas",
-      href:"/admin/tables",
-    },
-    {
-      key: "3",
-      alt: "Person Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/person.png?alt=media&token=c1801389-9052-43b9-bb63-9a113aaa67a5",
-      text: "Ver mis datos",
-      href:'#'
-    },
-    {
-      key: "4",
-      alt: "Google Sheets Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Black%20Google%20Sheet.png?alt=media&token=5af228d4-145f-4ff1-90e0-2b2e6b33e606",
-      text: "Google Sheets",
-      href:'https://docs.google.com/spreadsheets/d/1dWlCoeBy5BztXgbQCAjuDBx3KhVdYcPjeeVAMdtgOSA/edit?usp=sharing'
-    },
-    {
-      key: "5",
-      alt: "Scouter Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/pioneer.png?alt=media&token=dd8cc8ee-5fdf-4f17-930d-61e177533657",
-      text: "Lista de Scouts",
-      href:'/admin/tables/scouts22'
-    },
-    {
-      key: "6",
-      alt: "Health Insurance Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Black%20Health%20Insurance.png?alt=media&token=8eafa475-973b-4162-b75a-d28302fa023c",
-      text: "Seguro de cobertura",
-      href:'/admin/no-insurance'
-    },
-  ];
-  const rightMenuItemList = [
-    {
-      key: "1",
-      alt: "Camping Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/trekking.png?alt=media&token=24daa361-beb0-471c-9dbd-8df1f7c5f000",
-      text: "Agregar actividad",
-    },
-    {
-      key: "2",
-      alt: "Credential Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/card%20(1).png?alt=media&token=ef14d516-c45d-4a76-997b-b7f71203c59d",
-      text: "Imprimir credencial",
-    },
-    {
-      key: "3",
-      alt: "Firebase Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/firebase.png?alt=media&token=34cba865-1e37-44a6-813a-d0ea0bf98615",
-      text: "Ir a Firebase",
-    },
-    {
-      key: "4",
-      alt: "GCP Icon",
-      img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Black%20GCP%20Icon.png?alt=media&token=c8849361-de57-46a9-86ed-f8a2785cf2ca",
-      text: "Ir a Google Cloud Platform",
-    },
-  ];
-  
+  });
+
+  const DrawerHeader = styled("div")(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+  }));
+
+  const AppBar = styled(MuiAppBar, {
+    shouldForwardProp: (prop) => prop !== "open",
+  })(({ theme, open }) => ({
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    ...(open && {
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px)`,
+      transition: theme.transitions.create(["width", "margin"], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    }),
+  }));
+
+  const Drawer = styled(MuiDrawer, {
+    shouldForwardProp: (prop) => prop !== "open",
+  })(({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: "nowrap",
+    boxSizing: "border-box",
+    ...(open && {
+      ...openedMixin(theme),
+      "& .MuiDrawer-paper": openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+      "& .MuiDrawer-paper": closedMixin(theme),
+    }),
+  }));
+
+const LeftDrawer = (props) => {
+  const {open, setOpen, theme, pageName} = props;
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <Drawer variant="permanent" anchor="left">
-          <Toolbar />
-          <Grid
-            container
-            spacing={0}
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-            style={{ margin: "0px 0px 50px 0px" }}
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{ backgroundColor: "white", boxShadow: "none", backgroundColor:'#F2F7FA' }}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={()=>setOpen(true)}
+            edge="start"
+            sx={{
+              backgroundColor:'white',
+              borderRadius:'5px',
+              ...(open && { display: "none" }),
+            }}
           >
-            <Grid item>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Logo.png?alt=media&token=71ae8e1c-6b35-4ed6-a817-1e0f958495a9"
-                alt="AGSMAC Logo"
-                width="100px"
-                style={{ marginBottom: "40px" }}
-              />
-            </Grid>
-            {/*User Image*/}
-            <Container>
-              <Grid
-                item
-                style={{ display: "flex", flexDirection: "row", width: "100%" }}
+            <MenuIcon sx={{ color: "#2E2270" }} />
+          </IconButton>
+          <Typography
+            noWrap
+            component="div"
+            sx={{ color: "#2E2270", width:'100%', textAlign: 'center', fontWeight:'500', fontSize:'28px' }}
+          >
+            {pageName}
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Drawer variant="permanent" open={open}>
+        <DrawerHeader>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Logo.png?alt=media&token=71ae8e1c-6b35-4ed6-a817-1e0f958495a9"
+            width="100px"
+            style={{ marginRight: "50px" }}
+          />
+          <IconButton onClick={()=>setOpen(false)}>
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon />
+            ) : (
+              <>
+                <ChevronLeftIcon sx={{ color: "#2E2270" }} />
+              </>
+            )}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "20px 0px 20px 0px",
+          }}
+        >
+          <img
+            src="https://exploringbits.com/wp-content/uploads/2022/01/Luffy-PFP-1-1024x1024.jpg"
+            style={{
+              width: "50px",
+              height: "50px",
+              borderRadius: "50%",
+              marginRight: open ? "10px" : "0px",
+            }}
+          />
+          <div>
+            <Typography
+              component="div"
+              variant="subtitle2"
+              sx={{ display: open ? "block" : "none", color: "#2E2270" }}
+            >
+              Sergio Marquez
+            </Typography>
+            <Typography
+              component="div"
+              variant="body2"
+              sx={{ display: open ? "block" : "none", color: "#2E2270" }}
+            >
+              Scouters y Dirigentes
+            </Typography>
+          </div>
+        </Box>
+        <Divider />
+        <List>
+          {leftMenuItemList.map((item) => (
+            <ListItemButton
+              key={item.text}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+              component = "a"
+              href={item.href}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
               >
                 <img
-                  src="https://scontent.fntr10-2.fna.fbcdn.net/v/t1.6435-9/153605599_10158911782994793_5107387199032886651_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeGwd_DdZCoyptesCB75bpFwZ8Pwz6pNAR5nw_DPqk0BHhWA2UULqM9sfHLIPAEb1F-UUsLqX0KnIKIOnngOrLs1&_nc_ohc=Q9dbs1I_K7wAX8p_i9H&_nc_ht=scontent.fntr10-2.fna&oh=00_AT-qQ1Rsq0L4ajJ0rxvgXWny44Mo1xeW9iZ-A3gk8MCFvQ&oe=6262AAC6"
-                  alt="Sergio's image"
-                  width="75px"
+                  src={item.img}
+                  width="25px"
                   style={{
-                    border: "0px",
-                    borderRadius: "50%",
-                    marginRight: "20px",
+                    filter:
+                      "invert(13%) sepia(26%) saturate(6434%) hue-rotate(240deg) brightness(93%) contrast(97%)",
                   }}
                 />
-                <div
-                  style={{
-                    textAlign: "left",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    justifyContent: "center",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#2E2270",
-                      fontWeight: "600",
-                      fontSize: "14px",
-                      margin: "0px",
-                    }}
-                  >
-                    Sergio Marquez
-                  </p>
-                  <p
-                    style={{
-                      color: "#959595",
-                      fontWeight: "300",
-                      fontSize: "12px",
-                      margin: "0px",
-                    }}
-                  >
-                    Scouters y dirigentes
-                  </p>
-                </div>
-              </Grid>
-            </Container>
-          </Grid>
-          <Divider />
-          <List>
-            {leftMenuItemList.map((item) => (
-              <ListItem button component="a" key={item.key} href={item.href}>
-                <ListItemIcon>
-                  <img
-                    src={item.img}
-                    style={{
-                      filter:
-                        "invert(13%) sepia(26%) saturate(6434%) hue-rotate(240deg) brightness(93%) contrast(97%)",
-                    }}
-                    width="25px"
-                  />
-                </ListItemIcon>
-                <ListItemText primary={item.text}  sx={{color: "#2E2270", fontWeight: "500"}} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-        </Drawer>
-      </Box>
+              </ListItemIcon>
+              <ListItemText
+                primary={item.text}
+                sx={{ opacity: open ? 1 : 0, color: "#2E2270" }}
+              />
+            </ListItemButton>
+          ))}
+        </List>
+        <Divider />
+      </Drawer>
     </>
   );
 };

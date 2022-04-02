@@ -18,9 +18,9 @@ function App() {
         <Route path="/SignUp" element={<SignUp/>}/>
         <Route path="/Admin" element={<AdminPage/>}/>
         <Route path="/Admin/tables/scouts22" element={<ScoutTablePage/>}/>
-        <Route path="/Admin/tables/activities22" element={<ActivitiesTablePage/>}/>
+        <Route path="/Admin/tables/activities22" element={<ActivitiesTablePage pageName="Actividades de 2022"/>}/>
         <Route path="/Admin/tables" element={<TablesPage/>}/>
-        <Route path='/admin/no-insurance' element={<ScoutsWithoutMedicalInsurancePage/>} />
+        <Route path='/admin/no-insurance' element={<ScoutsWithoutMedicalInsurancePage />} />
       </Routes>
     </BrowserRouter>
   );

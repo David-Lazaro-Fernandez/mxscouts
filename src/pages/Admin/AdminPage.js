@@ -71,7 +71,7 @@ const AdminPage = () => {
           /> */}
         </Grid>
         <Grid item lg={9} md={8} sx={{ backgroundColor: "#F2F7FA",  textAlign:'center'}}>
-          <Container>
+          
           {
             fetched ? (
             <MidDashboard
@@ -83,12 +83,12 @@ const AdminPage = () => {
               <CircularProgress sx={{color:'#2E2270'}} />
             ) 
           }
-          </Container>
+          
           
           
         </Grid>
         <Grid item lg={1} md ={2} sx={{ backgroundColor: "#F2F7FA", textAlign:'center', height:`${windowHeight}px`, display:'flex', borderLeft:'1px solid #E1E1E1'}}>
-          {/* <RightMenu /> */}
+          
           <RightDrawer/>
         </Grid>
       </Grid>
