@@ -5,9 +5,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 import ScoutTable from "../../components/Tables/ScoutTable";
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
 
-import { getScouts } from "../../firebase.config";
+import { getScouts20 } from "../../firebase.config";
 
-const ScoutsTablePage = (props) => {
+const Scouts20TablePage = (props) => {
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -18,7 +18,7 @@ const ScoutsTablePage = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       //Fetch all scouts
-      const scoutQuerySnapshot = await getScouts();
+      const scoutQuerySnapshot = await getScouts20();
       scoutQuerySnapshot.forEach((doc) => {
         setScouts((prevData) => [
           ...prevData,
@@ -119,4 +119,4 @@ const ScoutsTablePage = (props) => {
   );
 };
 
-export default ScoutsTablePage;
+export default Scouts20TablePage;

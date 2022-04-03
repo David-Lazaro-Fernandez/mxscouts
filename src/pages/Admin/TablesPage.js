@@ -1,60 +1,36 @@
-import React from "react";
-import { Grid, CssBaseline } from "@mui/material";
-import RightMenu from "../../components/RightMenu";
+import React,{useState} from "react";
+import Box from '@mui/material/Box';
+import {useTheme} from '@mui/material/styles';
 import LeftDrawer from '../../components/LeftDrawer/LeftDrawer';
 import Main from '../../components/Tables/Main';
 
-
-const windowHeight = window.innerHeight;
-const TablesPage = () => {
+const TablesPage = (props) => {
+  const { pageName } = props;
+  //LeftDrawer hooks
+  const theme = useTheme();
+  const [open, setOpen] = useState(false)
   return (
-    <>
-      <div
-        style={{
+    <Box>
+<Box sx={{ display: "flex" }}>
+      <LeftDrawer
+        open={open}
+        setOpen={setOpen}
+        theme={theme}
+        pageName={pageName}
+      />
+      <Box
+        component="main"
+        sx={{
+          width: "100%",
+          p: 3,
+          marginTop: "60px",
           backgroundColor: "#F2F7FA",
-          height: `${window.innerHeight}px`,
         }}
       >
-        <CssBaseline />
-        <Grid
-          container
-          spacing={0}
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ heigth: "100%" }}
-        >
-          <Grid
-            item
-            lg={2}
-            sx={{ backgroundColor: "white", textAlign: "center" }}
-          >
-            <LeftDrawer />
-            
-          </Grid>
-          <Grid
-            item
-            lg={9}
-            sx={{ backgroundColor: "#F2F7FA", textAlign: "center" }}
-          >
-              <Main/>
-          </Grid>
-          <Grid
-            item
-            lg={1}
-            sx={{
-              backgroundColor: "#F2F7FA",
-              textAlign: "center",
-              height: `${windowHeight}px`,
-              display: "flex",
-              borderLeft: "1px solid #E1E1E1",
-            }}
-          >
-            <RightMenu />
-          </Grid>
-        </Grid>
-      </div>
-    </>
+        <Main />
+      </Box>
+    </Box>
+    </Box>
   );
 };
 

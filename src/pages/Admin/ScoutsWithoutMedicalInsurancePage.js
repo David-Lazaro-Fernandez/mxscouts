@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Grid, CssBaseline, CircularProgress } from "@mui/material";
+import {useTheme} from '@mui/material/styles';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
-import RightMenu from "../../components/RightMenu";
 import NoInsurance from "../../components/MedicalInsurancePage/NoInsurance";
 
 import {
@@ -11,10 +12,15 @@ import {
   getScoutsWithoutMedicalInsurance,
 } from "../../firebase.config";
 
-const ScoutsWithoutMedicalInsurancePage = () => {
+const ScoutsWithoutMedicalInsurancePage = (props) => {
+  //Left Drawer states
+  const { pageName } = props;
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  //Main content states
   const [insurance, setInsurance] = useState([]);
   const [fetched, setFetched] = useState(false);
-  const windowHeight = window.innerHeight;
+  
   useEffect(() => {
     const fetchData = async () => {
       //Fetch those ones with #N/A
@@ -114,59 +120,38 @@ const ScoutsWithoutMedicalInsurancePage = () => {
     fetchData();
   }, []);
   return (
-    <>
-      <div
-        style={{
+    <Box sx={{ display: "flex" }}>
+      <LeftDrawer
+        open={open}
+        setOpen={setOpen}
+        theme={theme}
+        pageName={pageName}
+      />
+      <Box
+        component="main"
+        sx={{
+          width: "100%",
+          p: 3,
+          marginTop: "60px",
           backgroundColor: "#F2F7FA",
-          height: `${window.innerHeight}px`,
         }}
       >
-        <CssBaseline />
-        <Grid
-          container
-          spacing={0}
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ heigth: "100%" }}
-        >
-          <Grid
-            item
-            lg={2}
-            md={2}
-            sx={{ backgroundColor: "white", textAlign: "center" }}
-          >
-            <LeftDrawer />
-          </Grid>
-          <Grid
-            item
-            lg={9}
-            md={8}
-            sx={{ backgroundColor: "#F2F7FA", textAlign: "center" }}
-          >
-            {fetched ? (
-              <NoInsurance ScoutList={insurance} />
-            ) : (
-              <CircularProgress sx={{ color: "#2E2270" }} />
-            )}
-          </Grid>
-          <Grid
-            item
-            lg={1}
-            md={2}
-            sx={{
-              backgroundColor: "#F2F7FA",
-              textAlign: "center",
-              height: `${windowHeight}px`,
+        {fetched ? (
+          <NoInsurance ScoutList={insurance} />
+        ) : (
+          <div
+            style={{
               display: "flex",
-              borderLeft: "1px solid #E1E1E1",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <RightMenu />
-          </Grid>
-        </Grid>
-      </div>
-    </>
+            <CircularProgress sx={{ color: "#2E2270", marginTop: "100px" }} />
+          </div>
+        )}
+      </Box>
+    </Box>
   );
 };
 

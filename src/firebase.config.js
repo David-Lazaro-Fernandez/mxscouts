@@ -30,7 +30,15 @@ export const getBirthdayScouts = () =>
   getDocs(
     query(collection(database, "BD 22"), 
     where("mes", "==", actualMont))
-  );
+);
+
+export const getScouts21 = () => getDocs(collection(database, "BD 21"))
+
+export const getScouts20 = () => getDocs(collection(database, "BD 20"))
+
+export const getScouts19 = () => getDocs(collection(database, "BD 19"))
+
+export const getScouts18 = () => getDocs(collection(database, "BD 18"))
 
 export const getScoutsWithoutCredentials = () =>
   getDocs(

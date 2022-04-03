@@ -25,7 +25,7 @@ const CustomToolbar = () => {
 
 const ScoutTable = (props) => {
   const { ScoutList } = props;
-
+  console.log(ScoutList)
   return (
     <>
       <div
@@ -59,13 +59,6 @@ const ScoutTable = (props) => {
           height: "600px",
         }}
       >
-        <Typography
-          variant="h5"
-          color="#2E2270"
-          style={{ margin: "15px 0px 10px 15px", fontWeight: "500" }}
-        >
-          Lista de Scouts 2022
-        </Typography>
 
         <DataGrid
           rows={ScoutList}

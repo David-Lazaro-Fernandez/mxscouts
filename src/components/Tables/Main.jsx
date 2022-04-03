@@ -19,16 +19,16 @@ const Main = () => {
           <Button sx={buttonStyle} href="/admin/tables/activities22">Actividades 2022</Button>
         </Grid>
         <Grid item xl={6} lg={6}>
-          <Button sx={buttonStyle}>Scouts 2021</Button>
+          <Button sx={buttonStyle} href="/admin/tables/scouts21">Scouts 2021</Button>
         </Grid>
         <Grid item xl={6} lg={6}>
-          <Button sx={buttonStyle}>Scouts 2020</Button>
+          <Button sx={buttonStyle} href="/admin/tables/scouts20">Scouts 2020</Button>
         </Grid>
         <Grid item xl={6} lg={6}>
-          <Button sx={buttonStyle}>Scouts 2019</Button>
+          <Button sx={buttonStyle} href="/admin/tables/scouts19">Scouts 2019</Button>
         </Grid>
         <Grid item xl={6} lg={6}>
-          <Button sx={buttonStyle}>Scouts 2018</Button>
+          <Button sx={buttonStyle} href="/admin/tables/scouts18">Scouts 2018</Button>
         </Grid>
 
       </Grid>
