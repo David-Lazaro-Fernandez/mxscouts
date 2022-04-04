@@ -19,7 +19,8 @@ const inputText = {
   marginRight: "20px",
   width: "400px",
 };
-const Direccion = () => {
+const Direccion = (props) => {
+  const {scoutData, setScoutData} = props;
   return (
     <>
       {/*Street*/}
@@ -32,6 +33,9 @@ const Direccion = () => {
           label="Calle"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e)=>{
+            setScoutData({...scoutData,calle:e.target.value})
+          }}
         />
       </FormControl>
       {/*Home number*/}
@@ -44,6 +48,9 @@ const Direccion = () => {
           label="# Exterior"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e)=>{
+            setScoutData({...scoutData,num_exterior:e.target.value})
+          }}
         />
         <TextField
           id="scout-id"
@@ -51,6 +58,9 @@ const Direccion = () => {
           variant="outlined"
           sx={inputTextField}
           style={{ marginLeft: "20px" }}
+          onChange={(e)=>{
+            setScoutData({...scoutData,num_interior:e.target.value})
+          }}
         />
       </FormControl>
       {/*Colony*/}
@@ -63,6 +73,9 @@ const Direccion = () => {
           label="Colonia"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e)=>{
+            setScoutData({...scoutData,colonia:e.target.value})
+          }}
         />
       </FormControl>
       {/*P.C*/}
@@ -75,6 +88,9 @@ const Direccion = () => {
           label="C.P"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e)=>{
+            setScoutData({...scoutData,cp:e.target.value})
+          }}
         />
       </FormControl>
       {/*City*/}
@@ -87,6 +103,9 @@ const Direccion = () => {
           label="Delegación"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e)=>{
+            setScoutData({...scoutData,delegacion:e.target.value})
+          }}
         />
       </FormControl>
     </>

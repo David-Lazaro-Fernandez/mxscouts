@@ -27,8 +27,29 @@ const greetTypography = {
 };
 const header = { color: "#2E2270", fontWeight: "600" };
 const subHeader = { color: "#9E9E9E", fontWeight: "300" };
-const buttonStyle = { p:2, backgroundColor: "#2E2270", marginBottom:'40px', color:'white', '&:hover':{color:'#2E2270'}}
-const Datos = () => {
+const buttonStyle = {
+  p: 2,
+  backgroundColor: "#2E2270",
+  marginBottom: "40px",
+  color: "white",
+  "&:hover": { color: "#2E2270" },
+};
+const Datos = (props) => {
+  const {
+    scoutData,
+    setScoutData,
+    sex,
+    setSex,
+    birthDate,
+    setBirthDate,
+    section,
+    setSection,
+    group,
+    setGroup,
+    secondaryGroup,
+    setSecondaryGroup,
+  } = props;
+
   return (
     <>
       <Box sx={boxStyle}>
@@ -90,7 +111,14 @@ const Datos = () => {
                 alignItems: "flex-start",
               }}
             >
-              <DatosPersonales />
+              <DatosPersonales
+                sex={sex}
+                setSex={setSex}
+                scoutData={scoutData}
+                setScoutData={setScoutData}
+                birthDate={birthDate}
+                setBirthDate={setBirthDate}
+              />
             </Grid>
             <Grid
               item
@@ -121,7 +149,7 @@ const Datos = () => {
                 alignItems: "flex-start",
               }}
             >
-              <Direccion />
+              <Direccion scoutData={scoutData} setScoutData={setScoutData} />
             </Grid>
             <Grid
               item
@@ -152,7 +180,16 @@ const Datos = () => {
                 alignItems: "flex-start",
               }}
             >
-              <DatosDeScout />
+              <DatosDeScout
+                section={section}
+                setSection={setSection}
+                group={group}
+                setGroup={setGroup}
+                secondaryGroup={secondaryGroup}
+                setSecondaryGroup={setSecondaryGroup}
+                scoutData={scoutData}
+                setScoutData={setScoutData}
+              />
             </Grid>
             <Grid
               item
@@ -165,7 +202,53 @@ const Datos = () => {
                 alignItems: "flex-end",
               }}
             >
-              <Button sx={buttonStyle}>Actualizar Mis Datos</Button>
+              <Button
+                onClick={() => {
+                  setScoutData({
+                    ...scoutData,
+                    nombre_completo:
+                      scoutData.nombres +
+                      " " +
+                      scoutData.apellido_paterno +
+                      " " +
+                      scoutData.apellido_materno,
+                    edad:
+                      scoutData.fecha_de_nacimiento > 0
+                        ? new Date().getMonth() >=
+                          scoutData.fecha_de_nacimiento.getMonth()
+                          ? new Date().getYear() -
+                            scoutData.fecha_de_nacimiento.getYear()
+                          : new Date().getYear() -
+                            scoutData.fecha_de_nacimiento.getYear() -
+                            1
+                        : "",
+                    mes: scoutData.fecha_de_nacimiento.getMonth(),
+                    edad_con_meses:
+                      //Year Calculation
+                      scoutData.fecha_de_nacimiento > 0
+                        ? new Date().getMonth() >=
+                          scoutData.fecha_de_nacimiento.getMonth()
+                          ? new Date().getYear() -
+                            scoutData.fecha_de_nacimiento.getYear() +
+                            " años " +
+                            //Month Calculation
+                            scoutData.fecha_de_nacimiento.getMonth() +
+                            " meses"
+                          : new Date().getYear() -
+                            scoutData.fecha_de_nacimiento.getYear() -
+                            1 +
+                            " años " +
+                            //Month Calculation
+                            scoutData.fecha_de_nacimiento.getMonth() +
+                            " meses"
+                        : "",
+                  });
+                  console.log(scoutData)
+                }}
+                sx={buttonStyle}
+              >
+                Actualizar Mis Datos
+              </Button>
             </Grid>
           </Grid>
         </Container>

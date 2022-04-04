@@ -5,8 +5,11 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
-import Typography from '@mui/material/Typography';
-const DatosPersonales = () => {
+import Typography from "@mui/material/Typography";
+const DatosPersonales = (props) => {
+  const { sex, setSex, scoutData, setScoutData, birthDate, setBirthDate } =
+    props;
+
   const inputBox = {
     display: "flex",
     flexDirection: "row",
@@ -35,6 +38,9 @@ const DatosPersonales = () => {
           label="ID"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e) => {
+            setScoutData({...scoutData, id: e.target.value });
+          }}
         />
       </FormControl>
       {/*Sexo*/}
@@ -47,10 +53,15 @@ const DatosPersonales = () => {
           id="scout-id"
           label="Sexo"
           variant="outlined"
+          value={sex}
+          onChange={(e) => {
+            setSex(e.target.value);
+            setScoutData({ ...scoutData,sexo: e.target.value });
+          }}
           sx={inputTextField}
         >
-          <MenuItem value={10}>Masculino</MenuItem>
-          <MenuItem value={20}>Femenino</MenuItem>
+          <MenuItem value={"Masculino"}>Masculino</MenuItem>
+          <MenuItem value={"Femenino"}>Femenino</MenuItem>
         </TextField>
       </FormControl>
       {/*Name(s)*/}
@@ -63,6 +74,10 @@ const DatosPersonales = () => {
           label="Nombre(s)"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e) => {
+            setScoutData({ ...scoutData,nombres: e.target.value });
+            console.log(scoutData.nombres);
+          }}
         />
       </FormControl>
       {/*Last Names*/}
@@ -75,6 +90,10 @@ const DatosPersonales = () => {
           label="Apellido Paterno"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e) => {
+            setScoutData({ ...scoutData,apellido_paterno: e.target.value });
+            console.log(scoutData.apellido_paterno);
+          }}
         />
         <TextField
           id="scout-id"
@@ -82,6 +101,10 @@ const DatosPersonales = () => {
           variant="outlined"
           sx={inputTextField}
           style={{ marginLeft: "20px" }}
+          onChange={(e) => {
+            setScoutData({ ...scoutData,apellido_materno: e.target.value });
+            console.log(scoutData.apellido_materno);
+          }}
         />
       </FormControl>
       {/*Birth Date*/}
@@ -92,12 +115,31 @@ const DatosPersonales = () => {
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker
             label="Fecha de Nacimiento"
-            value={null}
+            value={birthDate}
+            onChange={(e) => {
+              setBirthDate(e);
+              setScoutData({...scoutData,fecha_de_nacimiento:birthDate,})
+            }}
             renderInput={(params) => (
               <TextField {...params} sx={{ width: "100%" }} />
             )}
           />
         </LocalizationProvider>
+      </FormControl>
+       {/*Email*/}
+       <FormControl fullWidth sx={inputBox}>
+        <Typography variant="h6" sx={inputText}>
+          Correo Electronico
+        </Typography>
+        <TextField
+          id="scout-id"
+          label="Correo Electronico"
+          variant="outlined"
+          sx={inputTextField}
+          onChange={(e) => {
+           setScoutData({...scoutData,correo_electronico:e.target.value})
+          }}
+        />
       </FormControl>
       {/*Home Phone Number*/}
       <FormControl fullWidth sx={inputBox}>
@@ -109,6 +151,9 @@ const DatosPersonales = () => {
           label="Telefono De Casa"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e) => {
+           setScoutData({...scoutData,telefono_casa:e.target.value})
+          }}
         />
       </FormControl>
       {/*Emergency Phone Number*/}
@@ -121,10 +166,12 @@ const DatosPersonales = () => {
           label="Telefono De Emergencia"
           variant="outlined"
           sx={inputTextField}
+          onChange={(e) => {
+            setScoutData({...scoutData,telefono_emergencia:e.target.value})
+           }}
         />
       </FormControl>
     </>
   );
 };
 export default DatosPersonales;
-

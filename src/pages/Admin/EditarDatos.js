@@ -1,15 +1,45 @@
-import React, {useState} from "react";
-import {useTheme} from '@mui/material/styles';
+import React, { useState, useEffect } from "react";
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
-import LeftDrawer from '../../components/LeftDrawer/LeftDrawer';
-import Datos from '../../components/EditarDatos/Datos';
+import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
+import Datos from "../../components/EditarDatos/Datos";
 const EditarDatos = (props) => {
-    const {pageName} = props;
-    const theme = useTheme();
-    const [open,setOpen] = useState(false)
+  const { pageName } = props;
+  const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  //Select TextFields
+  const [sex, setSex] = useState('');
+  const [birthDate, setBirthDate] = useState(null);
+  const [section, setSection] = useState('');
+  const [group, setGroup] = useState('');
+  const [secondaryGroup, setSecondaryGroup] = useState('');
 
-    return (
+  const [scoutData, setScoutData] = useState({
+    id: "",
+    sexo: "",
+    nombre_completo: "",
+    apellido_paterno: "",
+    apellido_materno: "",
+    nombres: "",
+    fecha_de_nacimiento: "",
+    edad_con_meses: "",
+    edad: "",
+    mes: "",
+    calle: "",
+    num_exterior: "",
+    num_interior: "",
+    colonia: "",
+    cp: "",
+    delegacion: "",
+    telefono_casa: "",
+    telefono_emergencia: "",
+    correo_electronico: "",
+    seccion: "",
+    grupo: "",
+    grupo_2: "",
+  });
+  return (
     <>
       <Box sx={{ display: "flex" }}>
         <LeftDrawer
@@ -27,9 +57,20 @@ const EditarDatos = (props) => {
             backgroundColor: "#F2F7FA",
           }}
         >
-          
-            <Datos />
-          
+          <Datos 
+          scoutData={scoutData} 
+          setScoutData={setScoutData} 
+          sex = {sex}
+          setSex = {setSex}
+          birthDate = {birthDate}
+          setBirthDate = {setBirthDate}
+          section = {section}
+          setSection = {setSection}
+          group = {group}
+          setGroup = {setGroup}
+          secondaryGroup = {secondaryGroup}
+          setSecondaryGroup = {setSecondaryGroup}
+          />
         </Box>
       </Box>
     </>
