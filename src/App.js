@@ -12,6 +12,8 @@ import Scouts21TablePage from './pages/Admin/Scouts21TablePage';
 import Scouts20TablePage from './pages/Admin/Scouts20TablePage';
 import Scouts19TablePage from './pages/Admin/Scouts19TablePage';
 import Scouts18TablePage from './pages/Admin/Scouts19TablePage';
+import EditarDatos from './pages/Admin/EditarDatos';
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +30,7 @@ function App() {
         <Route path="/Admin/tables/scouts18" element={<Scouts18TablePage pageName="Scouts 2018"/>}/>
         <Route path="/Admin/tables/activities22" element={<ActivitiesTablePage pageName="Actividades de 2022"/>}/>
         <Route path="/Admin/tables" element={<TablesPage/>}/>
+        <Route path="/Admin/editar-datos" element={<EditarDatos pageName='Editar Mis Datos' />}/>
         <Route path='/admin/no-insurance' element={<ScoutsWithoutMedicalInsurancePage pageName="Scouts sin seguro medico"/>} />
       </Routes>
     </BrowserRouter>

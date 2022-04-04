@@ -17,7 +17,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
 import {leftMenuItemList} from '../../LeftDrawerItems';
-
+import {rightMenuItemList} from './Items';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -208,6 +208,42 @@ const LeftDrawer = (props) => {
           ))}
         </List>
         <Divider />
+        <List>
+          {rightMenuItemList.map((item) => (
+            <ListItemButton
+              key={item.text}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+              component = "a"
+              href={item.href}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <img
+                  src={item.img}
+                  width="25px"
+                  style={{
+                    filter:
+                      "invert(13%) sepia(26%) saturate(6434%) hue-rotate(240deg) brightness(93%) contrast(97%)",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary={item.text}
+                sx={{ opacity: open ? 1 : 0, color: "#2E2270" }}
+              />
+            </ListItemButton>
+          ))}
+        </List>
+        
       </Drawer>
     </>
   );

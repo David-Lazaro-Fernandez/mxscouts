@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
+    "date-fns": "^2.28.0",
     "drag-drop": "^7.2.0",
     "firebase": "^9.6.6",
     "firebase-admin": "^10.0.2",
