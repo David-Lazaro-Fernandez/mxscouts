@@ -26,8 +26,8 @@ const Navbar = (props) => {
     setAnchor(null);
     navigate(path);
   }
-  const pages = ["Inicio","Grupos"];
-  const paths = ["/","/grupos"]
+  const pages = ["Inicio","Grupos", 'Ingresar', 'Registrarse'];
+  const paths = ["/","/grupos", '/Login', '/SignUp']
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const stick = window.pageYOffset;

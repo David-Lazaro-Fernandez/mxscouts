@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Grid,
   Container,
@@ -10,11 +12,37 @@ import {
   TextField,
   FormControlLabel,
   Typography,
+  Alert,
+  AlertTitle,
 } from "@mui/material";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
+
+import Navbar from "../components/Navbar";
+
+import { useAuth } from "../context/AuthContext";
+
 const Login = () => {
+  const { Login, currentUser, getCurrentUser } = useAuth();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      await Login(email, password)
+      await getCurrentUser()
+      navigate('/admin')
+    }catch(err){
+      console.log(err)
+      setError(true);
+    }
+  };
   return (
     <div>
+      <Navbar />
       <Container maxWidth="xs">
         <CssBaseline />
         <Grid
@@ -26,6 +54,7 @@ const Login = () => {
           alignContent="center"
           wrap="nowrap"
         >
+          
           <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
             <Box
               sx={{
@@ -33,7 +62,7 @@ const Login = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                marginTop: "100px",
+                marginTop: "150px",
               }}
             >
               <Avatar sx={{ bgcolor: "#2E2270" }}>
@@ -49,19 +78,21 @@ const Login = () => {
                 required
                 fullWidth
                 id="email"
-                label="CIA"
-                name="CIA"
+                label="Email"
+                name="Email"
                 autoFocus
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 name="password"
-                label="Contraseña"
+                label="CIA"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <FormControlLabel
                 control={
@@ -86,6 +117,7 @@ const Login = () => {
                   bgcolor: "#2E2270",
                   "&:hover": { bgcolor: "#221952" },
                 }}
+                onClick={handleSubmit}
               >
                 Ingresar
               </Button>
@@ -108,6 +140,14 @@ const Login = () => {
             </Box>
           </Grid>
         </Grid>
+        {error ? (
+          <Box sx={{ marginTop: "50px" }}>
+            <Alert severity="error">
+              <AlertTitle>Ha ocurrido un error</AlertTitle>
+              ¡Correo o contraseña incorrecta!
+            </Alert>
+          </Box>
+        ) : null}
       </Container>
     </div>
   );

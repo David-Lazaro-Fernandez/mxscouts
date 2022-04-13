@@ -18,6 +18,10 @@ import ListItemText from '@mui/material/ListItemText';
 
 import {leftMenuItemList} from '../../LeftDrawerItems';
 import {rightMenuItemList} from './Items';
+
+import {useAuth} from '../../context/AuthContext';
+
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -87,6 +91,7 @@ const openedMixin = (theme) => ({
 
 const LeftDrawer = (props) => {
   const {open, setOpen, theme, pageName} = props;
+  const {currentUser} = useAuth();
   return (
     <>
       <CssBaseline />
@@ -160,14 +165,14 @@ const LeftDrawer = (props) => {
               variant="subtitle2"
               sx={{ display: open ? "block" : "none", color: "#2E2270" }}
             >
-              Sergio Marquez
+              {currentUser.nombre_completo}
             </Typography>
             <Typography
               component="div"
               variant="body2"
               sx={{ display: open ? "block" : "none", color: "#2E2270" }}
             >
-              Scouters y Dirigentes
+              {currentUser.seccion}
             </Typography>
           </div>
         </Box>

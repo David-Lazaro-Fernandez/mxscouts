@@ -10,9 +10,17 @@ import {
   getActivities,
   getScoutsWithoutCredentials,
   getScouts,
+  getCurrentScout,
 } from "../../firebase.config";
 
+import {useAuth} from '../../context/AuthContext';
+import { setYear } from "date-fns";
+import { set } from "date-fns/esm";
+
 const AdminPage = (props) => {
+  //User context
+  const {signUp} = useAuth();
+   
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -23,6 +31,8 @@ const AdminPage = (props) => {
   const [scoutsWithoutCredential, setScoutsWithoutCredentials] = useState([]);
   const [fetched, setFetched] = useState(false);
 
+  
+  
   useEffect(() => {
     const fetchData = async () => {
       //Fetch recent activities
