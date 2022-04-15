@@ -24,7 +24,7 @@ export const rightMenuItemList = [
       key: "4",
       alt: "GCP Icon",
       img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Black%20GCP%20Icon.png?alt=media&token=c8849361-de57-46a9-86ed-f8a2785cf2ca",
-      text: "Ir a Google Cloud Platform",
+      text: "Ir a Google Cloud",
       href:'https://console.cloud.google.com/home/dashboard?project=agsmac-6f212&authuser=3'
     },
   ];

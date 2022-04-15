@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
 import Datos from "../../components/EditarDatos/Datos";
+
+import {useAuth} from '../../context/AuthContext';
+
 const EditarDatos = (props) => {
+  const navigate = useNavigate();
+  const {LogOut} = useAuth();
+
   const { pageName } = props;
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -47,6 +55,8 @@ const EditarDatos = (props) => {
           setOpen={setOpen}
           theme={theme}
           pageName={pageName}
+          navigate = {navigate}
+          LogOut = {LogOut}
         />
         <Box
           component="main"

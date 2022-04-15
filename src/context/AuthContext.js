@@ -23,6 +23,9 @@ export const AuthProvider = ({ children} ) => {
   const signUp = (email, password) => 
     createUserWithEmailAndPassword(auth, email, password)
 
+  //Logs out the current user in firebase
+  const LogOut = () => auth.signOut()
+
   //Gets the current user loged in
   const getCurrentUser = async () => {
     const scouts = []
@@ -47,7 +50,7 @@ export const AuthProvider = ({ children} ) => {
     signInWithEmailAndPassword(auth, email, password)
 
   return (
-    <authContext.Provider value={{ signUp, Login, getCurrentUser, currentUser, setCurrentUser}}>
+    <authContext.Provider value={{ signUp, Login, getCurrentUser, currentUser, setCurrentUser, LogOut}}>
       {children}
     </authContext.Provider>
   );

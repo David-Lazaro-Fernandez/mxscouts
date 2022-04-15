@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {useTheme} from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -11,8 +12,10 @@ import {
   getScoutsWithExpiredMedicalInsurance,
   getScoutsWithoutMedicalInsurance,
 } from "../../firebase.config";
-
+import {useAuth} from '../../context/AuthContext';
 const ScoutsWithoutMedicalInsurancePage = (props) => {
+  const navigate = useNavigate();
+  const {LogOut} = useAuth()
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -126,6 +129,8 @@ const ScoutsWithoutMedicalInsurancePage = (props) => {
         setOpen={setOpen}
         theme={theme}
         pageName={pageName}
+        navigate = {navigate}
+        LogOut = {LogOut}
       />
       <Box
         component="main"

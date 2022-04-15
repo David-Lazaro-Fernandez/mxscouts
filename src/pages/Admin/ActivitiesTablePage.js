@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -8,8 +9,12 @@ import Activities from "../../components/Tables/Activities";
 
 import { getActivities } from "../../firebase.config";
 
+import {useAuth} from '../../context/AuthContext';
+
 const ActivitiesTablePage = (props) => {
   const { pageName } = props;
+  const navigate = useNavigate();
+  const {LogOut} = useAuth()
   //LeftDrawer hooks
   const theme = useTheme();
   const [open, setOpen] = useState(false)
@@ -49,6 +54,8 @@ const ActivitiesTablePage = (props) => {
         setOpen={setOpen}
         theme={theme}
         pageName={pageName}
+        navigate = {navigate}
+        LogOut = {LogOut}
       />
       <Box
         component="main"

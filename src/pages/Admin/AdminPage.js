@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -14,13 +16,13 @@ import {
 } from "../../firebase.config";
 
 import {useAuth} from '../../context/AuthContext';
-import { setYear } from "date-fns";
-import { set } from "date-fns/esm";
+
 
 const AdminPage = (props) => {
+  //Navigation 
+  const navigate = useNavigate();
   //User context
-  const {signUp} = useAuth();
-   
+  const {LogOut} = useAuth();
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -65,6 +67,8 @@ const AdminPage = (props) => {
         setOpen={setOpen}
         theme={theme}
         pageName={pageName}
+        navigate = {navigate}
+        LogOut = {LogOut}
       />
       <Box
         component="main"

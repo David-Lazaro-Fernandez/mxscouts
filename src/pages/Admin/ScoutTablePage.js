@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -6,8 +7,10 @@ import ScoutTable from "../../components/Tables/ScoutTable";
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
 
 import { getScouts } from "../../firebase.config";
-
+import {useAuth} from '../../context/AuthContext';
 const ScoutsTablePage = (props) => {
+  const navigate = useNavigate();
+  const {LogOut} = useAuth()
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -90,6 +93,8 @@ const ScoutsTablePage = (props) => {
         setOpen={setOpen}
         theme={theme}
         pageName={pageName}
+        navigate = {navigate}
+        LogOut = {LogOut}
       />
       <Box
         component="main"
