@@ -16,6 +16,7 @@ const EditarDatos = (props) => {
   const { pageName } = props;
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [user,setUser] = useState({})
   //Select TextFields
   const [sex, setSex] = useState('');
   const [birthDate, setBirthDate] = useState(null);
@@ -47,9 +48,15 @@ const EditarDatos = (props) => {
     grupo: "",
     grupo_2: "",
   });
+
+  useEffect( ()=>{
+    const u = JSON.parse(localStorage.getItem('user'))
+    setUser({...user, ...u})
+  },[])
+
   return (
     <>
-    {currentUser.uid.length > 0 ?(
+    {JSON.parse(localStorage.getItem('user')).uid.length > 0 ?(
        <Box sx={{ display: "flex" }}>
        <LeftDrawer
          open={open}

@@ -22,7 +22,7 @@ const AdminPage = (props) => {
   //Navigation 
   const navigate = useNavigate();
   //User context
-  const {LogOut, currentUser} = useAuth();
+  const {LogOut, currentUser, getCurrentUser} = useAuth();
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -36,7 +36,7 @@ const AdminPage = (props) => {
   
   
   useEffect(() => {
-    console.log(currentUser)
+
     const fetchData = async () => {
       //Fetch recent activities
       const querySnapshot = await getActivities();
@@ -61,9 +61,10 @@ const AdminPage = (props) => {
     fetchData();
   }, []);
 
+  
   return (
     <>
-    {currentUser.uid.length > 0 ? (
+    {JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
       <Box sx={{ display: "flex" }}>
       <LeftDrawer
         open={open}

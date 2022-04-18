@@ -20,9 +20,13 @@ const ActivitiesTablePage = (props) => {
   const [open, setOpen] = useState(false)
   //Activities hooks
   const [activities, setActivities] = useState([])
+  const [user,setUser] = useState({})
   const [fetched, setFetched] = useState(false)
-
   useEffect(() => {
+    //Gets user from localStorage
+    const u = JSON.parse(localStorage.getItem('user'))
+    setUser({...user, ...u})
+
     const fetchData = async () => {
       //Fetch all scouts
       const activitiesQuerySnapshot = await getActivities();
@@ -49,7 +53,7 @@ const ActivitiesTablePage = (props) => {
 
   return (
    <>
-    {currentUser.uid.length > 0> 0 ? (
+    {JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
       <Box sx={{ display: "flex" }}>
       <LeftDrawer
         open={open}

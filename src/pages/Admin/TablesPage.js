@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
@@ -13,9 +13,18 @@ const TablesPage = (props) => {
   //LeftDrawer hooks
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState({})
+  
+  useEffect(()=>{
+    const u = JSON.parse(localStorage.getItem('user'))
+    setUser({...user, ...u})
+  }, [])
+  
   return (
     <>
-    {currentUser.uid.length > 0 ? (
+    {
+    //currentUser.uid.length > 0 ? (
+      JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
       <Box>
       <Box sx={{ display: "flex" }}>
         <LeftDrawer

@@ -39,6 +39,7 @@ const SignUp = () => {
     userImg: "",
   });
   
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -272,6 +272,7 @@ const LeftDrawer = (props) => {
             component="a"
             onClick = { ()=>{
               LogOut()
+              localStorage.clear()
               navigate('/Login')
             } }
           >

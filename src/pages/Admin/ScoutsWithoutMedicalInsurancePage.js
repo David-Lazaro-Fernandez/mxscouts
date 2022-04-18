@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import {useTheme} from '@mui/material/styles';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { useTheme } from "@mui/material/styles";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
 import NoInsurance from "../../components/MedicalInsurancePage/NoInsurance";
@@ -12,20 +12,26 @@ import {
   getScoutsWithExpiredMedicalInsurance,
   getScoutsWithoutMedicalInsurance,
 } from "../../firebase.config";
-import {useAuth} from '../../context/AuthContext';
+import { useAuth } from "../../context/AuthContext";
 const ScoutsWithoutMedicalInsurancePage = (props) => {
   const navigate = useNavigate();
-  const {LogOut, currentUser} = props;useAuth()
+  const { LogOut, currentUser } = props;
+  useAuth();
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
   const theme = useTheme();
+  const [user,setUser] = useState({})
   //Main content states
   const [insurance, setInsurance] = useState([]);
   const [fetched, setFetched] = useState(false);
-  
+
   useEffect(() => {
     const fetchData = async () => {
+      //Gets user from localStorage
+      const u = JSON.parse(localStorage.getItem("user"));
+      setUser({ ...user, ...u });
+
       //Fetch those ones with #N/A
       const naQuerySnapshot = await getScoutsWithoutMedicalInsuranceNA();
       naQuerySnapshot.forEach((doc) => {
@@ -122,48 +128,49 @@ const ScoutsWithoutMedicalInsurancePage = (props) => {
 
     fetchData();
   }, []);
-  return ( 
+  return (
     <>
-    {
-      currentUser.uid.length > 0 ? (
+      {JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
         <Box sx={{ display: "flex" }}>
-        <LeftDrawer
-          open={open}
-          setOpen={setOpen}
-          theme={theme}
-          pageName={pageName}
-          navigate = {navigate}
-          LogOut = {LogOut}
-        />
-        <Box
-          component="main"
-          sx={{
-            width: "100%",
-            p: 3,
-            marginTop: "60px",
-            backgroundColor: "#F2F7FA",
-          }}
-        >
-          {fetched ? (
-            <NoInsurance ScoutList={insurance} />
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <CircularProgress sx={{ color: "#2E2270", marginTop: "100px" }} />
-            </div>
-          )}
+          <LeftDrawer
+            open={open}
+            setOpen={setOpen}
+            theme={theme}
+            pageName={pageName}
+            navigate={navigate}
+            LogOut={LogOut}
+          />
+          <Box
+            component="main"
+            sx={{
+              width: "100%",
+              p: 3,
+              marginTop: "60px",
+              backgroundColor: "#F2F7FA",
+            }}
+          >
+            {fetched ? (
+              <NoInsurance ScoutList={insurance} />
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <CircularProgress
+                  sx={{ color: "#2E2270", marginTop: "100px" }}
+                />
+              </div>
+            )}
+          </Box>
         </Box>
-      </Box>
-      ): <Navigate to="/login" />
-    }
+      ) : (
+        <Navigate to="/login" />
+      )}
     </>
-   
   );
 };
 

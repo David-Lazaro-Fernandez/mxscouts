@@ -15,11 +15,15 @@ const Scouts18TablePage = (props) => {
   const { pageName } = props;
   const [open, setOpen] = useState(false);
   const theme = useTheme();
+  const [user, setUser] = useState({})
   //Main content states
   const [scouts, setScouts] = useState([]);
   const [fetched, setFetched] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      //Gets user from localStorage
+      const u = JSON.parse(localStorage.getItem('user'))
+      setUser({...user, ...u})
       //Fetch all scouts
       const scoutQuerySnapshot = await getScouts18();
       scoutQuerySnapshot.forEach((doc) => {
@@ -88,7 +92,7 @@ const Scouts18TablePage = (props) => {
 
   return (
     <>
-    {currentUser.uid.length > 0> 0 ? (
+    {JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
       <Box sx={{ display: "flex" }}>
       <LeftDrawer
         open={open}

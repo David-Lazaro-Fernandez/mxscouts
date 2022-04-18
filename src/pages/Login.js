@@ -22,7 +22,7 @@ import Navbar from "../components/Navbar";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const { Login, currentUser, getCurrentUser } = useAuth();
+  const { Login, currentUser, getCurrentUser, registerInFirebase}  = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,12 +34,15 @@ const Login = () => {
     try{
       await Login(email, password)
       await getCurrentUser()
+      localStorage.setItem('user', JSON.stringify(currentUser))
+      console.log(localStorage.getItem('user'))
       currentUser.uid.length > 0 ? navigate("/admin") : console.log('XD')
     }catch(err){
       console.log(err)
       setError(true);
     }
   };
+  console.log(currentUser)
   return (
     <div>
       <Navbar />

@@ -7,10 +7,11 @@ import ScoutTable from "../../components/Tables/ScoutTable";
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
 
 import { getScouts21 } from "../../firebase.config";
-import {useAuth,} from '../../context/AuthContext';
+import { useAuth } from "../../context/AuthContext";
 const Scouts21TablePage = (props) => {
   const navigate = useNavigate();
-  const {LogOut, currentUser} = useAuth()
+  const { LogOut, currentUser } = useAuth();
+  const [user, setUser] = useState({});
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -20,6 +21,10 @@ const Scouts21TablePage = (props) => {
   const [fetched, setFetched] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      //Gets user from localStorage
+      const u = JSON.parse(localStorage.getItem("user"));
+      setUser({ ...user, ...u });
+
       //Fetch all scouts
       const scoutQuerySnapshot = await getScouts21();
       scoutQuerySnapshot.forEach((doc) => {
@@ -88,44 +93,47 @@ const Scouts21TablePage = (props) => {
 
   return (
     <>
-    {currentUser.uid.length > 0? (
-       <Box sx={{ display: "flex" }}>
-       <LeftDrawer
-         open={open}
-         setOpen={setOpen}
-         theme={theme}
-         pageName={pageName}
-         navigate = {navigate}
-         LogOut = {LogOut}
-       />
-       <Box
-         component="main"
-         sx={{
-           width: "100%",
-           p: 3,
-           marginTop: "60px",
-           backgroundColor: "#F2F7FA",
-         }}
-       >
-         {fetched ? (
-           <ScoutTable ScoutList={scouts} />
-         ) : (
-           <div
-             style={{
-               display: "flex",
-               flexDirection: "row",
-               justifyContent: "center",
-               alignItems: "center",
-             }}
-           >
-             <CircularProgress sx={{ color: "#2E2270", marginTop: "100px" }} />
-           </div>
-         )}
-       </Box>
-     </Box>
-    ): <Navigate to="/login" />}
+      {JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
+        <Box sx={{ display: "flex" }}>
+          <LeftDrawer
+            open={open}
+            setOpen={setOpen}
+            theme={theme}
+            pageName={pageName}
+            navigate={navigate}
+            LogOut={LogOut}
+          />
+          <Box
+            component="main"
+            sx={{
+              width: "100%",
+              p: 3,
+              marginTop: "60px",
+              backgroundColor: "#F2F7FA",
+            }}
+          >
+            {fetched ? (
+              <ScoutTable ScoutList={scouts} />
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <CircularProgress
+                  sx={{ color: "#2E2270", marginTop: "100px" }}
+                />
+              </div>
+            )}
+          </Box>
+        </Box>
+      ) : (
+        <Navigate to="/login" />
+      )}
     </>
-   
   );
 };
 
