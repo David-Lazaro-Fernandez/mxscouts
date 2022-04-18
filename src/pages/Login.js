@@ -34,7 +34,7 @@ const Login = () => {
     try{
       await Login(email, password)
       await getCurrentUser()
-      navigate('/admin')
+      currentUser.uid.length > 0 ? navigate("/admin") : console.log('XD')
     }catch(err){
       console.log(err)
       setError(true);

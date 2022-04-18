@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -10,7 +10,7 @@ import { getScouts18 } from "../../firebase.config";
 import {useAuth} from '../../context/AuthContext';
 const Scouts18TablePage = (props) => {
   const navigate = useNavigate();
-  const {LogOut} = useAuth()
+  const {LogOut, currentUser} = useAuth()
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -87,7 +87,9 @@ const Scouts18TablePage = (props) => {
   }, []);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <>
+    {currentUser.uid.length > 0> 0 ? (
+      <Box sx={{ display: "flex" }}>
       <LeftDrawer
         open={open}
         setOpen={setOpen}
@@ -121,6 +123,9 @@ const Scouts18TablePage = (props) => {
         )}
       </Box>
     </Box>
+    ) : <Redirect to="/login" />}
+    </>
+    
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -10,7 +10,7 @@ import { getScouts19 } from "../../firebase.config";
 import {useAuth} from '../../context/AuthContext';
 const Scouts19TablePage = (props) => {
   const navigate = useNavigate();
-  const {LogOut} = useAuth()
+  const {LogOut, currentUser} = useAuth()
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -87,40 +87,45 @@ const Scouts19TablePage = (props) => {
   }, []);
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <LeftDrawer
-        open={open}
-        setOpen={setOpen}
-        theme={theme}
-        pageName={pageName}
-        navigate = {navigate}
-        LogOut = {LogOut}
-      />
-      <Box
-        component="main"
-        sx={{
-          width: "100%",
-          p: 3,
-          marginTop: "60px",
-          backgroundColor: "#F2F7FA",
-        }}
-      >
-        {fetched ? (
-          <ScoutTable ScoutList={scouts} />
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <CircularProgress sx={{ color: "#2E2270", marginTop: "100px" }} />
-          </div>
-        )}
-      </Box>
-    </Box>
+    <>
+    {currentUser.uid.length > 0? (
+       <Box sx={{ display: "flex" }}>
+       <LeftDrawer
+         open={open}
+         setOpen={setOpen}
+         theme={theme}
+         pageName={pageName}
+         navigate = {navigate}
+         LogOut = {LogOut}
+       />
+       <Box
+         component="main"
+         sx={{
+           width: "100%",
+           p: 3,
+           marginTop: "60px",
+           backgroundColor: "#F2F7FA",
+         }}
+       >
+         {fetched ? (
+           <ScoutTable ScoutList={scouts} />
+         ) : (
+           <div
+             style={{
+               display: "flex",
+               flexDirection: "row",
+               justifyContent: "center",
+               alignItems: "center",
+             }}
+           >
+             <CircularProgress sx={{ color: "#2E2270", marginTop: "100px" }} />
+           </div>
+         )}
+       </Box>
+     </Box>
+    ) : <Navigate to="/login" />}
+    </>
+   
   );
 };
 

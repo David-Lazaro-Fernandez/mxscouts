@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -22,7 +22,7 @@ const AdminPage = (props) => {
   //Navigation 
   const navigate = useNavigate();
   //User context
-  const {LogOut} = useAuth();
+  const {LogOut, currentUser} = useAuth();
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);
@@ -36,6 +36,7 @@ const AdminPage = (props) => {
   
   
   useEffect(() => {
+    console.log(currentUser)
     const fetchData = async () => {
       //Fetch recent activities
       const querySnapshot = await getActivities();
@@ -61,7 +62,9 @@ const AdminPage = (props) => {
   }, []);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <>
+    {currentUser.uid.length > 0 ? (
+      <Box sx={{ display: "flex" }}>
       <LeftDrawer
         open={open}
         setOpen={setOpen}
@@ -99,6 +102,9 @@ const AdminPage = (props) => {
         )}
       </Box>
     </Box>
+    ) : <Navigate to="/login" />}
+    </>
+    
   );
 };
 

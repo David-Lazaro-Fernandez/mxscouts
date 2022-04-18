@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
@@ -11,7 +11,7 @@ import {useAuth} from '../../context/AuthContext';
 
 const EditarDatos = (props) => {
   const navigate = useNavigate();
-  const {LogOut} = useAuth();
+  const {LogOut, currentUser} = useAuth();
 
   const { pageName } = props;
   const theme = useTheme();
@@ -49,40 +49,43 @@ const EditarDatos = (props) => {
   });
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        <LeftDrawer
-          open={open}
-          setOpen={setOpen}
-          theme={theme}
-          pageName={pageName}
-          navigate = {navigate}
-          LogOut = {LogOut}
-        />
-        <Box
-          component="main"
-          sx={{
-            width: "100%",
-            p: 3,
-            marginTop: "60px",
-            backgroundColor: "#F2F7FA",
-          }}
-        >
-          <Datos 
-          scoutData={scoutData} 
-          setScoutData={setScoutData} 
-          sex = {sex}
-          setSex = {setSex}
-          birthDate = {birthDate}
-          setBirthDate = {setBirthDate}
-          section = {section}
-          setSection = {setSection}
-          group = {group}
-          setGroup = {setGroup}
-          secondaryGroup = {secondaryGroup}
-          setSecondaryGroup = {setSecondaryGroup}
-          />
-        </Box>
-      </Box>
+    {currentUser.uid.length > 0 ?(
+       <Box sx={{ display: "flex" }}>
+       <LeftDrawer
+         open={open}
+         setOpen={setOpen}
+         theme={theme}
+         pageName={pageName}
+         navigate = {navigate}
+         LogOut = {LogOut}
+       />
+       <Box
+         component="main"
+         sx={{
+           width: "100%",
+           p: 3,
+           marginTop: "60px",
+           backgroundColor: "#F2F7FA",
+         }}
+       >
+         <Datos 
+         scoutData={scoutData} 
+         setScoutData={setScoutData} 
+         sex = {sex}
+         setSex = {setSex}
+         birthDate = {birthDate}
+         setBirthDate = {setBirthDate}
+         section = {section}
+         setSection = {setSection}
+         group = {group}
+         setGroup = {setGroup}
+         secondaryGroup = {secondaryGroup}
+         setSecondaryGroup = {setSecondaryGroup}
+         />
+       </Box>
+     </Box>
+    ): <Navigate to="/login"/>}
+     
     </>
   );
 };

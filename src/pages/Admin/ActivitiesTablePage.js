@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -14,7 +14,7 @@ import {useAuth} from '../../context/AuthContext';
 const ActivitiesTablePage = (props) => {
   const { pageName } = props;
   const navigate = useNavigate();
-  const {LogOut} = useAuth()
+  const {LogOut, currentUser} = useAuth()
   //LeftDrawer hooks
   const theme = useTheme();
   const [open, setOpen] = useState(false)
@@ -48,7 +48,9 @@ const ActivitiesTablePage = (props) => {
   }, []);
 
   return (
-    <Box sx={{ display: "flex" }}>
+   <>
+    {currentUser.uid.length > 0> 0 ? (
+      <Box sx={{ display: "flex" }}>
       <LeftDrawer
         open={open}
         setOpen={setOpen}
@@ -82,6 +84,9 @@ const ActivitiesTablePage = (props) => {
         )}
       </Box>
     </Box>
+    ): <Navigate to="/login" />}
+   </>
+    
   );
 };
 export default ActivitiesTablePage;

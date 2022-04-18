@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import GroupsPage from "./pages/GroupsPage";
@@ -14,10 +14,10 @@ import Scouts20TablePage from "./pages/Admin/Scouts20TablePage";
 import Scouts19TablePage from "./pages/Admin/Scouts19TablePage";
 import Scouts18TablePage from "./pages/Admin/Scouts19TablePage";
 import EditarDatos from "./pages/Admin/EditarDatos";
+import ScoutCredential from "./pages/Admin/ScoutCredential";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
-
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -63,6 +63,13 @@ function App() {
             path="/admin/no-insurance"
             element={
               <ScoutsWithoutMedicalInsurancePage pageName="Scouts sin seguro medico" />
+            }
+          />
+
+          <Route
+            path="/admin/my-credential"
+            element={
+              <ScoutCredential pageName="Mi credencial"/>
             }
           />
         </Routes>
