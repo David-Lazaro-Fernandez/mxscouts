@@ -1,17 +1,19 @@
-import React from "react";
+import React, {forwardRef} from "react";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-const Credential = () => {
-  
+
+
+const Credential = (props,ref) => {
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-  };
+  }
+
   const cardStyle = {
-    marginTop:'40px',
+    marginTop: "40px",
     border: "0px",
     borderRadius: "10px",
     backgroundColor: "#403897",
@@ -103,25 +105,15 @@ const Credential = () => {
     fontSize: "18px",
     fontWeight: "500",
   };
-  
+
   const body3 = {
     color: "white",
   };
 
-  const buttonStyle={
-    p:2,
-    backgroundColor:'#2E2270', 
-    color:'white',
-    marginTop:'25px',
-    '&:hover':{
-      color:"#2E2270",
-      backgroundColor:'#E7E4FA'
-    }
-    
-  }
+  
   return (
     <>
-      <div style={containerStyle}>
+      <div style={containerStyle} ref={ref}>
         <Paper sx={cardStyle} elevation={8}>
           <div style={bar}></div>
           <div style={bar2}></div>
@@ -174,9 +166,11 @@ const Credential = () => {
             </Typography>
           </div>
         </Paper>
-        <Button sx={buttonStyle}>Solicitar impresión de credencial</Button>
+
+       
+
       </div>
     </>
   );
 };
-export default Credential;
+export default forwardRef(Credential);

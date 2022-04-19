@@ -18,7 +18,7 @@ export const leftMenuItemList = [
       alt: "Person Icon",
       img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/person.png?alt=media&token=c1801389-9052-43b9-bb63-9a113aaa67a5",
       text: "Ver mis datos",
-      href:'#'
+      href:'/admin/editar-datos'
     },
     {
       key: "4",

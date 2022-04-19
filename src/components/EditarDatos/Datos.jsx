@@ -78,7 +78,7 @@ const Datos = (props) => {
                 style={userImg}
               />
               <Typography variant="h4" sx={greetTypography}>
-                Saludos Sergio 👋
+                Saludos {JSON.parse(localStorage.getItem('user')).nombre_completo} 👋
               </Typography>
             </Grid>
 

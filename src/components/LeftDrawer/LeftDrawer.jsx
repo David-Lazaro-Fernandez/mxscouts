@@ -18,7 +18,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-import { leftMenuItemList } from "../../LeftDrawerItems";
+import { leftMenuItemList } from "./LeftDrawerItems";
 import { rightMenuItemList } from "./Items";
 
 import { useAuth } from "../../context/AuthContext";
@@ -176,14 +176,14 @@ const LeftDrawer = (props) => {
               variant="subtitle2"
               sx={{ display: open ? "block" : "none", color: "#2E2270" }}
             >
-              {currentUser.nombre_completo}
+              {JSON.parse(localStorage.getItem('user')).nombre_completo}
             </Typography>
             <Typography
               component="div"
               variant="body2"
               sx={{ display: open ? "block" : "none", color: "#2E2270" }}
             >
-              {currentUser.seccion}
+              {JSON.parse(localStorage.getItem('user')).seccion}
             </Typography>
           </div>
         </Box>

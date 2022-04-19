@@ -68,7 +68,7 @@ const Scouts19TablePage = (props) => {
             sexo: doc.data().sexo,
             remesa: doc.data().remesa,
             credencial:
-              doc.data().credencial === "" ? "Sin Credencial" : doc.data,
+              doc.data().credencial === "" ? "Sin Credencial" : doc.data().credencial,
             seguro:
               typeof doc.data().seguro === "object"
                 ? new Date(

@@ -11,7 +11,7 @@ export const rightMenuItemList = [
       alt: "Credential Icon",
       img: "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/card%20(1).png?alt=media&token=ef14d516-c45d-4a76-997b-b7f71203c59d",
       text: "Imprimir credencial",
-      href:'#'
+      href:'/admin/my-credential'
     },
     {
       key: "3",
