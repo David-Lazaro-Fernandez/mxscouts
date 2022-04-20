@@ -21,7 +21,6 @@ const firebaseConfig = {
   appId: "1:1095093239497:web:4ae6b4bfc8755b90349718",
 };
 
-
 // Initialize Firebase
 const d = new Date();
 const actualMont = d.getMonth() + 1;
@@ -32,14 +31,76 @@ export const auth = getAuth();
 //Scout
 export const getScouts = () => getDocs(collection(database, "BD 22"));
 
-export const getCurrentScout = (userId) => getDocs(query(collection(database,"Test"), where(documentId(), '==', userId )));
+export const getCurrentScout = (userEmail) =>
+  getDocs(
+    query(collection(database, "Test"), where(documentId(), "==", userEmail))
+  );
+
 
 export const registerScoutInFirestore = (userAuthData, scoutData) =>
-  setDoc(doc(database, "Test", userAuthData.uid), {
-    email: userAuthData.email,
-    nombre_completo:scoutData.nombre_completo,
-    seccion: scoutData.seccion
+  setDoc(doc(database, "Test", userAuthData.email), {
+    correo_electronico: userAuthData.email,
+    nombre_completo: scoutData.nombre_completo,
+    seccion: scoutData.seccion,
+    //-----
+    apellido_materno:'Tu apellido Materno',
+    apellido_paterno:'Tu apellido paterno',
+    calle:'Tu calle',
+    cia:'Tu CIA',
+    colonia:'Tu colonia',
+    
+    cp: 'Tu Codigo Postal',
+    nombre_completo: "Your Name",
+    delegacion:'Tu delegación',
+    edad:'Tu edad',
+    edad_con_meses:'1',
+    fecha_de_nacmimento:'00/00/00',
+    grupo:'Tu grupo',
+    grupo_2:'Tu grupo 2',
+    id:'counter',
+    mes:'1',
+    nombres:'tus nombres',
+    num_exterior:'tu numero exterior',
+    num_interior:'tu numero interior',
+    remesa:'1',
+    seguro:'Vencido',
+    sexo:'/',
+    telefono_casa:'5555555555',
+    telefono_emergencia:'55555555555'
   });
+
+export const testRegisterScoutInFirestore = (counter, email) =>
+{
+  setDoc(doc(database, "Test", email), {
+    apellido_materno:'Tu apellido Materno',
+    apellido_paterno:'Tu apellido paterno',
+    calle:'Tu calle',
+    cia:'Tu CIA',
+    colonia:'Tu colonia',
+    correo_electronico: email,
+    cp: 'Tu Codigo Postal',
+    nombre_completo: "Your Name",
+    delegacion:'Tu delegación',
+    edad:'Tu edad',
+    edad_con_meses:'1',
+    fecha_de_nacmimento:'00/00/00',
+    grupo:'Tu grupo',
+    grupo_2:'Tu grupo 2',
+    id:counter,
+    mes:'1',
+    nombre_completo:'Tu nombre completo',
+    nombres:'tus nombres',
+    num_exterior:'tu numero exterior',
+    num_interior:'tu numero interior',
+    remesa:'1',
+    seccion:'tu seccion',
+    seguro:'Vencido',
+    sexo:'/',
+    telefono_casa:'5555555555',
+    telefono_emergencia:'55555555555'
+  });
+}  
+
 
 export const getBirthdayScouts = () =>
   getDocs(query(collection(database, "BD 22"), where("mes", "==", actualMont)));

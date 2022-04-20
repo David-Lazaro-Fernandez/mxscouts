@@ -21,16 +21,15 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import Navbar from "../components/Navbar";
 
 import { useAuth } from "../context/AuthContext";
-import {registerScoutInFirestore} from '../firebase.config';
+import { registerScoutInFirestore } from "../firebase.config";
 
 const SignUp = () => {
-  
   const inputTextField = { width: "100%" };
 
   const navigate = useNavigate();
   const [error, setError] = useState(false);
-  const { signUp, getCurrentUser } = useAuth();
-  const [selectedSection,setSelectedSection] = useState("")
+  const { signUp, getCurrentUser, registerInFirebase } = useAuth();
+  const [selectedSection, setSelectedSection] = useState("");
   const [scoutData, setScoutData] = useState({
     email: "",
     password: "",
@@ -38,18 +37,17 @@ const SignUp = () => {
     seccion: "",
     userImg: "",
   });
-  
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signUp(scoutData.email, scoutData.password);
-      const userAuthData = getCurrentUser()
-      console.log(userAuthData)
-      await registerScoutInFirestore(userAuthData, scoutData)
+      const userAuthData = {email:scoutData.email,password:scoutData.password}
+      await registerScoutInFirestore(userAuthData, scoutData);
+      navigate('/login')
     } catch (err) {
       setError(true);
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -123,7 +121,10 @@ const SignUp = () => {
                       name="Nombre Completo"
                       autoComplete="email"
                       onChange={(e) =>
-                        setScoutData({ ...scoutData, nombre_completo: e.target.value })
+                        setScoutData({
+                          ...scoutData,
+                          nombre_completo: e.target.value,
+                        })
                       }
                     />
                   </Grid>
@@ -136,9 +137,9 @@ const SignUp = () => {
                       sx={inputTextField}
                       value={selectedSection}
                       onChange={(e) => {
-                        setSelectedSection(e.target.value)
+                        setSelectedSection(e.target.value);
                         setScoutData({ ...scoutData, seccion: e.target.value });
-                        console.log(scoutData)
+                        console.log(scoutData);
                       }}
                     >
                       {[
