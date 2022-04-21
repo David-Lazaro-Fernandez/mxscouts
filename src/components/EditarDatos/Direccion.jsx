@@ -31,6 +31,7 @@ const Direccion = (props) => {
         <TextField
           id="scout-id"
           label="Calle"
+          defaultValue= {scoutData.calle}
           variant="outlined"
           sx={inputTextField}
           onChange={(e)=>{
@@ -46,6 +47,7 @@ const Direccion = (props) => {
         <TextField
           id="scout-id"
           label="# Exterior"
+          defaultValue = {scoutData.num_exterior}
           variant="outlined"
           sx={inputTextField}
           onChange={(e)=>{
@@ -56,6 +58,7 @@ const Direccion = (props) => {
           id="scout-id"
           label="Opcional - # Interior"
           variant="outlined"
+          defaultValue = {scoutData.num_interior}
           sx={inputTextField}
           style={{ marginLeft: "20px" }}
           onChange={(e)=>{
@@ -71,6 +74,7 @@ const Direccion = (props) => {
         <TextField
           id="scout-id"
           label="Colonia"
+          defaultValue = {scoutData.colonia}
           variant="outlined"
           sx={inputTextField}
           onChange={(e)=>{
@@ -86,6 +90,7 @@ const Direccion = (props) => {
         <TextField
           id="scout-id"
           label="C.P"
+          defaultValue = {scoutData.cp}
           variant="outlined"
           sx={inputTextField}
           onChange={(e)=>{
@@ -101,6 +106,7 @@ const Direccion = (props) => {
         <TextField
           id="scout-id"
           label="Delegación"
+          defaultValue = {scoutData.delegacion}
           variant="outlined"
           sx={inputTextField}
           onChange={(e)=>{

@@ -7,8 +7,15 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import Typography from "@mui/material/Typography";
 const DatosPersonales = (props) => {
-  const { sex, setSex, scoutData, setScoutData, birthDate, setBirthDate } =
-    props;
+  const {
+    sex,
+    setSex,
+    scoutData,
+    setScoutData,
+    birthDate,
+    setBirthDate,
+    currentUser,
+  } = props;
 
   const inputBox = {
     display: "flex",
@@ -26,6 +33,8 @@ const DatosPersonales = (props) => {
     marginRight: "20px",
     width: "400px",
   };
+
+  console.log(scoutData)
   return (
     <>
       {/*ID*/}
@@ -36,10 +45,11 @@ const DatosPersonales = (props) => {
         <TextField
           id="scout-id"
           label="ID"
+          defaultValue={scoutData.id}
           variant="outlined"
           sx={inputTextField}
           onChange={(e) => {
-            setScoutData({...scoutData, id: e.target.value });
+            setScoutData({ ...scoutData, id: e.target.value });
           }}
         />
       </FormControl>
@@ -50,13 +60,13 @@ const DatosPersonales = (props) => {
         </Typography>
         <TextField
           select
-          id="scout-id"
+          id="scout-sex"
           label="Sexo"
           variant="outlined"
           value={sex}
           onChange={(e) => {
             setSex(e.target.value);
-            setScoutData({ ...scoutData,sexo: e.target.value });
+            setScoutData({ ...scoutData, sexo: e.target.value });
           }}
           sx={inputTextField}
         >
@@ -70,13 +80,13 @@ const DatosPersonales = (props) => {
           Nombre(s)
         </Typography>
         <TextField
-          id="scout-id"
-          label="Nombre(s)"
+          id="scout-names"
+          label="Nombres"
+          defaultValue={scoutData.nombres}
           variant="outlined"
           sx={inputTextField}
           onChange={(e) => {
-            setScoutData({ ...scoutData,nombres: e.target.value });
-            console.log(scoutData.nombres);
+            setScoutData({ ...scoutData, nombres: e.target.value });
           }}
         />
       </FormControl>
@@ -86,23 +96,25 @@ const DatosPersonales = (props) => {
           Apellidos
         </Typography>
         <TextField
-          id="scout-id"
+          id="scout-last-name-1"
           label="Apellido Paterno"
+          defaultValue={scoutData.apellido_paterno}
           variant="outlined"
           sx={inputTextField}
           onChange={(e) => {
-            setScoutData({ ...scoutData,apellido_paterno: e.target.value });
+            setScoutData({ ...scoutData, apellido_paterno: e.target.value });
             console.log(scoutData.apellido_paterno);
           }}
         />
         <TextField
-          id="scout-id"
+          id="scout-last-name-2"
           label="Apellido Materno"
+          defaultValue={scoutData.apellido_materno}
           variant="outlined"
           sx={inputTextField}
           style={{ marginLeft: "20px" }}
           onChange={(e) => {
-            setScoutData({ ...scoutData,apellido_materno: e.target.value });
+            setScoutData({ ...scoutData, apellido_materno: e.target.value });
             console.log(scoutData.apellido_materno);
           }}
         />
@@ -118,7 +130,7 @@ const DatosPersonales = (props) => {
             value={birthDate}
             onChange={(e) => {
               setBirthDate(e);
-              setScoutData({...scoutData,fecha_de_nacimiento:birthDate,})
+              setScoutData({ ...scoutData, fecha_de_nacimiento: birthDate });
             }}
             renderInput={(params) => (
               <TextField {...params} sx={{ width: "100%" }} />
@@ -126,18 +138,21 @@ const DatosPersonales = (props) => {
           />
         </LocalizationProvider>
       </FormControl>
-       {/*Email*/}
-       <FormControl fullWidth sx={inputBox}>
+      {/*Email*/}
+      <FormControl fullWidth sx={inputBox}>
         <Typography variant="h6" sx={inputText}>
           Correo Electronico
         </Typography>
         <TextField
           id="scout-id"
           label="Correo Electronico"
-          variant="outlined"
+          defaultValue={scoutData.correo_electronico}
+          variant="filled"
+          disabled
           sx={inputTextField}
           onChange={(e) => {
-           setScoutData({...scoutData,correo_electronico:e.target.value})
+            setScoutData({ ...scoutData, correo_electronico: e.target.value });
+            console.log(scoutData.correo);
           }}
         />
       </FormControl>
@@ -148,11 +163,12 @@ const DatosPersonales = (props) => {
         </Typography>
         <TextField
           id="scout-id"
-          label="Telefono De Casa"
+          label="Telefono de Casa"
+          defaultValue={scoutData.telefono_casa}
           variant="outlined"
           sx={inputTextField}
           onChange={(e) => {
-           setScoutData({...scoutData,telefono_casa:e.target.value})
+            setScoutData({ ...scoutData, telefono_casa: e.target.value });
           }}
         />
       </FormControl>
@@ -163,12 +179,13 @@ const DatosPersonales = (props) => {
         </Typography>
         <TextField
           id="scout-id"
-          label="Telefono De Emergencia"
+          label="Telefono de Emergencia"
+          defaultValue={scoutData.telefono_emergencia}
           variant="outlined"
           sx={inputTextField}
           onChange={(e) => {
-            setScoutData({...scoutData,telefono_emergencia:e.target.value})
-           }}
+            setScoutData({ ...scoutData, telefono_emergencia: e.target.value });
+          }}
         />
       </FormControl>
     </>

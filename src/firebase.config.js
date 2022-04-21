@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { ref, getStorage, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   collection,
   getFirestore,
@@ -9,6 +10,7 @@ import {
   doc,
   setDoc,
   documentId,
+  updateDoc,
 } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,19 +25,21 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const d = new Date();
-const actualMont = d.getMonth() + 1;
+const actualMonth = d.getMonth() + 1;
 const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 export const database = getFirestore(app);
 export const auth = getAuth();
 
 //Scout
-export const getScouts = () => getDocs(collection(database, "BD 22"));
-
-export const getCurrentScout = (userEmail) =>
-  getDocs(
-    query(collection(database, "Test"), where(documentId(), "==", userEmail))
+export const getCurrentScout = (userEmail) => {
+  console.log(database);
+  const q = query(
+    collection(database, "Test"),
+    where("correo_electronico", "==", userEmail)
   );
-
+  return getDocs(q);
+};
 
 export const registerScoutInFirestore = (userAuthData, scoutData) =>
   setDoc(doc(database, "Test", userAuthData.email), {
@@ -43,67 +47,47 @@ export const registerScoutInFirestore = (userAuthData, scoutData) =>
     nombre_completo: scoutData.nombre_completo,
     seccion: scoutData.seccion,
     //-----
-    apellido_materno:'Tu apellido Materno',
-    apellido_paterno:'Tu apellido paterno',
-    calle:'Tu calle',
-    cia:'Tu CIA',
-    colonia:'Tu colonia',
-    
-    cp: 'Tu Codigo Postal',
+    apellido_materno: "Tu apellido Materno",
+    apellido_paterno: "Tu apellido paterno",
+    calle: "Tu calle",
+    cia: "Tu CIA",
+    colonia: "Tu colonia",
+
+    cp: "Tu Codigo Postal",
     nombre_completo: "Your Name",
-    delegacion:'Tu delegación',
-    edad:'Tu edad',
-    edad_con_meses:'1',
-    fecha_de_nacmimento:'00/00/00',
-    grupo:'Tu grupo',
-    grupo_2:'Tu grupo 2',
-    id:'counter',
-    mes:'1',
-    nombres:'tus nombres',
-    num_exterior:'tu numero exterior',
-    num_interior:'tu numero interior',
-    remesa:'1',
-    seguro:'Vencido',
-    sexo:'/',
-    telefono_casa:'5555555555',
-    telefono_emergencia:'55555555555'
+    delegacion: "Tu delegación",
+    edad: "Tu edad",
+    edad_con_meses: "1",
+    fecha_de_nacmimento: new Date(),
+    grupo: "Tu grupo",
+    grupo_2: "Tu grupo 2",
+    id: "counter",
+    mes: "1",
+    nombres: "tus nombres",
+    num_exterior: "tu numero exterior",
+    num_interior: "tu numero interior",
+    remesa: "1",
+    seguro: "Vencido",
+    sexo: "/",
+    telefono_casa: "5555555555",
+    telefono_emergencia: "55555555555",
   });
 
-export const testRegisterScoutInFirestore = (counter, email) =>
-{
-  setDoc(doc(database, "Test", email), {
-    apellido_materno:'Tu apellido Materno',
-    apellido_paterno:'Tu apellido paterno',
-    calle:'Tu calle',
-    cia:'Tu CIA',
-    colonia:'Tu colonia',
-    correo_electronico: email,
-    cp: 'Tu Codigo Postal',
-    nombre_completo: "Your Name",
-    delegacion:'Tu delegación',
-    edad:'Tu edad',
-    edad_con_meses:'1',
-    fecha_de_nacmimento:'00/00/00',
-    grupo:'Tu grupo',
-    grupo_2:'Tu grupo 2',
-    id:counter,
-    mes:'1',
-    nombre_completo:'Tu nombre completo',
-    nombres:'tus nombres',
-    num_exterior:'tu numero exterior',
-    num_interior:'tu numero interior',
-    remesa:'1',
-    seccion:'tu seccion',
-    seguro:'Vencido',
-    sexo:'/',
-    telefono_casa:'5555555555',
-    telefono_emergencia:'55555555555'
+//Edit Scout Data
+export const updateScoutData = (email, scoutData) => {
+  const scoutRef = doc(database, "Test", email);
+  return updateDoc(scoutRef, {
+    ...scoutData,
   });
-}  
+};
 
-
+//Queries
 export const getBirthdayScouts = () =>
-  getDocs(query(collection(database, "BD 22"), where("mes", "==", actualMont)));
+  getDocs(
+    query(collection(database, "BD 22"), where("mes", "==", actualMonth))
+  );
+
+export const getScouts = () => getDocs(collection(database, "BD 22"));
 
 export const getScouts21 = () => getDocs(collection(database, "BD 21"));
 
@@ -131,5 +115,18 @@ export const getScoutsWithExpiredMedicalInsurance = () =>
 //Activities
 export const getActivities = () =>
   getDocs(collection(database, "Actividades 22"));
+
+//Image Upload
+export const uploadProfilePicture = (file, email) => {
+  const imageRef = ref(storage, `scoutProfilePictures/${email}/${file.name}`);
+  var path = ""
+  return uploadBytes(imageRef, file)
+    .then(async () => {
+      const URL = await getDownloadURL(imageRef)
+      return URL
+    })
+    .catch((err) => console.log(err));
+  
+};
 
 export default database;

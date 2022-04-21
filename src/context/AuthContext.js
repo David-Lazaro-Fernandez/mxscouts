@@ -45,19 +45,39 @@ export const AuthProvider = ({ children} ) => {
       console.log('Auth Data',auth.currentUser)
       const userEmail = auth.currentUser.email
       const currentScoutData = await getCurrentScout(userEmail)
-      console.log(currentScoutData)
-      currentScoutData.length > 0 ? 
-      currentScoutData.forEach(doc =>{
-        scouts.push(doc.data())
-      })
+       currentScoutData.forEach(doc => scouts.push(doc.data()))
+      scouts.length > 0 ? 
+      console.log(scouts[0])
       : console.log('No se encontraron')
       
   
       setCurrentUser({
         uid:auth.currentUser.uid,
         email:auth.currentUser.email,
-        //nombre_completo: scouts[0].nombre_completo,
-        //seccion: scouts[0].seccion,
+        nombre_completo: scouts[0].nombre_completo,
+        seccion: scouts[0].seccion,
+        id:scouts[0].id,
+        sexo: scouts[0].sexo,
+        nombre_completo: scouts[0].nombre_completo,
+        apellido_paterno: scouts[0].apellido_paterno,
+        apellido_materno: scouts[0].apellido_materno,
+        nombres: scouts[0].nombres,
+        fecha_de_nacimiento: scouts[0].fecha_de_nacimiento,
+        edad_con_meses: scouts[0].edad_con_meses,
+        edad: scouts[0].edad,
+        mes: scouts[0].mes,
+        calle: scouts[0].calle,
+        num_exterior: scouts[0].num_exterior,
+        num_interior: scouts[0].num_interior,
+        colonia: scouts[0].colonia,
+        cp: scouts[0].cp,
+        delegacion: scouts[0].delegacion,
+        telefono_casa: scouts[0].telefono_casa,
+        telefono_emergencia: scouts[0].telefono_emergencia,
+        correo_electronico: scouts[0].correo_electronico,
+        seccion: scouts[0].seccion,
+        grupo: scouts[0].grupo,
+        grupo_2: scouts[0].grupo_2,
       })
     }
   }

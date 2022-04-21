@@ -9,6 +9,10 @@ import Button from "@mui/material/Button";
 import DatosPersonales from "./DatosPersonales";
 import Direccion from "./Direccion";
 import DatosDeScout from "./DatosDeScout";
+import { updateScoutData } from "../../firebase.config";
+import ImageButton from "./ImageButton";
+
+import { uploadProfilePicture } from "../../firebase.config";
 
 const boxStyle = {
   display: "flex",
@@ -34,8 +38,15 @@ const buttonStyle = {
   color: "white",
   "&:hover": { color: "#2E2270" },
 };
+
 const Datos = (props) => {
   const {
+    fileURL,
+    setFileURL,
+    fileImage,
+    setFileImage,
+    image,
+    setImage,
     scoutData,
     setScoutData,
     sex,
@@ -48,8 +59,74 @@ const Datos = (props) => {
     setGroup,
     secondaryGroup,
     setSecondaryGroup,
+    currentUser,
+    snackBar,
+    setSnackBar,
+    error,
+    setError,
   } = props;
 
+  const handleSubmit = async () => {
+    const scoutEmail = JSON.parse(localStorage.getItem("user")).email;
+    try {
+      await updateScoutData(scoutEmail, scoutData);
+      setSnackBar(true);
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
+  };
+
+  const handleImageUpload = async (file) =>
+    await uploadProfilePicture(file, scoutData.correo_electronico);
+
+  const handleInfoUpdate = (fileURL) => {
+    setScoutData({
+      ...scoutData,
+      foto_de_perfil: fileURL
+        ? fileURL
+        : JSON.parse(localStorage.getItem("user")).foto_de_perfil,
+      correo_electronico: JSON.parse(localStorage.getItem("user")).email,
+      seccion: JSON.parse(localStorage.getItem("user")).seccion,
+      nombre_completo:
+        scoutData.nombres +
+        " " +
+        scoutData.apellido_paterno +
+        " " +
+        scoutData.apellido_materno,
+      edad:
+        scoutData.fecha_de_nacimiento > 0
+          ? new Date().getMonth() >= scoutData.fecha_de_nacimiento.getMonth()
+            ? new Date().getYear() - scoutData.fecha_de_nacimiento.getYear()
+            : new Date().getYear() - scoutData.fecha_de_nacimiento.getYear() - 1
+          : "",
+      mes: scoutData.fecha_de_nacimiento.getMonth(),
+      edad_con_meses:
+        //Year Calculation
+        scoutData.fecha_de_nacimiento > 0
+          ? new Date().getMonth() >= scoutData.fecha_de_nacimiento.getMonth()
+            ? new Date().getYear() -
+              scoutData.fecha_de_nacimiento.getYear() +
+              " años " +
+              //Month Calculation
+              scoutData.fecha_de_nacimiento.getMonth() +
+              " meses"
+            : new Date().getYear() -
+              scoutData.fecha_de_nacimiento.getYear() -
+              1 +
+              " años " +
+              //Month Calculation
+              scoutData.fecha_de_nacimiento.getMonth() +
+              " meses"
+          : "",
+    });
+  };
+
+  const handleUpload = async () => {
+      const response = await handleImageUpload(fileImage)
+      handleInfoUpdate(await response)
+      handleSubmit();
+  };
   return (
     <>
       <Box sx={boxStyle}>
@@ -73,12 +150,15 @@ const Datos = (props) => {
                 alignItems: "center",
               }}
             >
-              <img
-                src="https://exploringbits.com/wp-content/uploads/2022/01/Luffy-PFP-1-1024x1024.jpg"
-                style={userImg}
+              <ImageButton
+                fileImage={fileImage}
+                setFileImage={setFileImage}
+                image={image}
+                setImage={setImage}
               />
               <Typography variant="h4" sx={greetTypography}>
-                Saludos {JSON.parse(localStorage.getItem('user')).nombre_completo} 👋
+                Saludos{" "}
+                {JSON.parse(localStorage.getItem("user")).nombre_completo} 👋
               </Typography>
             </Grid>
 
@@ -112,6 +192,7 @@ const Datos = (props) => {
               }}
             >
               <DatosPersonales
+                currentUser={currentUser}
                 sex={sex}
                 setSex={setSex}
                 scoutData={scoutData}
@@ -202,51 +283,7 @@ const Datos = (props) => {
                 alignItems: "flex-end",
               }}
             >
-              <Button
-                onClick={() => {
-                  setScoutData({
-                    ...scoutData,
-                    nombre_completo:
-                      scoutData.nombres +
-                      " " +
-                      scoutData.apellido_paterno +
-                      " " +
-                      scoutData.apellido_materno,
-                    edad:
-                      scoutData.fecha_de_nacimiento > 0
-                        ? new Date().getMonth() >=
-                          scoutData.fecha_de_nacimiento.getMonth()
-                          ? new Date().getYear() -
-                            scoutData.fecha_de_nacimiento.getYear()
-                          : new Date().getYear() -
-                            scoutData.fecha_de_nacimiento.getYear() -
-                            1
-                        : "",
-                    mes: scoutData.fecha_de_nacimiento.getMonth(),
-                    edad_con_meses:
-                      //Year Calculation
-                      scoutData.fecha_de_nacimiento > 0
-                        ? new Date().getMonth() >=
-                          scoutData.fecha_de_nacimiento.getMonth()
-                          ? new Date().getYear() -
-                            scoutData.fecha_de_nacimiento.getYear() +
-                            " años " +
-                            //Month Calculation
-                            scoutData.fecha_de_nacimiento.getMonth() +
-                            " meses"
-                          : new Date().getYear() -
-                            scoutData.fecha_de_nacimiento.getYear() -
-                            1 +
-                            " años " +
-                            //Month Calculation
-                            scoutData.fecha_de_nacimiento.getMonth() +
-                            " meses"
-                        : "",
-                  });
-                  console.log(scoutData)
-                }}
-                sx={buttonStyle}
-              >
+              <Button onClick={handleUpload} sx={buttonStyle}>
                 Actualizar Mis Datos
               </Button>
             </Grid>

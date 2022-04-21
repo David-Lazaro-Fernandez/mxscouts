@@ -31,6 +31,7 @@ const DatosDeScout = (props) => {
     marginRight: "20px",
     width: "400px",
   };
+  
   return (
     <>
       {/*Section*/}
@@ -47,7 +48,6 @@ const DatosDeScout = (props) => {
           value={section}
           onChange={(e) => {
             setSection(e.target.value);
-            console.log(section);
             setScoutData({ ...scoutData, seccion: e.target.value });
           }}
         >
