@@ -78,6 +78,7 @@ export const AuthProvider = ({ children} ) => {
         seccion: scouts[0].seccion,
         grupo: scouts[0].grupo,
         grupo_2: scouts[0].grupo_2,
+        foto_de_perfil: scouts[0].foto_de_perfil,
       })
     }
   }

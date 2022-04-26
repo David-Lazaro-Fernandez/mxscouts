@@ -24,6 +24,7 @@ import { rightMenuItemList } from "./Items";
 import { useAuth } from "../../context/AuthContext";
 
 const drawerWidth = 240;
+const user = JSON.parse(localStorage.getItem('user'))
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -162,7 +163,7 @@ const LeftDrawer = (props) => {
           }}
         >
           <img
-            src="https://exploringbits.com/wp-content/uploads/2022/01/Luffy-PFP-1-1024x1024.jpg"
+            src={localStorage.getItem('profilePicture')}
             style={{
               width: "50px",
               height: "50px",

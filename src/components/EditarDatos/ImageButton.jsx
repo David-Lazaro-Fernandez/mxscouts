@@ -30,9 +30,9 @@ const ImageButton = (props) =>{
         const URLfile = URL.createObjectURL(file)
         setFileImage(file)
         setImage(URLfile)
-        console.log(URLfile)
+        
     }
-    console.log(image)
+
     return (
         <>
             <div style={wrapper}>

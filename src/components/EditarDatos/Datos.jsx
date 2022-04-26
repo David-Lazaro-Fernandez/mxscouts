@@ -41,6 +41,8 @@ const buttonStyle = {
 
 const Datos = (props) => {
   const {
+    uploadRequest,
+    setUploadRequest,
     fileURL,
     setFileURL,
     fileImage,
@@ -66,26 +68,17 @@ const Datos = (props) => {
     setError,
   } = props;
 
-  const handleSubmit = async () => {
-    const scoutEmail = JSON.parse(localStorage.getItem("user")).email;
-    try {
-      await updateScoutData(scoutEmail, scoutData);
-      setSnackBar(true);
-    } catch (error) {
-      setError(true);
-      console.log(error);
-    }
-  };
-
   const handleImageUpload = async (file) =>
     await uploadProfilePicture(file, scoutData.correo_electronico);
 
   const handleInfoUpdate = (fileURL) => {
+    localStorage.setItem("profilePicture", fileURL);
     setScoutData({
       ...scoutData,
-      foto_de_perfil: fileURL
-        ? fileURL
-        : JSON.parse(localStorage.getItem("user")).foto_de_perfil,
+      foto_de_perfil:
+        fileURL != null
+          ? fileURL
+          : JSON.parse(localStorage.getItem("user")).foto_de_perfil,
       correo_electronico: JSON.parse(localStorage.getItem("user")).email,
       seccion: JSON.parse(localStorage.getItem("user")).seccion,
       nombre_completo:
@@ -120,13 +113,14 @@ const Datos = (props) => {
               " meses"
           : "",
     });
+    setUploadRequest(-uploadRequest);
   };
 
   const handleUpload = async () => {
-      const response = await handleImageUpload(fileImage)
-      handleInfoUpdate(await response)
-      handleSubmit();
+    const firebaseURL = await handleImageUpload(fileImage);
+    handleInfoUpdate(await firebaseURL);
   };
+
   return (
     <>
       <Box sx={boxStyle}>

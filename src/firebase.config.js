@@ -75,6 +75,7 @@ export const registerScoutInFirestore = (userAuthData, scoutData) =>
 
 //Edit Scout Data
 export const updateScoutData = (email, scoutData) => {
+  console.log("desde updateScoutData",scoutData)
   const scoutRef = doc(database, "Test", email);
   return updateDoc(scoutRef, {
     ...scoutData,
@@ -96,6 +97,17 @@ export const getScouts20 = () => getDocs(collection(database, "BD 20"));
 export const getScouts19 = () => getDocs(collection(database, "BD 19"));
 
 export const getScouts18 = () => getDocs(collection(database, "BD 18"));
+
+export const getTestScouts = () => getDocs(collection(database, "Test"));
+
+// Changes the profile picture of every user to default
+export const setProfilePic = (data, email) => {
+  console.log(data, email);
+  const scoutRef = doc(database, "Test", email);
+  const URL = "https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/scoutProfilePictures%2Fdefault-pp.png?alt=media&token=f2da7676-891d-4059-a9d5-5ed9f4c3b8ee"
+  console.log(scoutRef);
+  updateDoc(scoutRef, {foto_de_perfil:URL})
+};
 
 export const getScoutsWithoutCredentials = () =>
   getDocs(query(collection(database, "BD 22"), where("credencial", "==", "")));
@@ -119,14 +131,12 @@ export const getActivities = () =>
 //Image Upload
 export const uploadProfilePicture = (file, email) => {
   const imageRef = ref(storage, `scoutProfilePictures/${email}/${file.name}`);
-  var path = ""
   return uploadBytes(imageRef, file)
     .then(async () => {
-      const URL = await getDownloadURL(imageRef)
-      return URL
+      const URL = await getDownloadURL(imageRef);
+      return URL;
     })
     .catch((err) => console.log(err));
-  
 };
 
 export default database;

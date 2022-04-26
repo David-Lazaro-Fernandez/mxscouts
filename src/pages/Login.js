@@ -16,7 +16,7 @@ import {
   AlertTitle,
 } from "@mui/material";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-
+import {setProfilePic, getTestScouts} from '../firebase.config';
 import Navbar from "../components/Navbar";
 
 import { useAuth } from "../context/AuthContext";
@@ -35,8 +35,9 @@ const Login = () => {
       await Login(email, password)
       await getCurrentUser()
       localStorage.setItem('user', JSON.stringify(currentUser))
+      localStorage.setItem('profilePicture',JSON.stringify(currentUser.foto_de_perfil))
       console.log(localStorage.getItem('user'))
-      currentUser.uid.length > 0 ? navigate("/admin") : console.log('XD')
+      currentUser.uid.length > 0 ? navigate("/admin") : console.log('(ノಠ益ಠ)ノ彡┻━┻')
     }catch(err){
       console.log(err)
       setError(true);

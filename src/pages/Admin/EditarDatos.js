@@ -12,10 +12,12 @@ import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
 import Datos from "../../components/EditarDatos/Datos";
 
 import { useAuth } from "../../context/AuthContext";
+import {updateScoutData} from '../../firebase.config';
 
 const EditarDatos = (props) => {
   const navigate = useNavigate();
-  const { LogOut, currentUser } = useAuth();
+  const { LogOut, currentUser} = useAuth();
+  //LeftDrawer States
   const { pageName } = props;
   const theme = useTheme();
   const SCOUT = JSON.parse(localStorage.getItem("user"));
@@ -30,15 +32,14 @@ const EditarDatos = (props) => {
   const [group, setGroup] = useState(SCOUT.grupo);
   const [secondaryGroup, setSecondaryGroup] = useState(SCOUT.grupo_2);
   //Profile Picture
-  const [image, setImage] = useState(
-    `https://exploringbits.com/wp-content/uploads/2022/01/Luffy-PFP-1-1024x1024.jpg`
-  );
+  const [image, setImage] = useState(localStorage.getItem("profilePicture"));
   const [fileImage, setFileImage] = useState(null);
   const [fileURL, setFileURL] = useState(null);
   //Snackbar
   const [snackBar, setSnackBar] = useState(false);
   const [error, setError] = useState(false);
-
+  //Upload handler
+  const [uploadRequest, setUploadRequest] = useState(1);
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -82,12 +83,25 @@ const EditarDatos = (props) => {
     grupo: SCOUT.grupo,
     grupo_2: SCOUT.grupo_2,
   });
-  console.log(scoutData.fecha_de_nacimiento);
+
   useEffect(() => {
     const u = JSON.parse(localStorage.getItem("user"));
     setUser({ ...user, ...u });
   }, []);
 
+  useEffect(() => {
+    const handleSubmit = async () => {
+      const scoutEmail = JSON.parse(localStorage.getItem("user")).email;
+      try {
+        await updateScoutData(scoutEmail, scoutData);
+        setSnackBar(true);
+      } catch (error) {
+        setError(true);
+        console.log(error);
+      }
+    };
+    handleSubmit()
+  }, [uploadRequest]);
   return (
     <>
       {JSON.parse(localStorage.getItem("user")).uid.length > 0 ? (
@@ -110,6 +124,8 @@ const EditarDatos = (props) => {
             }}
           >
             <Datos
+              uploadRequest={uploadRequest}
+              setUploadRequest = {setUploadRequest}
               fileURL={fileURL}
               setFileURL={fileURL}
               fileImage={fileImage}
