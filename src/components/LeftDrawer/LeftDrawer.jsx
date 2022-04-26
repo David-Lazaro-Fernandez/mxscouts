@@ -163,7 +163,7 @@ const LeftDrawer = (props) => {
           }}
         >
           <img
-            src={localStorage.getItem('profilePicture')}
+            src={localStorage.getItem('profilePicture').replace(/"/g, '')}
             style={{
               width: "50px",
               height: "50px",
