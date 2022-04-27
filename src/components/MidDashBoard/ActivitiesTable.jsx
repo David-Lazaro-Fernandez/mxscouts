@@ -1,18 +1,19 @@
+//React Imports
 import React from "react";
-import {
-  Paper,
-  Typography,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  Table,
-} from "@mui/material";
+//Third Party Libraries
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Table from "@mui/material/Table";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
 
 const ActivitiesTable = (props) => {
   const { ActivitiesItems } = props;
-  console.log(ActivitiesItems);
+  //Styles
+  const tableCellStyle = { textAlign: "center" }
   return (
     <>
       <Paper
@@ -35,25 +36,25 @@ const ActivitiesTable = (props) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ textAlign: "center" }}>ID</TableCell>
-                <TableCell sx={{ textAlign: "center" }}>CIA</TableCell>
-                <TableCell sx={{ textAlign: "center" }}>
+                <TableCell sx={tableCellStyle}>ID</TableCell>
+                <TableCell sx={tableCellStyle}>CIA</TableCell>
+                <TableCell sx={tableCellStyle}>
                   Nombre de la Actividad
                 </TableCell>
-                <TableCell sx={{ textAlign: "center" }}>
+                <TableCell sx={tableCellStyle}>
                   Lugar de realización
                 </TableCell>
-                <TableCell sx={{ textAlign: "center" }}>
+                <TableCell sx={tableCellStyle}>
                   Hora de inicio
                 </TableCell>
-                <TableCell sx={{ textAlign: "center" }}>
+                <TableCell sx={tableCellStyle}>
                   Hora de finalización
                 </TableCell>
-                <TableCell sx={{ textAlign: "center" }}>
+                <TableCell sx={tableCellStyle}>
                   Fecha de realización
                 </TableCell>
-                <TableCell sx={{ textAlign: "center" }}>Asistentes</TableCell>
-                <TableCell sx={{ textAlign: "center" }}>
+                <TableCell sx={tableCellStyle}>Asistentes</TableCell>
+                <TableCell sx={tableCellStyle}>
                   Observaciones
                 </TableCell>
               </TableRow>

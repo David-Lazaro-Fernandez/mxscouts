@@ -1,5 +1,8 @@
+//React Imports
 import React, { useState } from "react";
+//Third Party Libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+//Local Components
 import HomePage from "./pages/HomePage";
 import GroupsPage from "./pages/GroupsPage";
 import Login from "./pages/Login";
@@ -15,6 +18,8 @@ import Scouts19TablePage from "./pages/Admin/Scouts19TablePage";
 import Scouts18TablePage from "./pages/Admin/Scouts19TablePage";
 import EditarDatos from "./pages/Admin/EditarDatos";
 import ScoutCredential from "./pages/Admin/ScoutCredential";
+import ScoutsWithoutMITable from './pages/Admin/ScoutsWithoutMITable';
+//Context
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -54,6 +59,12 @@ function App() {
             path="/Admin/tables/activities22"
             element={<ActivitiesTablePage pageName="Actividades de 2022" />}
           />
+          <Route
+            path="/admin/tables/scouts-no-insurance"
+            element={
+              <ScoutsWithoutMITable pageName="Scouts sin seguro medico"/>
+            }
+          />
           <Route path="/Admin/tables" element={<TablesPage />} />
           <Route
             path="/Admin/editar-datos"
@@ -72,6 +83,7 @@ function App() {
               <ScoutCredential pageName="Mi credencial"/>
             }
           />
+          
         </Routes>
       </BrowserRouter>
     </AuthProvider>

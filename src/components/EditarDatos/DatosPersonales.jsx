@@ -1,4 +1,6 @@
+//React Imports
 import React from "react";
+//Third Party Libraries
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
@@ -6,6 +8,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import Typography from "@mui/material/Typography";
+
 const DatosPersonales = (props) => {
   const {
     sex,
@@ -16,7 +19,7 @@ const DatosPersonales = (props) => {
     setBirthDate,
     currentUser,
   } = props;
-
+  //Styles
   const inputBox = {
     display: "flex",
     flexDirection: "row",
@@ -34,7 +37,7 @@ const DatosPersonales = (props) => {
     width: "400px",
   };
 
-  console.log(scoutData)
+  console.log(scoutData);
   return (
     <>
       {/*ID*/}

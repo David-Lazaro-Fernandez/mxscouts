@@ -1,14 +1,14 @@
+//React Imports
 import React from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-} from "@mui/material";
+//Third Party Libraries
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+
 const SCard = (props) => {
   const {data} = props;
-  console.log(data)
     return (
     <>
       <Card sx={{height: "250px"}}>

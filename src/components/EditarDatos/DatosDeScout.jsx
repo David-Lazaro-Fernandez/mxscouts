@@ -1,4 +1,6 @@
+//React Imports
 import React from "react";
+//Third Party Libraries
 import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,6 +17,7 @@ const DatosDeScout = (props) => {
     secondaryGroup,
     setSecondaryGroup,
   } = props;
+  //Styles
   const inputBox = {
     display: "flex",
     flexDirection: "row",

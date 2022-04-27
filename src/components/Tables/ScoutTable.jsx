@@ -1,5 +1,8 @@
+//React Imports
 import React from "react";
-import { Paper, Typography, Button } from "@mui/material";
+//Third Party Libraries
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
 import {
   DataGrid,
   GridToolbar,
@@ -10,8 +13,10 @@ import {
   GridToolbarDensitySelector,
 } from "@mui/x-data-grid";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+//Data Columns
 import { columns } from "./Columns/ScoutColumn";
 
+//Table Toolbar
 const CustomToolbar = () => {
   return (
     <GridToolbarContainer sx={{ marginLeft: "10px" }}>
@@ -25,41 +30,40 @@ const CustomToolbar = () => {
 
 const ScoutTable = (props) => {
   const { ScoutList } = props;
-  console.log(ScoutList)
+  //Styles
+  const arrowBackButtonStyle = {
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "white",
+    color: "#2E2270",
+  };
+  const wrapper = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    margin: "0px 0px 20px 0px",
+  };
+  const mainTableStyle = {
+    p: "3",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    width: "100%",
+    height: "600px",
+  };
+
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-start",
-          alignItems: "center",
-          margin: "0px 0px 20px 0px",
-        }}
-      >
+      <div style={wrapper}>
         <Button
           startIcon={<ArrowBackIcon />}
           href="/Admin/tables"
-          sx={{
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            backgroundColor: "white",
-            color: "#2E2270",
-          }}
+          sx={arrowBackButtonStyle}
         >
           Regresar a las tablas
         </Button>
       </div>
-      <Paper
-        sx={{
-          p: "3",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          width: "100%",
-          height: "600px",
-        }}
-      >
-
+      <Paper sx={mainTableStyle}>
         <DataGrid
           rows={ScoutList}
           columns={columns}

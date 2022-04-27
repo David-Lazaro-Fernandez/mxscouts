@@ -1,19 +1,20 @@
+//React Imports
 import React from "react";
-
+//Third Party Libraries
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-
+//Local Components
 import DatosPersonales from "./DatosPersonales";
 import Direccion from "./Direccion";
 import DatosDeScout from "./DatosDeScout";
-import { updateScoutData } from "../../firebase.config";
 import ImageButton from "./ImageButton";
-
+//Firebase local functions
 import { uploadProfilePicture } from "../../firebase.config";
 
+//Styles
 const boxStyle = {
   display: "flex",
   justifyContent: "center",
@@ -23,7 +24,6 @@ const boxStyle = {
 };
 
 const mainGrid = { margin: "20px 0px 0px 0px" };
-const userImg = { border: "0px", borderRadius: "50%", width: "100px" };
 const greetTypography = {
   color: "#2E2270",
   fontWeight: "600",
@@ -68,17 +68,21 @@ const Datos = (props) => {
     setError,
   } = props;
 
+  //Uploads profile picture to firebase
   const handleImageUpload = async (file) =>
-    await uploadProfilePicture(file, scoutData.correo_electronico);
+    file != null
+      ? await uploadProfilePicture(file, scoutData.correo_electronico)
+      : null;
 
+  //Updates the scoutData state
   const handleInfoUpdate = (fileURL) => {
-    localStorage.setItem("profilePicture", fileURL);
+    fileURL != null ? localStorage.setItem("profilePicture", fileURL) : console.log('Sin imagen a modificar')
     setScoutData({
       ...scoutData,
       foto_de_perfil:
         fileURL != null
           ? fileURL
-          : JSON.parse(localStorage.getItem("user")).foto_de_perfil,
+          : localStorage.getItem("profilePicture").replace(/"/g, ''),
       correo_electronico: JSON.parse(localStorage.getItem("user")).email,
       seccion: JSON.parse(localStorage.getItem("user")).seccion,
       nombre_completo:
@@ -116,6 +120,7 @@ const Datos = (props) => {
     setUploadRequest(-uploadRequest);
   };
 
+  //Call to upload profile picture and update scout data
   const handleUpload = async () => {
     const firebaseURL = await handleImageUpload(fileImage);
     handleInfoUpdate(await firebaseURL);

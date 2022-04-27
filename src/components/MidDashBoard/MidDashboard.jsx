@@ -1,9 +1,14 @@
+//React Libraries
 import React from "react";
-import { Grid, Container, Paper, Typography, Link } from "@mui/material";
+//Third Party Libraries
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+//Local Components
 import ActivitiesTable from "./ActivitiesTable";
 import NumberOfActivities from "./NumberOfActivities";
 import NumberOfScouts from "./NumberOfScouts";
 import ScoutsWithNoCredential from "./ScoutsWithNoCredential";
+
 const MidDashboard = (props) => {
   const { ActivitiesItems, ScoutsWithoutCredential, Scouts } = props;
   return (

@@ -1,9 +1,12 @@
+//React Imports
 import React from 'react';
+//Third Party Libraies
 import IconButton from '@mui/material/IconButton';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
 const ImageButton = (props) =>{
     const {image,setImage, fileImage, setFileImage} = props;
+    //Styles
     const buttonStyle={
         position:'absolute',
         border:'0px',

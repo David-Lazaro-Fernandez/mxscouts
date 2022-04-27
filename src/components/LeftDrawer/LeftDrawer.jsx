@@ -1,5 +1,6 @@
+//React Imports
 import React from "react";
-
+//Third Party Libraries
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -17,83 +18,85 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import LogoutIcon from "@mui/icons-material/Logout";
-
+//Right and Left Menu Items
 import { leftMenuItemList } from "./LeftDrawerItems";
 import { rightMenuItemList } from "./Items";
-
+//Context
 import { useAuth } from "../../context/AuthContext";
-
-const drawerWidth = 240;
-const user = JSON.parse(localStorage.getItem('user'))
-
-const openedMixin = (theme) => ({
-  width: drawerWidth,
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: "hidden",
-});
-
-const closedMixin = (theme) => ({
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
-});
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  ...(open && {
-    ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
-  }),
-}));
 
 const LeftDrawer = (props) => {
   const { open, setOpen, theme, pageName, LogOut, navigate } = props;
   const { currentUser } = useAuth();
+
+  //Styles
+  const drawerWidth = 240;
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const openedMixin = (theme) => ({
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    overflowX: "hidden",
+  });
+
+  const closedMixin = (theme) => ({
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: "hidden",
+    width: `calc(${theme.spacing(7)} + 1px)`,
+    [theme.breakpoints.up("sm")]: {
+      width: `calc(${theme.spacing(8)} + 1px)`,
+    },
+  });
+
+  const DrawerHeader = styled("div")(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+  }));
+
+  const AppBar = styled(MuiAppBar, {
+    shouldForwardProp: (prop) => prop !== "open",
+  })(({ theme, open }) => ({
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    ...(open && {
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px)`,
+      transition: theme.transitions.create(["width", "margin"], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    }),
+  }));
+
+  const Drawer = styled(MuiDrawer, {
+    shouldForwardProp: (prop) => prop !== "open",
+  })(({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: "nowrap",
+    boxSizing: "border-box",
+    ...(open && {
+      ...openedMixin(theme),
+      "& .MuiDrawer-paper": openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+      "& .MuiDrawer-paper": closedMixin(theme),
+    }),
+  }));
+
   return (
     <>
       <CssBaseline />
@@ -163,7 +166,7 @@ const LeftDrawer = (props) => {
           }}
         >
           <img
-            src={localStorage.getItem('profilePicture').replace(/"/g, '')}
+            src={localStorage.getItem("profilePicture").replace(/"/g, "")}
             style={{
               width: "50px",
               height: "50px",
@@ -177,14 +180,14 @@ const LeftDrawer = (props) => {
               variant="subtitle2"
               sx={{ display: open ? "block" : "none", color: "#2E2270" }}
             >
-              {JSON.parse(localStorage.getItem('user')).nombre_completo}
+              {JSON.parse(localStorage.getItem("user")).nombre_completo}
             </Typography>
             <Typography
               component="div"
               variant="body2"
               sx={{ display: open ? "block" : "none", color: "#2E2270" }}
             >
-              {JSON.parse(localStorage.getItem('user')).seccion}
+              {JSON.parse(localStorage.getItem("user")).seccion}
             </Typography>
           </div>
         </Box>
@@ -271,11 +274,11 @@ const LeftDrawer = (props) => {
               px: 2.5,
             }}
             component="a"
-            onClick = { ()=>{
-              LogOut()
-              localStorage.clear()
-              navigate('/Login')
-            } }
+            onClick={() => {
+              LogOut();
+              localStorage.clear();
+              navigate("/Login");
+            }}
           >
             <ListItemIcon
               sx={{
@@ -284,7 +287,7 @@ const LeftDrawer = (props) => {
                 justifyContent: "center",
               }}
             >
-              <LogoutIcon sx={{color: "#2E2270" }}/>
+              <LogoutIcon sx={{ color: "#2E2270" }} />
             </ListItemIcon>
             <ListItemText
               primary="Cerrar Sesión"

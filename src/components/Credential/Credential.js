@@ -1,16 +1,22 @@
-import React, {forwardRef} from "react";
+//React imports
+import React, { forwardRef } from "react";
+//Third Party Libraries
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-
-const Credential = (props,ref) => {
+const Credential = (props, ref) => {
+  const USER = JSON.parse(localStorage.getItem("user"));
+  const PROFILE_PICTURE = localStorage
+    .getItem("profilePicture")
+    .replace(/"/g, "");
+  //Styles
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-  }
+  };
 
   const cardStyle = {
     marginTop: "40px",
@@ -110,7 +116,6 @@ const Credential = (props,ref) => {
     color: "white",
   };
 
-  
   return (
     <>
       <div style={containerStyle} ref={ref}>
@@ -126,11 +131,7 @@ const Credential = (props,ref) => {
               style={scoutSymbolImageStyle}
             />
           </div>
-          <img
-            alt="SCOUT IMAGE"
-            style={scoutImg}
-            src="https://scontent.fntr10-1.fna.fbcdn.net/v/t1.6435-9/152439597_10158907814234793_441831701946878239_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_eui2=AeFZDGg1rKYW14vH4caWlorkIkcILsqSheUiRwguypKF5WfUmeLcMaFzeIH-j8GLAeZTQnYLZ275h-h_AZj-nnYI&_nc_ohc=hvnm2PL8BgQAX_SFD35&_nc_ht=scontent.fntr10-1.fna&oh=00_AT83FTigVxtLL7ulhXFle6S-AVzweswLiHk9KE9gkm6PVQ&oe=6282E2D4"
-          />
+          <img alt="SCOUT IMAGE" style={scoutImg} src={PROFILE_PICTURE} />
           <img
             alt="QR"
             src="https://www.qr-generator.nu/qrcode.svg?download=1"
@@ -144,31 +145,28 @@ const Credential = (props,ref) => {
           />
           <div style={scoutInfoStyle}>
             <Typography variant="body" sx={body}>
-              Sergio Alejandro
+              {USER.nombres}
             </Typography>
             <Typography variant="body2" sx={body2}>
-              Marquez Gonzales
+              {USER.apellido_paterno + " " + USER.apellido_materno}
             </Typography>
             <Typography variant="body2" sx={body3}>
-              Jefe de Tropa
+              {USER.seccion}
             </Typography>
             <Typography variant="body2" sx={body3}>
-              Grupo 512 - Mixcoac
+              {USER.grupo + " " + USER.grupo_2}
             </Typography>
             <Typography variant="body2" sx={body3}>
-              Ciudad de México
+              {USER.delegacion}
             </Typography>
             <Typography variant="body2" sx={body3}>
-              Benavides 534, Col. Benito Juarez
+              {USER.calle + " " + USER.num_interior + " " + USER.colonia}
             </Typography>
             <Typography variant="body2" sx={body3}>
-              +529313847362
+              +52{USER.telefono_casa}
             </Typography>
           </div>
         </Paper>
-
-       
-
       </div>
     </>
   );
