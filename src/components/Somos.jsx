@@ -11,10 +11,13 @@ const Somos = (props) => {
   const parrafos2 = [];
   let i = 0;
   for (const par in parrafos) {
-    parrafos2.push(<p key={i} style={{color:'#2E2270'}}>{parrafos[par]}</p>);
+    parrafos2.push(
+      <p key={i} style={{ color: "#2E2270" }}>
+        {parrafos[par]}
+      </p>
+    );
     i++;
   }
-
 
   return (
     <div>
@@ -27,7 +30,7 @@ const Somos = (props) => {
           justifyContent="center"
         >
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <img src={icono} alt="Logo de la tropa"/>
+            <img src={icono} alt="Logo de la tropa" />
           </Grid>
           <Grid
             item
@@ -43,7 +46,9 @@ const Somos = (props) => {
               alignItems: "center",
             }}
           >
-            <h4 style={{ textAlign: "center", color:'#2E2270' }}>{somosTitulo}</h4>
+            <h4 style={{ textAlign: "center", color: "#2E2270" }}>
+              {somosTitulo}
+            </h4>
             {parrafos2}
           </Grid>
         </Grid>

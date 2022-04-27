@@ -1,5 +1,8 @@
+//React imports
 import React from "react";
-import { Grid, Container } from "@mui/material";
+//Third Party Libraries
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 
 const Principios = (props) => {
   const { tropasArray, numero } = props;
