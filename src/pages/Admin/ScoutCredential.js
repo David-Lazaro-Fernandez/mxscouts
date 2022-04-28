@@ -15,7 +15,7 @@ import { useAuth } from "../../context/AuthContext";
 const ScoutCredential = (props) => {
   const { pageName } = props;
   const navigate = useNavigate();
-  const { LogOut, currentUser } = useAuth();
+  const { LogOut } = useAuth();
   const theme = useTheme();
   //LeftDrawer Hooks
   const [open, setOpen] = useState(false);

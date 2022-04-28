@@ -28,10 +28,10 @@ const LeftDrawer = (props) => {
   const { open, setOpen, theme, pageName, LogOut, navigate } = props;
   const { currentUser } = useAuth();
 
-  //Styles
-  const drawerWidth = 240;
   const user = JSON.parse(localStorage.getItem("user"));
 
+  //Styles
+  const drawerWidth = 240;
   const openedMixin = (theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -97,43 +97,63 @@ const LeftDrawer = (props) => {
     }),
   }));
 
+  const iconButtonStyle = {
+    backgroundColor: "white",
+    borderRadius: "5px",
+    ...(open && { display: "none" }),
+  };
+  const appBarStyle = {
+    backgroundColor: "white",
+    boxShadow: "none",
+    backgroundColor: "#F2F7FA",
+  };
+  const pageNameStyle = {
+    color: "#2E2270",
+    width: "100%",
+    textAlign: "center",
+    fontWeight: "500",
+    fontSize: "28px",
+  };
+  const userWrapper = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "20px 0px 20px 0px",
+  };
+  const profilePictureStyle = {
+    width: "50px",
+    height: "50px",
+    borderRadius: "50%",
+    marginRight: open ? "10px" : "0px",
+  };
+  const itemButtonStyle = {
+    minHeight: 48,
+    justifyContent: open ? "initial" : "center",
+    px: 2.5,
+  };
+  const fullNameStyle = { display: open ? "block" : "none", color: "#2E2270" };
+  const itemTextStyle = { opacity: open ? 1 : 0, color: "#2E2270" };
+  const iconWrapper = {
+    minWidth: 0,
+    mr: open ? 3 : "auto",
+    justifyContent: "center",
+  };
   return (
     <>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        open={open}
-        sx={{
-          backgroundColor: "white",
-          boxShadow: "none",
-          backgroundColor: "#F2F7FA",
-        }}
-      >
+      <AppBar position="fixed" open={open} sx={appBarStyle}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={() => setOpen(true)}
             edge="start"
-            sx={{
-              backgroundColor: "white",
-              borderRadius: "5px",
-              ...(open && { display: "none" }),
-            }}
+            sx={iconButtonStyle}
           >
             <MenuIcon sx={{ color: "#2E2270" }} />
           </IconButton>
-          <Typography
-            noWrap
-            component="div"
-            sx={{
-              color: "#2E2270",
-              width: "100%",
-              textAlign: "center",
-              fontWeight: "500",
-              fontSize: "28px",
-            }}
-          >
+          <Typography noWrap component="div" sx={pageNameStyle}>
             {pageName}
           </Typography>
         </Toolbar>
@@ -144,6 +164,7 @@ const LeftDrawer = (props) => {
             src="https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/Logo.png?alt=media&token=71ae8e1c-6b35-4ed6-a817-1e0f958495a9"
             width="100px"
             style={{ marginRight: "50px" }}
+            alt="AGSMAC LOGO"
           />
           <IconButton onClick={() => setOpen(false)}>
             {theme.direction === "rtl" ? (
@@ -156,37 +177,17 @@ const LeftDrawer = (props) => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "20px 0px 20px 0px",
-          }}
-        >
+        <Box sx={userWrapper}>
           <img
             src={localStorage.getItem("profilePicture").replace(/"/g, "")}
-            style={{
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              marginRight: open ? "10px" : "0px",
-            }}
+            alt="Profile Picture"
+            style={profilePictureStyle}
           />
           <div>
-            <Typography
-              component="div"
-              variant="subtitle2"
-              sx={{ display: open ? "block" : "none", color: "#2E2270" }}
-            >
+            <Typography component="div" variant="subtitle2" sx={fullNameStyle}>
               {JSON.parse(localStorage.getItem("user")).nombre_completo}
             </Typography>
-            <Typography
-              component="div"
-              variant="body2"
-              sx={{ display: open ? "block" : "none", color: "#2E2270" }}
-            >
+            <Typography component="div" variant="body2" sx={fullNameStyle}>
               {JSON.parse(localStorage.getItem("user")).seccion}
             </Typography>
           </div>
@@ -196,11 +197,7 @@ const LeftDrawer = (props) => {
           {leftMenuItemList.map((item) => (
             <ListItemButton
               key={item.text}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
+              sx={itemButtonStyle}
               component="a"
               href={item.href}
             >
@@ -213,6 +210,7 @@ const LeftDrawer = (props) => {
               >
                 <img
                   src={item.img}
+                  alt="Item image"
                   width="25px"
                   style={{
                     filter:
@@ -220,10 +218,7 @@ const LeftDrawer = (props) => {
                   }}
                 />
               </ListItemIcon>
-              <ListItemText
-                primary={item.text}
-                sx={{ opacity: open ? 1 : 0, color: "#2E2270" }}
-              />
+              <ListItemText primary={item.text} sx={itemTextStyle} />
             </ListItemButton>
           ))}
         </List>
@@ -232,23 +227,14 @@ const LeftDrawer = (props) => {
           {rightMenuItemList.map((item) => (
             <ListItemButton
               key={item.text}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
+              sx={itemButtonStyle}
               component="a"
               href={item.href}
             >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
+              <ListItemIcon sx={iconWrapper}>
                 <img
                   src={item.img}
+                  alt="Second item List image"
                   width="25px"
                   style={{
                     filter:
@@ -258,7 +244,7 @@ const LeftDrawer = (props) => {
               </ListItemIcon>
               <ListItemText
                 primary={item.text}
-                sx={{ opacity: open ? 1 : 0, color: "#2E2270" }}
+                sx={itemTextStyle}
               />
             </ListItemButton>
           ))}
@@ -268,11 +254,7 @@ const LeftDrawer = (props) => {
         <List>
           <ListItemButton
             key={1}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
+            sx={itemButtonStyle}
             component="a"
             onClick={() => {
               LogOut();
@@ -280,19 +262,10 @@ const LeftDrawer = (props) => {
               navigate("/Login");
             }}
           >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
+            <ListItemIcon sx={iconWrapper}>
               <LogoutIcon sx={{ color: "#2E2270" }} />
             </ListItemIcon>
-            <ListItemText
-              primary="Cerrar Sesión"
-              sx={{ opacity: open ? 1 : 0, color: "#2E2270" }}
-            />
+            <ListItemText primary="Cerrar Sesión" sx={itemTextStyle} />
           </ListItemButton>
         </List>
       </Drawer>

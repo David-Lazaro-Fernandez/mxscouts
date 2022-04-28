@@ -19,7 +19,7 @@ import { useAuth } from "../../context/AuthContext";
 
 const ScoutsWithoutMedicalInsurancePage = (props) => {
   const navigate = useNavigate();
-  const { LogOut, currentUser } = props;
+  const { LogOut } = props;
   useAuth();
   const { pageName } = props;
   //Left Drawer states

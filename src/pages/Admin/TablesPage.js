@@ -14,7 +14,7 @@ const TablesPage = (props) => {
   const { pageName } = props;
   const theme = useTheme();
   const navigate = useNavigate();
-  const { LogOut, currentUser } = useAuth();
+  const { LogOut } = useAuth();
   //LeftDrawer hooks
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});

@@ -17,7 +17,7 @@ import { useAuth } from "../../context/AuthContext";
 
 const EditarDatos = (props) => {
   const navigate = useNavigate();
-  const { LogOut, currentUser} = useAuth();
+  const { LogOut } = useAuth();
   //LeftDrawer States
   const { pageName } = props;
   const theme = useTheme();

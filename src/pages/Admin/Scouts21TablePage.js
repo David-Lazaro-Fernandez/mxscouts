@@ -15,7 +15,7 @@ import { useAuth } from "../../context/AuthContext";
 
 const Scouts21TablePage = (props) => {
   const navigate = useNavigate();
-  const { LogOut, currentUser } = useAuth();
+  const { LogOut } = useAuth();
   const { pageName } = props;
   const theme = useTheme();
   //Left Drawer states

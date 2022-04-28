@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { ref, getStorage, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   collection,
@@ -9,7 +9,6 @@ import {
   where,
   doc,
   setDoc,
-  documentId,
   updateDoc,
 } from "firebase/firestore";
 // Your web app's Firebase configuration
@@ -124,6 +123,7 @@ export const getScoutsWithExpiredMedicalInsurance = () =>
   getDocs(
     query(collection(database, "BD 22"), where("seguro", "<", new Date()))
   );
+
 //Activities
 export const getActivities = () =>
   getDocs(collection(database, "Actividades 22"));

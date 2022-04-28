@@ -21,7 +21,7 @@ const AdminPage = (props) => {
   //Navigation
   const navigate = useNavigate();
   //User context
-  const { LogOut, currentUser, getCurrentUser } = useAuth();
+  const { LogOut } = useAuth();
   //Left Drawer states
   const { pageName } = props;
   const [open, setOpen] = useState(false);

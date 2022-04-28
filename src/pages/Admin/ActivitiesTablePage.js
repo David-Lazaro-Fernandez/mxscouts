@@ -16,7 +16,7 @@ import { useAuth } from "../../context/AuthContext";
 const ActivitiesTablePage = (props) => {
   const { pageName } = props;
   const navigate = useNavigate();
-  const { LogOut, currentUser } = useAuth();
+  const { LogOut } = useAuth();
   //LeftDrawer hooks
   const theme = useTheme();
   const [open, setOpen] = useState(false);
