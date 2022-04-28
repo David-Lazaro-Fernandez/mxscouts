@@ -18,7 +18,7 @@ import Scouts19TablePage from "./pages/Admin/Scouts19TablePage";
 import Scouts18TablePage from "./pages/Admin/Scouts19TablePage";
 import EditarDatos from "./pages/Admin/EditarDatos";
 import ScoutCredential from "./pages/Admin/ScoutCredential";
-import ScoutsWithoutMITable from './pages/Admin/ScoutsWithoutMITable';
+import ScoutsWithoutMITable from "./pages/Admin/ScoutsWithoutMITable";
 //Context
 import { AuthProvider } from "./context/AuthContext";
 
@@ -62,7 +62,7 @@ function App() {
           <Route
             path="/admin/tables/scouts-no-insurance"
             element={
-              <ScoutsWithoutMITable pageName="Scouts sin seguro medico"/>
+              <ScoutsWithoutMITable pageName="Scouts sin seguro medico" />
             }
           />
           <Route path="/Admin/tables" element={<TablesPage />} />
@@ -79,11 +79,8 @@ function App() {
 
           <Route
             path="/admin/my-credential"
-            element={
-              <ScoutCredential pageName="Mi credencial"/>
-            }
+            element={<ScoutCredential pageName="Mi credencial" />}
           />
-          
         </Routes>
       </BrowserRouter>
     </AuthProvider>
