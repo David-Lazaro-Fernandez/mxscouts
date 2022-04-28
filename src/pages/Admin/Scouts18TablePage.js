@@ -1,29 +1,35 @@
+//React Imports
 import React, { useEffect, useState } from "react";
+//Third Party Libraries
 import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
+//Local Components
 import ScoutTable from "../../components/Tables/ScoutTable";
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
-
+//Firebase Functions
 import { getScouts18 } from "../../firebase.config";
-import {useAuth} from '../../context/AuthContext';
+//Context
+import { useAuth } from "../../context/AuthContext";
+
 const Scouts18TablePage = (props) => {
   const navigate = useNavigate();
-  const {LogOut, currentUser} = useAuth()
-  //Left Drawer states
+  const { LogOut, currentUser } = useAuth();
   const { pageName } = props;
-  const [open, setOpen] = useState(false);
   const theme = useTheme();
-  const [user, setUser] = useState({})
+  //Left Drawer states
+  const [open, setOpen] = useState(false);
+  const [user, setUser] = useState({});
   //Main content states
   const [scouts, setScouts] = useState([]);
   const [fetched, setFetched] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       //Gets user from localStorage
-      const u = JSON.parse(localStorage.getItem('user'))
-      setUser({...user, ...u})
+      const u = JSON.parse(localStorage.getItem("user"));
+      setUser({ ...user, ...u });
       //Fetch all scouts
       const scoutQuerySnapshot = await getScouts18();
       scoutQuerySnapshot.forEach((doc) => {
@@ -67,7 +73,9 @@ const Scouts18TablePage = (props) => {
             sexo: doc.data().sexo,
             remesa: doc.data().remesa,
             credencial:
-              doc.data().credencial === "" ? "Sin Credencial" : doc.data().credencial,
+              doc.data().credencial === ""
+                ? "Sin Credencial"
+                : doc.data().credencial,
             seguro:
               typeof doc.data().seguro === "object"
                 ? new Date(
@@ -86,50 +94,51 @@ const Scouts18TablePage = (props) => {
 
       setFetched(true);
     };
-
     fetchData();
   }, []);
 
+  //Styles
+  const mainBox = { display: "flex" };
+  const main = {
+    width: "100%",
+    p: 3,
+    marginTop: "60px",
+    backgroundColor: "#F2F7FA",
+  };
+  const circularProgressWrapper = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+  const circularProgress = { color: "#2E2270", marginTop: "100px" };
+
   return (
     <>
-    {JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
-      <Box sx={{ display: "flex" }}>
-      <LeftDrawer
-        open={open}
-        setOpen={setOpen}
-        theme={theme}
-        pageName={pageName}
-        navigate = {navigate}
-        LogOut = {LogOut}
-      />
-      <Box
-        component="main"
-        sx={{
-          width: "100%",
-          p: 3,
-          marginTop: "60px",
-          backgroundColor: "#F2F7FA",
-        }}
-      >
-        {fetched ? (
-          <ScoutTable ScoutList={scouts} />
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <CircularProgress sx={{ color: "#2E2270", marginTop: "100px" }} />
-          </div>
-        )}
-      </Box>
-    </Box>
-    ) : <Redirect to="/login" />}
+      {JSON.parse(localStorage.getItem("user")).uid.length > 0 ? (
+        <Box sx={mainBox}>
+          <LeftDrawer
+            open={open}
+            setOpen={setOpen}
+            theme={theme}
+            pageName={pageName}
+            navigate={navigate}
+            LogOut={LogOut}
+          />
+          <Box component="main" sx={main}>
+            {fetched ? (
+              <ScoutTable ScoutList={scouts} />
+            ) : (
+              <div style={circularProgressWrapper}>
+                <CircularProgress sx={circularProgress} />
+              </div>
+            )}
+          </Box>
+        </Box>
+      ) : (
+        <Navigate to="/login" />
+      )}
     </>
-    
   );
 };
 

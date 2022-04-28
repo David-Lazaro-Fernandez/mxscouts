@@ -1,24 +1,30 @@
+//React imports
 import React, { useEffect, useState } from "react";
+//Third Party libraries
 import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
+//Local Components 
 import ScoutTable from "../../components/Tables/ScoutTable";
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
-
+//Firebase Functions
 import { getScouts } from "../../firebase.config";
+//Context
 import { useAuth } from "../../context/AuthContext";
+
 const ScoutsTablePage = (props) => {
   const navigate = useNavigate();
   const { LogOut, currentUser } = useAuth();
-  const [user, setUser] = useState({});
-  //Left Drawer states
   const { pageName } = props;
-  const [open, setOpen] = useState(false);
   const theme = useTheme();
+  //Left Drawer states
+  const [user, setUser] = useState({});
+  const [open, setOpen] = useState(false);
   //Main content states
   const [scouts, setScouts] = useState([]);
   const [fetched, setFetched] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       //Gets user from localStorage
@@ -91,10 +97,26 @@ const ScoutsTablePage = (props) => {
     fetchData();
   }, []);
 
+  //Styles
+  const mainBox = { display: "flex" };
+  const main = {
+    width: "100%",
+    p: 3,
+    marginTop: "60px",
+    backgroundColor: "#F2F7FA",
+  };
+  const circularProgressWrapper = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+  const circularProgress = { color: "#2E2270", marginTop: "100px" };
+
   return (
     <>
       {JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
-        <Box sx={{ display: "flex" }}>
+        <Box sx={mainBox}>
           <LeftDrawer
             open={open}
             setOpen={setOpen}
@@ -105,26 +127,16 @@ const ScoutsTablePage = (props) => {
           />
           <Box
             component="main"
-            sx={{
-              width: "100%",
-              p: 3,
-              marginTop: "60px",
-              backgroundColor: "#F2F7FA",
-            }}
+            sx={main}
           >
             {fetched ? (
               <ScoutTable ScoutList={scouts} />
             ) : (
               <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
+                style={circularProgressWrapper}
               >
                 <CircularProgress
-                  sx={{ color: "#2E2270", marginTop: "100px" }}
+                  sx={circularProgress}
                 />
               </div>
             )}

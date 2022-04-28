@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useRef, forwardRef } from "react";
+//React Imports
+import React, { useState, useEffect, useRef } from "react";
+//Third Party Libraries
 import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import ReactToPrint from "react-to-print";
-
+//Local Components
 import Credential from "../../components/Credential/Credential";
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
+//Context
 import { useAuth } from "../../context/AuthContext";
 
 const ScoutCredential = (props) => {
@@ -14,6 +17,7 @@ const ScoutCredential = (props) => {
   const navigate = useNavigate();
   const { LogOut, currentUser } = useAuth();
   const theme = useTheme();
+  //LeftDrawer Hooks
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({});
   const componentRef = useRef();

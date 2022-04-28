@@ -1,16 +1,15 @@
-import { useState, useRef, useEffect } from "react";
+//React imports
+import React,{ useState, useRef, useEffect } from "react";
 //Material UI Components
-import {
-  Grid,
-  Container,
-  Slide,
-  Modal,
-  Box,
-  AppBar,
-  Tabs,
-  Tab,
-  CircularProgress,
-} from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import Slide from "@mui/material/Slide";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import AppBar from "@mui/material/AppBar";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab"
+import CircularProgress from "@mui/material/CircularProgress"
 //Material UI Hooks
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -19,7 +18,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import DirectionsIcon from "@mui/icons-material/Directions";
-//Custom Components
+//Local Components
 import ScoutCard from "../components/ScoutCard";
 import CoolButton from "../components/CoolButton";
 import CoolLink from "../components/CoolLink";

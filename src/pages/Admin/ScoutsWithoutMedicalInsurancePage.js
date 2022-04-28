@@ -1,27 +1,31 @@
+//React Imports
 import React, { useState, useEffect } from "react";
+//Third Party Libraries
 import { useNavigate, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-
+//Local Components
 import LeftDrawer from "../../components/LeftDrawer/LeftDrawer";
 import NoInsurance from "../../components/MedicalInsurancePage/NoInsurance";
-
+//Firebase Functions
 import {
   getScoutsWithoutMedicalInsuranceNA,
   getScoutsWithExpiredMedicalInsurance,
   getScoutsWithoutMedicalInsurance,
 } from "../../firebase.config";
+//Context
 import { useAuth } from "../../context/AuthContext";
+
 const ScoutsWithoutMedicalInsurancePage = (props) => {
   const navigate = useNavigate();
   const { LogOut, currentUser } = props;
   useAuth();
-  //Left Drawer states
   const { pageName } = props;
-  const [open, setOpen] = useState(false);
+  //Left Drawer states
   const theme = useTheme();
-  const [user,setUser] = useState({})
+  const [open, setOpen] = useState(false);
+  const [user, setUser] = useState({});
   //Main content states
   const [insurance, setInsurance] = useState([]);
   const [fetched, setFetched] = useState(false);
@@ -128,10 +132,27 @@ const ScoutsWithoutMedicalInsurancePage = (props) => {
 
     fetchData();
   }, []);
+
+  //Styles
+  const mainBox = { display: "flex" };
+  const main = {
+    width: "100%",
+    p: 3,
+    marginTop: "60px",
+    backgroundColor: "#F2F7FA",
+  };
+  const circularProgressWrapper = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+  const circularProgress = { color: "#2E2270", marginTop: "100px" };
+
   return (
     <>
-      {JSON.parse(localStorage.getItem('user')).uid.length > 0 ? (
-        <Box sx={{ display: "flex" }}>
+      {JSON.parse(localStorage.getItem("user")).uid.length > 0 ? (
+        <Box sx={mainBox}>
           <LeftDrawer
             open={open}
             setOpen={setOpen}
@@ -140,29 +161,12 @@ const ScoutsWithoutMedicalInsurancePage = (props) => {
             navigate={navigate}
             LogOut={LogOut}
           />
-          <Box
-            component="main"
-            sx={{
-              width: "100%",
-              p: 3,
-              marginTop: "60px",
-              backgroundColor: "#F2F7FA",
-            }}
-          >
+          <Box component="main" sx={main}>
             {fetched ? (
               <NoInsurance ScoutList={insurance} />
             ) : (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CircularProgress
-                  sx={{ color: "#2E2270", marginTop: "100px" }}
-                />
+              <div style={circularProgressWrapper}>
+                <CircularProgress sx={CircularProgress} />
               </div>
             )}
           </Box>
