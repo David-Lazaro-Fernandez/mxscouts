@@ -122,6 +122,7 @@ const Datos = (props) => {
 
   //Call to upload profile picture and update scout data
   const handleUpload = async () => {
+    localStorage.setItem("user",JSON.stringify(scoutData))
     const firebaseURL = await handleImageUpload(fileImage);
     handleInfoUpdate(await firebaseURL);
   };

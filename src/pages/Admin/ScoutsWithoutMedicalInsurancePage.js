@@ -166,7 +166,7 @@ const ScoutsWithoutMedicalInsurancePage = (props) => {
               <NoInsurance ScoutList={insurance} />
             ) : (
               <div style={circularProgressWrapper}>
-                <CircularProgress sx={CircularProgress} />
+                <CircularProgress sx={circularProgress} />
               </div>
             )}
           </Box>

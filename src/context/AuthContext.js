@@ -134,6 +134,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  console.log(currentUser)
   //Checks if an user exist in Firebase, and logs it in
   const Login = (email, password) =>
     signInWithEmailAndPassword(auth, email, password);

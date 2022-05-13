@@ -51,13 +51,13 @@ export const registerScoutInFirestore = (userAuthData, scoutData) =>
     calle: "Tu calle",
     cia: "Tu CIA",
     colonia: "Tu colonia",
-
     cp: "Tu Codigo Postal",
     nombre_completo: "Your Name",
     delegacion: "Tu delegación",
     edad: "Tu edad",
     edad_con_meses: "1",
-    fecha_de_nacmimento: new Date(),
+    fecha_de_nacimiento: new Date(),
+    foto_de_perfil: 'https://firebasestorage.googleapis.com/v0/b/agsmac-6f212.appspot.com/o/scoutProfilePictures%2Fdefault-pp.png?alt=media&token=f2da7676-891d-4059-a9d5-5ed9f4c3b8ee',
     grupo: "Tu grupo",
     grupo_2: "Tu grupo 2",
     id: "counter",
@@ -77,7 +77,7 @@ export const updateScoutData = (email, scoutData) => {
   console.log("desde updateScoutData",scoutData)
   const scoutRef = doc(database, "Test", email);
   return updateDoc(scoutRef, {
-    ...scoutData,
+    ...scoutData
   });
 };
 

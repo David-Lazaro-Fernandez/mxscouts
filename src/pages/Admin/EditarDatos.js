@@ -29,6 +29,7 @@ const EditarDatos = (props) => {
   const [birthDate, setBirthDate] = useState(
     new Date(SCOUT.fecha_de_nacimiento.seconds * 1000)
   );
+  
   const [section, setSection] = useState(SCOUT.seccion);
   const [group, setGroup] = useState(SCOUT.grupo);
   const [secondaryGroup, setSecondaryGroup] = useState(SCOUT.grupo_2);
@@ -84,14 +85,16 @@ const EditarDatos = (props) => {
     grupo: SCOUT.grupo,
     grupo_2: SCOUT.grupo_2,
   });
-
+  
   useEffect(() => {
     const u = JSON.parse(localStorage.getItem("user"));
     setUser({ ...user, ...u });
   }, []);
 
+
   useEffect(() => {
     const handleSubmit = async () => {
+      console.log(scoutData)
       const scoutEmail = JSON.parse(localStorage.getItem("user")).email;
       try {
         await updateScoutData(scoutEmail, scoutData);
@@ -112,8 +115,9 @@ const EditarDatos = (props) => {
     marginTop: "60px",
     backgroundColor: "#F2F7FA",
   };
-
+ 
   return (
+    
     <>
       {JSON.parse(localStorage.getItem("user")).uid.length > 0 ? (
         <Box sx={mainBox}>

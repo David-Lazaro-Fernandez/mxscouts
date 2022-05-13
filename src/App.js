@@ -19,6 +19,7 @@ import Scouts18TablePage from "./pages/Admin/Scouts19TablePage";
 import EditarDatos from "./pages/Admin/EditarDatos";
 import ScoutCredential from "./pages/Admin/ScoutCredential";
 import ScoutsWithoutMITable from "./pages/Admin/ScoutsWithoutMITable";
+import Groups from './pages/Admin/Groups';
 //Context
 import { AuthProvider } from "./context/AuthContext";
 
@@ -80,6 +81,10 @@ function App() {
           <Route
             path="/admin/my-credential"
             element={<ScoutCredential pageName="Mi credencial" />}
+          />
+           <Route
+            path="/admin/groups"
+            element={<Groups pageName="Lista de Grupos" />}
           />
         </Routes>
       </BrowserRouter>
